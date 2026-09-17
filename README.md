@@ -10,7 +10,7 @@
 
 - **透明实现：** 不依赖 LangChain、LlamaIndex 或向量数据库，核心数据流可以直接阅读和调试。
 - **结果可追溯：** 每次查询保留来源、chunk id、相似度、context、Prompt 和生成器信息。
-- **数据契约明确：** 强制校验 `embeddings.npy[i]` 与 `chunks.jsonl[i]` 的对应关系，发现错位立即停止。
+- **数据契约明确：** 查询前检查文本块数量是否与向量行数一致，数量不一致时停止执行。
 - **行为可验证：** 使用标准库 unittest 覆盖文档处理、向量持久化、检索排序和端到端问答组装。
 
 ## 数据流
@@ -31,6 +31,8 @@ flowchart LR
 ```
 
 ## Quick Start
+
+以下命令在仓库根目录使用 Python 3.11 运行：
 
 ```bash
 python -m venv .venv
@@ -58,9 +60,9 @@ tests/               自动化测试
 
 ## 关键设计
 
-### 文本块与向量严格对齐
+### 文本块与向量数量一致性检查
 
-`chunks.jsonl` 的第 i 条记录必须对应 `embeddings.npy` 的第 i 行。查询前会检查二者数量；不一致时抛出错误，避免返回来源错位的结果。
+建库时，文本块与向量按同一顺序写入 `chunks.jsonl` 和 `embeddings.npy`。查询前会检查文本块数量与向量行数；数量不一致时抛出错误，避免明显的索引不完整问题。当前实现不检测数量相同但顺序被人为交换的情况。
 
 ### 中间结果完整保留
 
@@ -80,6 +82,7 @@ PYTHONPATH=. python -m unittest discover -s tests -v
 
 ## 已知限制
 
+- 当前仅校验文本块数量与向量行数，不检测二者数量相同但顺序被人为交换的情况。
 - 当前按 500 字符切分，overlap 为 80，尚未实现语义切分。
 - 当前只有 dense vector retrieval，没有 hybrid search、rerank 或 query rewriting。
 - `MockGenerator` 不调用真实 LLM，因此本项目是“检索与可追溯问答组装原型”，不是完整问答产品。
