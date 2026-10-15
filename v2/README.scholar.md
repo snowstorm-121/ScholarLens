@@ -98,4 +98,22 @@ The cached official archives and exported corpus are Git-ignored. Changed hashes
 repeat conversions do not append records or silently overwrite changed output.
 
 This does not build embeddings or change the UI corpus: the web app still uses the two T1
-papers until T4/T5. T3 evaluation sampling/freezing and Test scoring have not run.
+papers until T4/T5. T3 sampling/freezing and the user-delegated assistant review are complete;
+independent human review was not performed, and reference risks remain documented.
+Test scoring has not run.
+
+## T3: freeze and validate evaluation data
+
+```sh
+.venv/bin/python -m scholarlens.cli freeze --config configs/local.json
+.venv/bin/python -m scholarlens.cli validate --config configs/local.json
+.venv/bin/python -m pytest tests_scholarlens -q
+```
+
+Retrieval Dev/Test contain 200/300 questions. Generation subsets contain 50/100
+questions already included in those sets. No model scores were used for selection.
+Full questions/gold stay in the ignored data directory; public IDs/hashes/rules are
+in `configs/evaluation-v1.freeze.json`. Changed inputs or outputs require a new version.
+The original user worksheet at `artifacts/t3/v1/dev-review.md` is not marked as human-reviewed.
+The delegated assistant review is separately recorded in `artifacts/t3/v1/assistant-review.json`
+and `reports/t3-review.md`. See `reports/t3-dataset.md` for exact filters and limitations.

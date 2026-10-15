@@ -1,0 +1,4726 @@
+{
+  "files": {
+    "eligible.not_sampled.jsonl": "bf1258526448803bca1fa013b082627e41d42fb0e468ae942b77a0a85ebdcb45",
+    "excluded.annotations.jsonl": "db41fbeee0a29a8dc7879e02085404ac9100cc581f14251c3ac95cd25fe01b20",
+    "excluded.questions.jsonl": "00868ec623c71a6cb5d2e40ce29ca1e79f9bbde0656e24847de048f7133041b3",
+    "generation.dev.ids.json": "7f4ef5c6fed35a8d5eb063d9734dd74bd97812e78bf35bdb6bcbff69ab72d6ba",
+    "generation.test.ids.json": "51ddf1764a21464689b5fef431d94f58e31fcd396c39a0fdd260e1e713e83fa5",
+    "gold.generation.dev.json": "e64e8ec02a9a215792f0a708f65f4fdc7db67d84c6dcc9c1732e26f2d67f82ae",
+    "gold.generation.test.json": "795be05d2b9ca99036b8b847b3da03ad1d64a535bd57a29736fe56667b84faaa",
+    "gold.retrieval.dev.json": "2a8897f37b2a64aca77f6dca5e7cbb485b7a85f413cd46e503f478e180e78fc5",
+    "gold.retrieval.test.json": "3efd25acda3ba178b8a999230ea7e6d0d13b11e27a44124a2632931a9a3c0526",
+    "questions.dev.jsonl": "9a7ba1dcb9bf53e426266feb5c016929b897a033af10f0f9a95d2e635fc4af8f",
+    "questions.test.jsonl": "f732cc5d382e5cb8902e3e456d3f5736700f3b8e188bfe3d7e0b21d893cc30c7",
+    "review.dev.ids.json": "b828c802b060cb9ef4284d4b88d1ee7558a25daa427562c6477c30208cee6f81",
+    "selection_report.json": "332ba14a7a6908aafceaf8b004d2fb9e152636783d64595002f67526dffc6e19"
+  },
+  "frozen_at_utc": "2026-10-15T02:23:14.433865+00:00",
+  "generation_ids": {
+    "dev": [
+      "efe9bad55107a6be7704ed97ecce948a8ca7b1d2",
+      "23b2901264bda91045258b5d4120879ae292e950",
+      "d98847340e46ffe381992f1a594e75d3fb8d385e",
+      "1ed49a8c07ef0ac15cfa6b7decbde6604decbd5b",
+      "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "17a1eff7993c47c54eddc7344e7454fbe64191cd",
+      "f225a9f923e4cdd836dd8fe097848da06ec3e0cc",
+      "792f6d76d2befba2af07198584aac1b189583ae4",
+      "ee2c9bc24d70daa0c87e38e0558e09ab97feb4f2",
+      "d087539e6a38c42f0a521ff2173ef42c0733878e",
+      "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "8060a773f6a136944f7b59758d08cc6f2a59693b",
+      "1d9aeeaa6efa1367c22be0718f5a5635a73844bd",
+      "92d1a6df3041667dc662376938bc65527a5a1c3c",
+      "09c86ef78e567033b725fc56b85c5d2602c1a7c3",
+      "79413ff5d98957c31866f22179283902650b5bb6",
+      "54830abe73fef4e629a36866ceeeca10214bd2c8",
+      "61652a3da85196564401d616d251084a25ab4596",
+      "dc2a2c177cd5df6da5d03e6e74262bf424850ec9",
+      "8c852fc29bda014d28c3ee5b5a7e449ab9152d35",
+      "ea56148a8356a1918bedcf0a99ae667c27792cfe",
+      "56b7319be68197727baa7d498fa38af0a8440fe4",
+      "5a6926de13a8cc25ce687c22741ba97a6e63d4ee",
+      "9c33b340aefbc1f15b6eb6fb3e23ee615ce5b570",
+      "c00ce1e3be14610fb4e1f0614005911bb5ff0302",
+      "d9b6c61fc6d29ad399d27b931b6cb7b1117b314a",
+      "70e9210fe64f8d71334e5107732d764332a81cb1",
+      "1591068b747c94f45b948e12edafe74b5e721047",
+      "b6f7fadaa1bb828530c2d6780289f12740229d84",
+      "22ccee453e37536ddb0c1c1d17b0dbac04c6c607",
+      "e438445cf823893c841b2bc26cdce32ccc3f5cbe",
+      "91bc8c0bc1634045177065536dd311f89134630b",
+      "93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+      "f68508adef6f4bcdc0cc0a3ce9afc9a2b6333cc5",
+      "54e945ea4b014e11ed4e1e61abc2aa9e68fea310",
+      "c497e8701060583d91bb64b9f9202d40047effc4",
+      "7f207549c75f5c4388efc15ed28822672b845663",
+      "111afb77cfbf4c98e0458606378fa63a0e965e36",
+      "1cfed6b0c9b5a079a51166209649a987e7553e4e",
+      "876700622bd6811d903e65314ac75971bbe23dcc",
+      "1c0ba6958da09411deded4a14dfea5be55687619",
+      "27cf16bc9ef71761b9df6217f00f39f21130ce15",
+      "fb2b536dc8e442dffab408db992b971e86548158",
+      "6c96e910bd98c9fd58ba2050f99b9c9bac69840a",
+      "4d7ff4e5d06902de85b0e9a364dc455196d06a7d",
+      "975e60535724f4149c7488699a199ba2920a062c",
+      "4e748cb2b5e74d905d9b24b53be6cfdf326e8054",
+      "45be665a4504f0c7f458cf3f75a95d5a75eefd42",
+      "ceb4bac1f6c506b5dab37607354530faee02ccac"
+    ],
+    "test": [
+      "7380e62edcb11f728f6d617ee332dc8b5752b185",
+      "a28c73a6a8c46a43a1eec2b42b542dd7fde1e30e",
+      "d3cfbe497a30b750a8de3ea7f2cecf4753a4e1f9",
+      "0c4e419fe57bf01d58a44f3e263777c22cdd90dc",
+      "16cc37e4f8e2db99eaf89337a3d9ada431170d5b",
+      "f2bcfdbebb418e7da165c19b8c7167719432ee48",
+      "baec99756b80eec7c0234a08bc2855e6770bcaeb",
+      "2c60628d54f2492e0cbf0fb8bacd8e54117f0c18",
+      "0fee37ebe0a010cf8bd665fa566306d8e7d12631",
+      "a7e1b13cc42bfe78d37b9c943de6288e5f00f01b",
+      "6d55e377335815b7ad134d1a2977d231ad34a25b",
+      "5b2839bef513e5d441f0bb8352807f673f4b2070",
+      "e3c44964eb6ddc554901244eb6595f26a9bae47e",
+      "acac0606aab83cae5d13047863c7af542d58e54c",
+      "43729be0effb5defc62bae930ceacf7219934f1e",
+      "f15bc40960bd3f81bc791f43ab5c94c52378692d",
+      "a064337bafca8cf01e222950ea97ebc184c47bc0",
+      "b78bb6fe817c2d4bc69236df998f546e94c3ee21",
+      "0bde3ecfdd7c4a9af23f53da2cda6cd7a8398220",
+      "610fc593638c5e9809ea9839912d0b282541d42d",
+      "3ea82a5ca495ffbd1e30e8655aef1be4ba423efe",
+      "9a7aeecbecf5e30ffa595c233fca31719c9b429f",
+      "d97843afec733410d2c580b4ec98ebca5abf2631",
+      "b57ad10468e1ba2a7a34396688dbb10a575d89f5",
+      "c7ffef8bf0100eb6148bd932d0409b21759060b1",
+      "d788076c0d19781ff3f6525bd9c05b0ef0ecd0f1",
+      "a5df7361ae37b9512fb57cb93efbece9ded8cab1",
+      "a67a2d9acad1787b636ca2681330f4c29a0b0254",
+      "ebb4db9c24aa36db9954dd65ea079a798df80558",
+      "00341a46a67d31d36e6dc54d5297626319584891",
+      "753a187c1dd8d96353187fbb193b5f86293a796c",
+      "3588988f2230f3329d7523fbb881b20bf177280d",
+      "2f75b0498cf6a1fc35f1fb1cac44fc2fbd3d7878",
+      "2bd702174e915d97884d1571539fb1b5b0b7123a",
+      "50bcbb730aa74637503c227f022a10f57d43f1f7",
+      "dd80a38e578443496d3720d883ad194ce82c5f39",
+      "99e99f2c25706085cd4de4d55afe0ac43213d7c8",
+      "713e1c7b0ab17759ba85d7cd2041e387831661df",
+      "af948ea91136c700957b438d927f58d9b051c97c",
+      "4830459e3d1d204e431025ce7e596ef3f8d757d2",
+      "b8bbdc3987bb456739544426c6037c78ede01b77",
+      "643645e02ffe8fde45918615ec92013a035d1b92",
+      "71e1f06daf6310609d00850340e64a846fbe2dfb",
+      "eaae11ffd4ff955de2cd6389b888f5fd2c660a32",
+      "6683008e0a8c4583058d38e185e2e2e18ac6cf50",
+      "887d7f3edf37ccc6bf2e755dae418b04d2309686",
+      "30870a962cf88ac8c8e6b7b795936fd62214f507",
+      "54002c15493d4082d352a66fb9465d65bfe9ddca",
+      "fc62549a8f0922c09996a119b2b6a8b5e829e989",
+      "67c16ba64fe27838b1034d15194c07a9c98cdebe",
+      "0dc9050c832a6091bc9db3f7fa7be72139f51177",
+      "fc9aa04de4018b7d55e19a39663a2e9837328de7",
+      "991ea04072b3412928be5e6e903cfa54eeac3951",
+      "8b4bd0a962241ea548752212ebac145e2ced7452",
+      "6a20a3220c4edad758b912e2d3e5b99b0b295d96",
+      "47d54a6dd50cab8dab64bfa1f9a1947a8190080c",
+      "3e3e45094f952704f1f679701470c3dbd845999e",
+      "71b29ab3ddcdd11dcc63b0bb55e75914c07a2217",
+      "da2350395867b5fd4dbf968b5a1cd6921ab6dd37",
+      "1d10e069b4304fabfbed69acf409f0a311bdc441",
+      "3a33512d253005ac280ee9ca4f9dfa69aa38d48f",
+      "5499440674f0e4a9d6912b9ac29fa1f7b7cd5253",
+      "e6bc11bd6cfd4b2138c29602b9b56fc5378a4293",
+      "bd3562d2b3c162e9d27404d56b77e15f707d8b0f",
+      "5db47bbb97282983e10414240db78154ea7ac75f",
+      "946d7c877d363f549f84e9500c852dce70ae5d36",
+      "275b2c22b6a733d2840324d61b5b101f2bbc5653",
+      "fcf9377fc3fce529d4bab1258db3f46b15ae5872",
+      "f92c344e9b1a986754277fd0f08a47dc3e5f9feb",
+      "9887ca3d25e2109f41d1da80eeea05c465053fbc",
+      "554d798e4ce58fd30820200c474d7e796dc8ba89",
+      "8c288120139615532838f21094bba62a77f92617",
+      "0778cbbd093f8b779f7cf26302b2a8e081ccfb40",
+      "4a201b8b9cc566b56aedb5ab45335f202bc41845",
+      "311f9971d61b91c7d76bba1ad6f038390977a8be",
+      "523bc4e3482e1c9a8e0cb92cfe51eea92c20e8fd",
+      "595fe416a100bc7247444f25b11baca6e08d9291",
+      "4999da863ecbd40378505bfb1f4e395061a3f559",
+      "f3b851c9063192c86a3cc33b2328c02efa41b668",
+      "e381f1811774806be109f9b05896a2a3c5e1ef43",
+      "8795bb1f874e5f3337710d8c3d5be49e672ab43a",
+      "11360385dff0a9d7b8f4b106ba2b7fe15ca90d7c",
+      "0b5bf00d2788c534c4c6c007b72290c48be21e16",
+      "42a4ab4607a9eec42c427a817b7e898230d26444",
+      "993d5bef2bf1c0cd537342ef76d4b952f0588b83",
+      "ab097db03652b8b38edddc074f23e2adf9278cba",
+      "e7ce612f53e9be705cdb8daa775eae51778825ef",
+      "c6170bb09ba2a416f8fa9b542f0ab05a64dbf2e4",
+      "3e4e415e346a313f5a7c3764fe0f51c11f51b071",
+      "1fa9b6300401530738995f14a37e074c48bc9fd8",
+      "2a55076a66795793d79a3edfae1041098404fbc3",
+      "fa468c31dd0f9095d7cec010f2262eeed565a7d2",
+      "6073be8b88f0378cd0c4ffcad87e1327bc98b991",
+      "04914917d01c9cd8718cd551dc253eb3827915d8",
+      "173060673cb15910cc310058bbb9750614abda52",
+      "3a3c372b6d73995adbdfa26103c85b32d071ff10",
+      "5138121b9e9bd56962e69bfe49d5df5301cb7745",
+      "bfcbb47f3c54ee1a459183e04e4c5a41ac9ae83b",
+      "67104a5111bf8ea626532581f20b33b851b5abc1",
+      "0035b351df63971ec57e36d4bfc6f7594bed41ae"
+    ]
+  },
+  "input": {
+    "code_sha256": {
+      "data.py": "cfa4f117195bb0b6ff03a62004ce04352980eae7f3ff0d084156acb3b49c4256",
+      "dataset.py": "15070563c86d627a0e2b7f7f3ebae72800c889b2753d2c093c84bc817e044415"
+    },
+    "corpus_manifest_sha256": "f5f31dc85c955fb64aece137794979bf9b9cc3d579596fb6ce85754bbd73a303",
+    "settings_sha256": "d2545699714ff74b18ea7dc4ed845ca1b1f74533a687dc91a3af62319d394c25"
+  },
+  "review_status_at_freeze": "pending_user_review",
+  "rules": {
+    "conflicts": "exclude if ANY original annotations disagree on unanswerable",
+    "dedup": "among eligible duplicate questions keep the lowest seeded hash, then question_id",
+    "generation": "same hash ranking within selected retrieval split/class",
+    "question_key": "paper_id + NFC/whitespace-normalized, casefolded question",
+    "ranking": "SHA256(str(seed) + '|' + question_id), then question_id",
+    "references": "retain only entire valid references; never salvage partial evidence groups",
+    "review": "first N selected Dev questions by same hash; never sample Test for manual review",
+    "shortfall": "take all eligible within split/class; no borrowing or synthetic fill",
+    "version": "qasper-selection-v1"
+  },
+  "selections": {
+    "dev": [
+      {
+        "annotation_ids": [
+          "2d1a57e95a6a0f3ded4ce56cf7a49ea13bd46b9f"
+        ],
+        "answerable": true,
+        "paper_id": "1909.11687",
+        "question_id": "efe9bad55107a6be7704ed97ecce948a8ca7b1d2"
+      },
+      {
+        "annotation_ids": [
+          "6734e42dde15a73478a26e1997934655548a074a"
+        ],
+        "answerable": true,
+        "paper_id": "1911.02855",
+        "question_id": "23b2901264bda91045258b5d4120879ae292e950"
+      },
+      {
+        "annotation_ids": [
+          "2449cdb5e6596d113b0ae79a8fe57d6234920142"
+        ],
+        "answerable": true,
+        "paper_id": "1901.08079",
+        "question_id": "d98847340e46ffe381992f1a594e75d3fb8d385e"
+      },
+      {
+        "annotation_ids": [
+          "045aae4280bbf780dd9bd2c5a466c5edbd4fed80"
+        ],
+        "answerable": true,
+        "paper_id": "1906.07701",
+        "question_id": "1ed49a8c07ef0ac15cfa6b7decbde6604decbd5b"
+      },
+      {
+        "annotation_ids": [
+          "3dd57b631eeffff25f4a19027e7f543cc3450a1c",
+          "a5905e28b5b1fe8440320a4665be4f5508c2da86"
+        ],
+        "answerable": true,
+        "paper_id": "1612.03226",
+        "question_id": "551457ed34ca7fc0878c85bc664b135c21059b58"
+      },
+      {
+        "annotation_ids": [
+          "5b455d547e1d00eb13fb47bf02bb4559a6dc77e7"
+        ],
+        "answerable": true,
+        "paper_id": "1906.07662",
+        "question_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4"
+      },
+      {
+        "annotation_ids": [
+          "4e5859c77fe9bc3b32156c7ea15d60a8d8eaa0f8",
+          "74e863f56156388e00908de30461fd917334c072"
+        ],
+        "answerable": true,
+        "paper_id": "1807.07279",
+        "question_id": "17a1eff7993c47c54eddc7344e7454fbe64191cd"
+      },
+      {
+        "annotation_ids": [
+          "531b59469d98b703ab5a644cb5a19e3dbcf0ab24",
+          "e6f16cab5965d826fd0553c8ad8e0d90ee8bc3f7"
+        ],
+        "answerable": true,
+        "paper_id": "1910.06036",
+        "question_id": "f225a9f923e4cdd836dd8fe097848da06ec3e0cc"
+      },
+      {
+        "annotation_ids": [
+          "1735c34933a8214f841762747a582b5b7584dd36",
+          "536813de8a2afdead639fed1ac771d35d045d23f"
+        ],
+        "answerable": true,
+        "paper_id": "1605.03481",
+        "question_id": "792f6d76d2befba2af07198584aac1b189583ae4"
+      },
+      {
+        "annotation_ids": [
+          "bba13a338b88ab36d6bc756a67e18179d91d9ce5"
+        ],
+        "answerable": true,
+        "paper_id": "1910.14599",
+        "question_id": "ee2c9bc24d70daa0c87e38e0558e09ab97feb4f2"
+      },
+      {
+        "annotation_ids": [
+          "90ebee997dea2d60031d913bcb1e577b9c2255ef",
+          "cbd59a250f25681b5f3c85e4e4a9f8d6c721d59f"
+        ],
+        "answerable": true,
+        "paper_id": "1909.11687",
+        "question_id": "d087539e6a38c42f0a521ff2173ef42c0733878e"
+      },
+      {
+        "annotation_ids": [
+          "0a241ac808bb91d69351219c3f12d7ac04d27f21"
+        ],
+        "answerable": true,
+        "paper_id": "1610.08815",
+        "question_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809"
+      },
+      {
+        "annotation_ids": [
+          "86877f451ae493ab86f280855917829c75d0b37a",
+          "bbf186fe0f9d0adfa81f290f25337452149a6f4f"
+        ],
+        "answerable": true,
+        "paper_id": "1703.07090",
+        "question_id": "8060a773f6a136944f7b59758d08cc6f2a59693b"
+      },
+      {
+        "annotation_ids": [
+          "904b4500cdfd9cf60b54d3e072a7779262f0c9cc",
+          "9e66739dcd1d8a859907320b7b73c55986c6fa4b"
+        ],
+        "answerable": true,
+        "paper_id": "1907.09369",
+        "question_id": "1d9aeeaa6efa1367c22be0718f5a5635a73844bd"
+      },
+      {
+        "annotation_ids": [
+          "7f369212797fa799ad82dd090487c07e7acd2a88",
+          "abf9fe1b600c548def2415accf646f6851032335"
+        ],
+        "answerable": true,
+        "paper_id": "1705.01265",
+        "question_id": "92d1a6df3041667dc662376938bc65527a5a1c3c"
+      },
+      {
+        "annotation_ids": [
+          "02dd9a461b813df2cafdcdc8dacdae784d8da24d"
+        ],
+        "answerable": true,
+        "paper_id": "1610.00956",
+        "question_id": "09c86ef78e567033b725fc56b85c5d2602c1a7c3"
+      },
+      {
+        "annotation_ids": [
+          "2de2a5f33ccb9e07d541a374e2ca12b3c0025231",
+          "774003ff4af880f639ebb79d5ab7c4ae1b19d5d3"
+        ],
+        "answerable": true,
+        "paper_id": "1908.04042",
+        "question_id": "79413ff5d98957c31866f22179283902650b5bb6"
+      },
+      {
+        "annotation_ids": [
+          "a5531af14c7458584dabbcbc4225f1a50658c85c",
+          "da52d751076cb616cc643481130a47749da10b2b"
+        ],
+        "answerable": true,
+        "paper_id": "1909.09551",
+        "question_id": "54830abe73fef4e629a36866ceeeca10214bd2c8"
+      },
+      {
+        "annotation_ids": [
+          "e1b21d7447853f3b33474c3c7bcfb72119b18f79",
+          "ef85e2122dc359674fb6bfb7467994012ee76e79"
+        ],
+        "answerable": true,
+        "paper_id": "1712.00991",
+        "question_id": "61652a3da85196564401d616d251084a25ab4596"
+      },
+      {
+        "annotation_ids": [
+          "3b2f9e08570ef084ee041eec860712c94a816985",
+          "a749cb2d9553098e9dde1470815c5662d5c45852"
+        ],
+        "answerable": true,
+        "paper_id": "2002.12612",
+        "question_id": "dc2a2c177cd5df6da5d03e6e74262bf424850ec9"
+      },
+      {
+        "annotation_ids": [
+          "710b79c1764a5c374181d22c40405e48e46c9475",
+          "7cb14177df857a2fc6924f9ee1db0da32bc85869",
+          "de250af74bdaa41eddbbf03be791a39fd51f2de6"
+        ],
+        "answerable": true,
+        "paper_id": "1902.09666",
+        "question_id": "8c852fc29bda014d28c3ee5b5a7e449ab9152d35"
+      },
+      {
+        "annotation_ids": [
+          "1faaa44c576625887d55ba35ed862ec9b161a528",
+          "548a9ba34ce0a0e7b58d92cfc73b3e0a9b406b37"
+        ],
+        "answerable": true,
+        "paper_id": "1707.05236",
+        "question_id": "ea56148a8356a1918bedcf0a99ae667c27792cfe"
+      },
+      {
+        "annotation_ids": [
+          "9e11478e485e47eefcfd4b861442884657d22897"
+        ],
+        "answerable": true,
+        "paper_id": "1909.06162",
+        "question_id": "56b7319be68197727baa7d498fa38af0a8440fe4"
+      },
+      {
+        "annotation_ids": [
+          "48200e5d6bf00045e152e23d7049b223945dde61"
+        ],
+        "answerable": true,
+        "paper_id": "1706.01875",
+        "question_id": "5a6926de13a8cc25ce687c22741ba97a6e63d4ee"
+      },
+      {
+        "annotation_ids": [
+          "1160e2d2db43330e00e762c21291704dbe6476ee",
+          "bae0c8f68085f310c95afab35e071659e4dbe051"
+        ],
+        "answerable": true,
+        "paper_id": "1904.04358",
+        "question_id": "9c33b340aefbc1f15b6eb6fb3e23ee615ce5b570"
+      },
+      {
+        "annotation_ids": [
+          "354142e7e6076bf3fc14e3da127f61ab12fc1b7c",
+          "b6df7caf1df11da06f2a9339595a572829796e81"
+        ],
+        "answerable": true,
+        "paper_id": "1910.06592",
+        "question_id": "c00ce1e3be14610fb4e1f0614005911bb5ff0302"
+      },
+      {
+        "annotation_ids": [
+          "2e78374af9aef7849faaf2f205a96f44a6f51435",
+          "8ffda17ba2dacff5b07d6c8b25615595d1bdd961"
+        ],
+        "answerable": true,
+        "paper_id": "1809.04267",
+        "question_id": "d9b6c61fc6d29ad399d27b931b6cb7b1117b314a"
+      },
+      {
+        "annotation_ids": [
+          "c1a4c7fc421a326e7b72370f56b2f5f25566c4d5"
+        ],
+        "answerable": true,
+        "paper_id": "1812.06864",
+        "question_id": "70e9210fe64f8d71334e5107732d764332a81cb1"
+      },
+      {
+        "annotation_ids": [
+          "6de25a17ed3727d60caf432a197aebf508fe45a0",
+          "dfbae90c192c6c6ee920598b0ebba94dd892748d"
+        ],
+        "answerable": true,
+        "paper_id": "1802.07862",
+        "question_id": "1591068b747c94f45b948e12edafe74b5e721047"
+      },
+      {
+        "annotation_ids": [
+          "11cc6febc54a56f040128308573899fbf0786a9d",
+          "a1f0b005fc0ced0358ecec94e1f6485df1356526"
+        ],
+        "answerable": true,
+        "paper_id": "1903.11437",
+        "question_id": "b6f7fadaa1bb828530c2d6780289f12740229d84"
+      },
+      {
+        "annotation_ids": [
+          "860010736dc61f7078cbc0d327d7fb7a4ba6fc61",
+          "882693c83b0309cdef86bd9d668d339ddd9598e0"
+        ],
+        "answerable": true,
+        "paper_id": "1805.10824",
+        "question_id": "22ccee453e37536ddb0c1c1d17b0dbac04c6c607"
+      },
+      {
+        "annotation_ids": [
+          "5c89df6284cd22b539a9f6613273c5fab1e2a8f6"
+        ],
+        "answerable": false,
+        "paper_id": "1901.01010",
+        "question_id": "e438445cf823893c841b2bc26cdce32ccc3f5cbe"
+      },
+      {
+        "annotation_ids": [
+          "eb865925ca7051d63bb232a8e02a7aeb3b5a54d9"
+        ],
+        "answerable": true,
+        "paper_id": "1910.05603",
+        "question_id": "91bc8c0bc1634045177065536dd311f89134630b"
+      },
+      {
+        "annotation_ids": [
+          "322e7e971f3569ac578b9c6e653b5ce61ad0e1a0",
+          "abba958cfd517a62ad4ff667c8715dc14eeece5e"
+        ],
+        "answerable": true,
+        "paper_id": "1909.00326",
+        "question_id": "93beae291b455e5d3ecea6ac73b83632a3ae7ec7"
+      },
+      {
+        "annotation_ids": [
+          "c9de8ef4c988093e1e187179ff6581865cc0a45b"
+        ],
+        "answerable": true,
+        "paper_id": "1909.13714",
+        "question_id": "f68508adef6f4bcdc0cc0a3ce9afc9a2b6333cc5"
+      },
+      {
+        "annotation_ids": [
+          "6ea23c212e6e8093e43be2652caf1bca3277e1ca",
+          "9e9450b007dae05405d3b147d52ec9517c1fe6a0"
+        ],
+        "answerable": true,
+        "paper_id": "1910.03634",
+        "question_id": "54e945ea4b014e11ed4e1e61abc2aa9e68fea310"
+      },
+      {
+        "annotation_ids": [
+          "f8e7b5f76286791fa2cec71cc3f4dc27df132ef8"
+        ],
+        "answerable": true,
+        "paper_id": "1907.06292",
+        "question_id": "c497e8701060583d91bb64b9f9202d40047effc4"
+      },
+      {
+        "annotation_ids": [
+          "a2aa52e85fcbaec8926d7a36e5af6dff01358aaf"
+        ],
+        "answerable": true,
+        "paper_id": "1908.10084",
+        "question_id": "7f207549c75f5c4388efc15ed28822672b845663"
+      },
+      {
+        "annotation_ids": [
+          "566c51f89d144397e0367704458bcc51ce59c777",
+          "5b617c45e1a3decd08fab2a00ca97610a5c7c9f2"
+        ],
+        "answerable": true,
+        "paper_id": "1603.01514",
+        "question_id": "111afb77cfbf4c98e0458606378fa63a0e965e36"
+      },
+      {
+        "annotation_ids": [
+          "8556c790015d295b32d544b13c995bd3b7abfa03",
+          "c393ee094d7644db56dd8d0b9b733c54b56b66b7"
+        ],
+        "answerable": true,
+        "paper_id": "1801.07887",
+        "question_id": "1cfed6b0c9b5a079a51166209649a987e7553e4e"
+      },
+      {
+        "annotation_ids": [
+          "403234711fc0279d426151f1b0bd9e1ee057775c",
+          "ddcff40ac3fdcf1842519fff6a77cd3810d75b8d"
+        ],
+        "answerable": true,
+        "paper_id": "1707.03569",
+        "question_id": "876700622bd6811d903e65314ac75971bbe23dcc"
+      },
+      {
+        "annotation_ids": [
+          "3d31df2c5380865189175ecf356893565f2e4e95",
+          "8ea7270a6678afc65e8263fbef79024f4172192c"
+        ],
+        "answerable": true,
+        "paper_id": "1706.01678",
+        "question_id": "a6a48de63c1928238b37c2a01c924b852fe752f8"
+      },
+      {
+        "annotation_ids": [
+          "26fe3cca2a6e1e74b36d70a2fda0dcd06db81d4a",
+          "a74999b5beab42b0f3278d144daffc7d7e8aa297"
+        ],
+        "answerable": false,
+        "paper_id": "1903.07406",
+        "question_id": "1c0ba6958da09411deded4a14dfea5be55687619"
+      },
+      {
+        "annotation_ids": [
+          "5d770d2c2154b0d6cfc8c60916c80bdb21622c78",
+          "64cd7b0c99ea6f24556b7cbdec280552e063f42e"
+        ],
+        "answerable": true,
+        "paper_id": "1611.08661",
+        "question_id": "b49598b05358117ab1471b8ebd0b042d2f04b2a4"
+      },
+      {
+        "annotation_ids": [
+          "052bc9840f6733421ea17a3b28753bbec7a871d2",
+          "95ca58e8d9c9f3445447fc3bcfbd7d902489ddc8"
+        ],
+        "answerable": true,
+        "paper_id": "1503.00841",
+        "question_id": "02428a8fec9788f6dc3a86b5d5f3aa679935678d"
+      },
+      {
+        "annotation_ids": [
+          "14fe821ecd8a4a20d30dc7bef012a749d9e1b5a3",
+          "e80c81d447afde2dc18cb876c034996fce43339c"
+        ],
+        "answerable": true,
+        "paper_id": "1707.05236",
+        "question_id": "7b4992e2d26577246a16ac0d1efc995ab4695d24"
+      },
+      {
+        "annotation_ids": [
+          "c943c52bb6b44d4593e49d788a8862f8b724f352"
+        ],
+        "answerable": true,
+        "paper_id": "1908.06264",
+        "question_id": "81588e0e207303c2867c896f3911a54a1ef7c874"
+      },
+      {
+        "annotation_ids": [
+          "ceb8d56393e4f908ac45212dd82eafc9c217d323",
+          "f9fd7a3838b67063647c47c435953fca46c0cf6b"
+        ],
+        "answerable": true,
+        "paper_id": "1911.07555",
+        "question_id": "c598028815066089cc1e131b96d6966d2610467a"
+      },
+      {
+        "annotation_ids": [
+          "29a07008df2866038a313b6c016f266992633f14"
+        ],
+        "answerable": true,
+        "paper_id": "1811.00383",
+        "question_id": "37861be6aecd9242c4fdccdfcd06e48f3f1f8f81"
+      },
+      {
+        "annotation_ids": [
+          "affb04e1b97368285c294d1354a6ad525adefaba",
+          "bea9231e463ddb1ee405aeeb92418e286a4b183a"
+        ],
+        "answerable": true,
+        "paper_id": "1912.01852",
+        "question_id": "d6e353e0231d09fd5dcba493544d53706f3fe1ab"
+      },
+      {
+        "annotation_ids": [
+          "62a06fa86e30763bf67f1a05e25d4c4aad8f9b0f"
+        ],
+        "answerable": true,
+        "paper_id": "1603.01514",
+        "question_id": "50cc6c5f2dcf5fb87b56007f6a825fa7c90b64ed"
+      },
+      {
+        "annotation_ids": [
+          "9072dd02640c35084d69eed498fcf48f61a5803a",
+          "d48e894c134141ef3f35164b3ea477ed5195690c"
+        ],
+        "answerable": true,
+        "paper_id": "1909.03405",
+        "question_id": "bc31a3d2f7c608df8c019a64d64cb0ccc5669210"
+      },
+      {
+        "annotation_ids": [
+          "105b12239011722b869c8ba3c1e2fe74b157a364"
+        ],
+        "answerable": false,
+        "paper_id": "1906.01040",
+        "question_id": "27cf16bc9ef71761b9df6217f00f39f21130ce15"
+      },
+      {
+        "annotation_ids": [
+          "8dd741d5006030f9048077e2b61e619815a5607d",
+          "d511a0afda9bc3644330b11fa95751a82542f6ef"
+        ],
+        "answerable": true,
+        "paper_id": "1809.00540",
+        "question_id": "2c78993524ca62bf1f525b60f2220a374d0e3535"
+      },
+      {
+        "annotation_ids": [
+          "6f551ad62c2a7def2b2bf4e992cd9ab8bded9d89",
+          "b7e37c24b10414781313c8d438d730cea36b76f8"
+        ],
+        "answerable": true,
+        "paper_id": "1804.05918",
+        "question_id": "bd5bd1765362c2d972a762ca12675108754aa437"
+      },
+      {
+        "annotation_ids": [
+          "3b3b799501bb65621104ba225684a897759c76b5",
+          "7b0bd356dde010923c72f22a61bcc6f3401b1437"
+        ],
+        "answerable": true,
+        "paper_id": "1907.06292",
+        "question_id": "53dfcd5d7d2a81855ec1728f0d8e6e24c5638f1e"
+      },
+      {
+        "annotation_ids": [
+          "16b7a7d52c500f4c78745d63cd743fba95a0fc73"
+        ],
+        "answerable": true,
+        "paper_id": "1911.00841",
+        "question_id": "c70bafc35e27be9d1efae60596bc0dd390c124c0"
+      },
+      {
+        "annotation_ids": [
+          "3c4b3220606fb88d3a06bccd2b0db49f43e11bf8",
+          "8415c4e16fc2c88ee20f5c333cb3608afee37a50"
+        ],
+        "answerable": true,
+        "paper_id": "1802.07862",
+        "question_id": "adbf33c6144b2f5c40d0c6a328a92687a476f371"
+      },
+      {
+        "annotation_ids": [
+          "d0545866b03f2634ae1f6362241178bb21375f96",
+          "edf7c7d7f774c87bf1fa33088ad560eb88322ce8"
+        ],
+        "answerable": true,
+        "paper_id": "1605.06083",
+        "question_id": "6d4400f45bd97b812e946b8a682b018826e841f1"
+      },
+      {
+        "annotation_ids": [
+          "6305b16f4add60b48be3b0d47dcfe01c7eb1d929",
+          "bed93f88bc860f792c0d9d007b32f67b07eceb72"
+        ],
+        "answerable": true,
+        "paper_id": "2003.13032",
+        "question_id": "f2e8497aa16327aa297a7f9f7d156e485fe33945"
+      },
+      {
+        "annotation_ids": [
+          "53306b38df1eb6b0d46e055fa8ab1434d68bb9d2"
+        ],
+        "answerable": true,
+        "paper_id": "2003.03014",
+        "question_id": "0682bf049f96fa603d50f0fdad0b79a5c55f6c97"
+      },
+      {
+        "annotation_ids": [
+          "5cd81c4f6086a10ba24ffdc9193af60af742ec6f",
+          "6440edd1f184917f771c70e33fe9a5aa7dbeb1e0"
+        ],
+        "answerable": true,
+        "paper_id": "1601.02403",
+        "question_id": "1cb100182508cf55b3509283c0e2bbcd527d625e"
+      },
+      {
+        "annotation_ids": [
+          "74f50dd7f7ea66d80ae8f3b3a3d1682181f0a1f0"
+        ],
+        "answerable": true,
+        "paper_id": "1912.03627",
+        "question_id": "30af1926559079f59b0df055da76a3a34df8336f"
+      },
+      {
+        "annotation_ids": [
+          "7a90b560d2cd2a33d617f9c2ee512629376ce36f",
+          "c32b4d44783aa1f4778ed82ddfcf25c30ac5138f"
+        ],
+        "answerable": true,
+        "paper_id": "1906.00790",
+        "question_id": "60ce4868af45753c9e124e64e518c32376f12694"
+      },
+      {
+        "annotation_ids": [
+          "4c6e1271e8c354d810f25bd1746aa7f63a76d24b"
+        ],
+        "answerable": true,
+        "paper_id": "1603.08594",
+        "question_id": "87bc6f83f7f90df3c6c37659139b92657c3f7a38"
+      },
+      {
+        "annotation_ids": [
+          "8714926834a33556ea0ef855965d2afdd89b26e9"
+        ],
+        "answerable": true,
+        "paper_id": "2004.04721",
+        "question_id": "b3307d5b68c57a074c483636affee41054be06d1"
+      },
+      {
+        "annotation_ids": [
+          "62caef8748ffd79567b46b598be0734dca381b0a",
+          "bd2677b6b061c0822793308e5f1c8fa92d0d6f95"
+        ],
+        "answerable": true,
+        "paper_id": "1911.00841",
+        "question_id": "51fe4d44887c5cc5fc98b65ca4cb5876f0a56dad"
+      },
+      {
+        "annotation_ids": [
+          "6bff9ac6ac58075ee5fb0df2f238c900eec8f91d",
+          "8e82dec7c80946d23dbb90aac913fc2991fbe995"
+        ],
+        "answerable": true,
+        "paper_id": "1909.03135",
+        "question_id": "5aa12b4063d6182a71870c98e4e1815ff3dc8a72"
+      },
+      {
+        "annotation_ids": [
+          "3c8d8b86bd27b426af591c8b09b84ed24a1ec29a"
+        ],
+        "answerable": true,
+        "paper_id": "1910.08293",
+        "question_id": "f0b1d8c0a44dbe8d444a5dbe2d9c3d51e048a6f6"
+      },
+      {
+        "annotation_ids": [
+          "9eae58b095ebc3160b2964ddb69fa3a6341efa2e",
+          "c71c10a895b68912afb7c00f942c4d7fe3616dd5"
+        ],
+        "answerable": true,
+        "paper_id": "1903.03530",
+        "question_id": "dd53baf26dad3d74872f2d8956c9119a27269bd5"
+      },
+      {
+        "annotation_ids": [
+          "4746cfbda7f80f242913007f486e2bb63f1332ca",
+          "97f532d796ee55abcf606e55fac8293a43e7f4e7"
+        ],
+        "answerable": true,
+        "paper_id": "1911.03059",
+        "question_id": "f428618ca9c017e0c9c2a23515dab30a7660f65f"
+      },
+      {
+        "annotation_ids": [
+          "9ba77d845a100340c0415d6c42ac068712971017",
+          "ea2ee83677de786e764b7e995ca485a36bad64f6"
+        ],
+        "answerable": false,
+        "paper_id": "2002.03407",
+        "question_id": "fb2b536dc8e442dffab408db992b971e86548158"
+      },
+      {
+        "annotation_ids": [
+          "a8696acdb8f68288772ce9d245e240fb4aeb52b1"
+        ],
+        "answerable": true,
+        "paper_id": "1908.05828",
+        "question_id": "1462eb312944926469e7cee067dfc7f1267a2a8c"
+      },
+      {
+        "annotation_ids": [
+          "0a1a6431275825458b4ba12fc3d757835d7e68e3"
+        ],
+        "answerable": true,
+        "paper_id": "2003.03044",
+        "question_id": "46c9e5f335b2927db995a55a18b7c7621fd3d051"
+      },
+      {
+        "annotation_ids": [
+          "c3830d19ddf1d28c754e8cf952e2661c651b6c08"
+        ],
+        "answerable": true,
+        "paper_id": "1910.14076",
+        "question_id": "dfca00be3284cc555a6a4eac4831471fb1f5875b"
+      },
+      {
+        "annotation_ids": [
+          "1639d84b9ba1f6eff4d0e738504610496a644ce7",
+          "4e7a567c672697689e8ea69c146b8c0edadde7dc"
+        ],
+        "answerable": true,
+        "paper_id": "1910.06592",
+        "question_id": "97d0f9a1540a48e0b4d30d7084a8c524dd09a4c3"
+      },
+      {
+        "annotation_ids": [
+          "a3d3604691f4c6bb83b436a2db8b4ad2124a3ac2",
+          "e8eac861373de62f92bb8ccec47bd9efce254fa9"
+        ],
+        "answerable": true,
+        "paper_id": "2002.07306",
+        "question_id": "d571e0b0f402a3d36fb30d70cdcd2911df883bc7"
+      },
+      {
+        "annotation_ids": [
+          "678059f1629d978b0591080db2427bda76af80ad",
+          "9c9d4eafa0686fec16fbfbd3a6e1b1e84296ae30",
+          "dc2bafa6bcd6e5fd56a7ea9a3df8db225a7ba2d4"
+        ],
+        "answerable": true,
+        "paper_id": "1608.06757",
+        "question_id": "8eefa116e3c3d3db751423cc4095d1c4153d3a5f"
+      },
+      {
+        "annotation_ids": [
+          "325ead0eb1b1cdb89cea8fc198b59d14ae6761b5",
+          "8fab5b6defafe42822cf81db3a4d8543cfdac69f"
+        ],
+        "answerable": true,
+        "paper_id": "1911.06964",
+        "question_id": "1ff0fccf0dca95a6630380c84b0422bed854269a"
+      },
+      {
+        "annotation_ids": [
+          "647ef39139d91ad125babf4fc226858d6384467c"
+        ],
+        "answerable": true,
+        "paper_id": "1910.14599",
+        "question_id": "b3d01ac226ee979e188a4141877a6d2a5482de98"
+      },
+      {
+        "annotation_ids": [
+          "62858db481a1ff5cc8d6fe7b108f2d9e95d8400a",
+          "ed78ec48245e35f8f1ef4b9bcecd91094ed90517"
+        ],
+        "answerable": true,
+        "paper_id": "1606.02891",
+        "question_id": "642e8cf1d39faa1cd985d16750cdc6696c52db2f"
+      },
+      {
+        "annotation_ids": [
+          "e05bda7bf1c14a1c22898e0af269b6603e1fc111"
+        ],
+        "answerable": true,
+        "paper_id": "1909.00105",
+        "question_id": "c77359fb9d3ef96965a9af0396b101f82a0a9de6"
+      },
+      {
+        "annotation_ids": [
+          "7d4e72e453b35e2b121f63db2ef4e911fc847981",
+          "e1980d8aef79209f4fc6cc2de8b2ba84db1dd7fa"
+        ],
+        "answerable": true,
+        "paper_id": "1906.07662",
+        "question_id": "d3ca5f1814860a88ff30761fec3d860d35e39167"
+      },
+      {
+        "annotation_ids": [
+          "4d1b951d12b7133464b910ca860e4cd6ab2abec2",
+          "701a28bf1b42e3be1239351325f923a89fd4fa59"
+        ],
+        "answerable": true,
+        "paper_id": "1811.08603",
+        "question_id": "b8d0e4e0e820753ffc107c1847fe1dfd48883989"
+      },
+      {
+        "annotation_ids": [
+          "475ce1d8cb657dfa0842626d9a2e38cca61b5094"
+        ],
+        "answerable": true,
+        "paper_id": "1809.06537",
+        "question_id": "d650101712e36594bd77b45930a990402a455222"
+      },
+      {
+        "annotation_ids": [
+          "016255680df53e86881a4ab613f61317fafa23e4",
+          "5f968409e50cc4177a19fbf299c07e61faf524bb"
+        ],
+        "answerable": true,
+        "paper_id": "2002.01207",
+        "question_id": "db72a78a7102b5f0e75a4d9e1a06a3c2e7aabb21"
+      },
+      {
+        "annotation_ids": [
+          "06dc02f9d6c3dc15ca66ab46615d4ad48ddaef67",
+          "694d7e59cf94062bd35c011850241d221e1760b5"
+        ],
+        "answerable": true,
+        "paper_id": "1912.03627",
+        "question_id": "fde700d5134a9ae8f7579bea1f1b75f34d7c1c4c"
+      },
+      {
+        "annotation_ids": [
+          "5f3f44eecdffe1f74a41e68f923f180a99a1f589",
+          "6434cfacfb86aef132f5c648cd369c40e411c116"
+        ],
+        "answerable": true,
+        "paper_id": "1811.08603",
+        "question_id": "bb3267c3f0a12d8014d51105de5d81686afe5f1b"
+      },
+      {
+        "annotation_ids": [
+          "990716547d6c5c922485ab72cdef6088f0a40494"
+        ],
+        "answerable": true,
+        "paper_id": "1811.00383",
+        "question_id": "7e62a53823aba08bc26b2812db016f5ce6159565"
+      },
+      {
+        "annotation_ids": [
+          "9121b87725a3203a426ec3615c826080c38ea46c",
+          "4302032b9501efddf6fcfeb44bf9b3a703260b4a"
+        ],
+        "answerable": true,
+        "paper_id": "1908.07195",
+        "question_id": "43eecc576348411b0634611c81589f618cd4fddf"
+      },
+      {
+        "annotation_ids": [
+          "ee927b57c4713480623e0c083591282a329d0764"
+        ],
+        "answerable": true,
+        "paper_id": "1710.03348",
+        "question_id": "044f922604b4b3f42ae381419fd5cd5624fa0637"
+      },
+      {
+        "annotation_ids": [
+          "c24fabe7f9f9f9591b6c57782f6904bf1c930aea"
+        ],
+        "answerable": true,
+        "paper_id": "2002.07306",
+        "question_id": "f9aa055bf73185ba939dfb03454384810eb17ad1"
+      },
+      {
+        "annotation_ids": [
+          "422f5423123ad60667f5e7a0adc2570b972daac6",
+          "50d130f93e360a5bae07c6cb186161216666eeed"
+        ],
+        "answerable": true,
+        "paper_id": "1911.02855",
+        "question_id": "72f7ef55e150e16dcf97fe443aff9971a32414ef"
+      },
+      {
+        "annotation_ids": [
+          "40c72ee3c884a0456fc48639937ed20e6cce5de7"
+        ],
+        "answerable": true,
+        "paper_id": "1912.08904",
+        "question_id": "6ecb69360449bb9915ac73c0a816c8ac479cbbfc"
+      },
+      {
+        "annotation_ids": [
+          "8def7f72faf4d97ba0c1a71418ec09ce81bd48c3"
+        ],
+        "answerable": true,
+        "paper_id": "1910.06592",
+        "question_id": "71fe5822d9fccb1cb391c11283b223dc8aa1640c"
+      },
+      {
+        "annotation_ids": [
+          "320204bfbbf87c73bf9a0b740d9534cfefe5362d",
+          "5de66468c0d2839ddf5d9a7e098625bbf7fa564c"
+        ],
+        "answerable": true,
+        "paper_id": "1907.03187",
+        "question_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04"
+      },
+      {
+        "annotation_ids": [
+          "13c60f10a426d47f263d3fb95cdc3d07a2dfc4cf",
+          "70927a80e642382d26839ad90a251c0bbabd213d"
+        ],
+        "answerable": false,
+        "paper_id": "1703.04001",
+        "question_id": "6c96e910bd98c9fd58ba2050f99b9c9bac69840a"
+      },
+      {
+        "annotation_ids": [
+          "8ecf86e5456fa469c761a434788da56e40d1d1c1",
+          "fd61f88ea325f093c47d50abe8a9196a3fc8b480"
+        ],
+        "answerable": true,
+        "paper_id": "1605.03481",
+        "question_id": "a6d37b5975050da0b1959232ae756fc09e5f87e8"
+      },
+      {
+        "annotation_ids": [
+          "2b958f19cb89ac620fc2e78a4158f6075423ebbf",
+          "dfc8cae06b095dfdecae134577d00e456fe79a84"
+        ],
+        "answerable": true,
+        "paper_id": "1909.10012",
+        "question_id": "e374169ee10f835f660ab8403a5701114586f167"
+      },
+      {
+        "annotation_ids": [
+          "af41907ffc87939fb665db70d1a336da832c0f6b"
+        ],
+        "answerable": false,
+        "paper_id": "1706.09673",
+        "question_id": "4d7ff4e5d06902de85b0e9a364dc455196d06a7d"
+      },
+      {
+        "annotation_ids": [
+          "731a9bd402c75087d34531aaf2a5e5a0775df999",
+          "75f402828d97eda9f69b2c0d251098ae3df84cac"
+        ],
+        "answerable": true,
+        "paper_id": "1702.03342",
+        "question_id": "e8a32460fba149003566969f92ab5dd94a8754a4"
+      },
+      {
+        "annotation_ids": [
+          "ada3973fe510cba83e2934306aaefdbda400999c",
+          "fad11b1258fc0a782b1cdbea1f6a49bfe547d13d"
+        ],
+        "answerable": true,
+        "paper_id": "1908.09246",
+        "question_id": "0602a974a879e6eae223cdf048410b5a0111665e"
+      },
+      {
+        "annotation_ids": [
+          "12490fb15ae38a779e863e09d7e3f65e4a8dc31b",
+          "465ede59977b3ee4f116d00b04d9e686e3e94add"
+        ],
+        "answerable": true,
+        "paper_id": "1908.06264",
+        "question_id": "78a4ec72d76f0a736a4a01369a42b092922203b6"
+      },
+      {
+        "annotation_ids": [
+          "f7b6950b0704cc04f1832844a08881daa8c4185b"
+        ],
+        "answerable": true,
+        "paper_id": "1910.12574",
+        "question_id": "893ec40b678a72760b6802f6abf73b8f487ae639"
+      },
+      {
+        "annotation_ids": [
+          "69712b5d98639fcc4ec25879e3378acafa74b3c6",
+          "abf56629a5ac0ec3cc7964e80354b8eede0f85b1"
+        ],
+        "answerable": true,
+        "paper_id": "1712.00991",
+        "question_id": "e025061e199b121f2ac8f3d9637d9bf987d65cd5"
+      },
+      {
+        "annotation_ids": [
+          "ae232b58ca04c6b9b03763a5f9741fb4b112ec69"
+        ],
+        "answerable": true,
+        "paper_id": "1704.06194",
+        "question_id": "9ee07edc371e014df686ced4fb0c3a7b9ce3d5dc"
+      },
+      {
+        "annotation_ids": [
+          "30a61eebde7880653ff47562301753b54a375d75",
+          "36c33be6b782b952685459b871759039ec86e5c1"
+        ],
+        "answerable": true,
+        "paper_id": "1911.07555",
+        "question_id": "92dfacbbfa732ecea006e251be415a6f89fb4ec6"
+      },
+      {
+        "annotation_ids": [
+          "40a54ac8354e4dcbe3824f322f84964de29461d5",
+          "6c79e94ed86f784b2e35521de1713613c2da3856"
+        ],
+        "answerable": true,
+        "paper_id": "1704.06194",
+        "question_id": "cfbec1ef032ac968560a7c76dec70faf1269b27c"
+      },
+      {
+        "annotation_ids": [
+          "72c7d8f0cf398f03592d19718944d0d7eb6c948a",
+          "bd637c246a22f514c938bdfc3eb2509c4d68364e"
+        ],
+        "answerable": true,
+        "paper_id": "1503.00841",
+        "question_id": "50be4a737dc0951b35d139f51075011095d77f2a"
+      },
+      {
+        "annotation_ids": [
+          "254f8c852f0c98665a08099e4dc2fbfacdd67b3d",
+          "3d7c9dc0e6dc838ce315d6eaf61955465c056b73"
+        ],
+        "answerable": true,
+        "paper_id": "1806.03125",
+        "question_id": "440faf8d0af8291d324977ad0f68c8d661fe365e"
+      },
+      {
+        "annotation_ids": [
+          "4075ef68df83642b6877dc6126db3ec137945dc4",
+          "6fe2637337fd769f69f84d1d6a9caf3c9344cd3b"
+        ],
+        "answerable": true,
+        "paper_id": "1909.02027",
+        "question_id": "cfcdd73e712caf552ba44d0aa264d8dace65a589"
+      },
+      {
+        "annotation_ids": [
+          "82e059daa5257165995afb3457d6f4c843bff243",
+          "a8c4504fdfcc8633a05da8103cb92f85c753b445"
+        ],
+        "answerable": true,
+        "paper_id": "1701.08229",
+        "question_id": "22714f6cad2d5c54c28823e7285dc85e8d6bc109"
+      },
+      {
+        "annotation_ids": [
+          "194408635dae9ea3dd70772d75fc2014c59aaa7b",
+          "d3a8873be17ec5023776a77408e67c27358bad8f"
+        ],
+        "answerable": true,
+        "paper_id": "1909.10012",
+        "question_id": "82595ca5d11e541ed0c3353b41e8698af40a479b"
+      },
+      {
+        "annotation_ids": [
+          "3278d962c1094692098556b206b74a9de36aad4b"
+        ],
+        "answerable": false,
+        "paper_id": "1907.01468",
+        "question_id": "975e60535724f4149c7488699a199ba2920a062c"
+      },
+      {
+        "annotation_ids": [
+          "d14ff6f305a54342fd7cb1c945450b737f2c699e"
+        ],
+        "answerable": false,
+        "paper_id": "1701.05574",
+        "question_id": "4e748cb2b5e74d905d9b24b53be6cfdf326e8054"
+      },
+      {
+        "annotation_ids": [
+          "06b694fe757d0133a819e8f1c0909570052bb3e3",
+          "139179693aac0e1851712550af8e885f5bfeddd9"
+        ],
+        "answerable": true,
+        "paper_id": "1601.02403",
+        "question_id": "7697baf8d8d582c1f664a614f6332121061f87db"
+      },
+      {
+        "annotation_ids": [
+          "e7d6a6f5b941e1092fd56036d45fd141999db228",
+          "f07ad9db9b91d3edf6db2365df8902f86d4a1629"
+        ],
+        "answerable": true,
+        "paper_id": "1901.01010",
+        "question_id": "71a0c4f19be4ce1b1bae58a6e8f2a586e125d074"
+      },
+      {
+        "annotation_ids": [
+          "64b8c2449eb3d1583d86783d28f7a4764075495f",
+          "d10bc18f3f2e713b53868da880c65e43da2fdd4a"
+        ],
+        "answerable": true,
+        "paper_id": "1611.03599",
+        "question_id": "d3093062aebff475b4deab90815004051e802aa6"
+      },
+      {
+        "annotation_ids": [
+          "458dea27690b2f6d5fff601326fe674fff5c1666",
+          "87581826c3b99f62fdee0e6605b25b2d4695b872"
+        ],
+        "answerable": true,
+        "paper_id": "1604.00400",
+        "question_id": "74e866137b3452ec50fb6feaf5753c8637459e62"
+      },
+      {
+        "annotation_ids": [
+          "4c107a00e48ad5d65054723eabc634e8fd526aad"
+        ],
+        "answerable": true,
+        "paper_id": "1810.05241",
+        "question_id": "f1e90a553a4185a4b0299bd179f4f156df798bce"
+      },
+      {
+        "annotation_ids": [
+          "821a687d872ac34d23ef186e1d82a956ee4c5375"
+        ],
+        "answerable": true,
+        "paper_id": "2004.04721",
+        "question_id": "5bc1dc6ebcb88fd0310b21d2a74939e35a4c1a11"
+      },
+      {
+        "annotation_ids": [
+          "6674be317ab556849b52634e4c7496b61f6359cc",
+          "b72037798eca9fe10368a880a8a9e79d2e55ab77"
+        ],
+        "answerable": true,
+        "paper_id": "1912.06262",
+        "question_id": "9a8b9ea3176d30da2453cac6e9347737c729a538"
+      },
+      {
+        "annotation_ids": [
+          "ab1d400e4b674a97342310487f7ed0a41b412136",
+          "bd4feb32370781bd3cbe7b986abc7fbbca2a9f71"
+        ],
+        "answerable": true,
+        "paper_id": "1908.06267",
+        "question_id": "9193006f359c53eb937deff1248ee3317978e576"
+      },
+      {
+        "annotation_ids": [
+          "9c09cdf437df536bd26c3c52e6d896cf9d7cd93a"
+        ],
+        "answerable": true,
+        "paper_id": "1705.01265",
+        "question_id": "63bb2040fa107c5296351c2b5f0312336dad2863"
+      },
+      {
+        "annotation_ids": [
+          "72468cd6c3cf3ff64aa9dcddbc5c1ec93ad44585"
+        ],
+        "answerable": true,
+        "paper_id": "1703.10344",
+        "question_id": "cc850bc8245a7ae790e1f59014371d4f35cd46d7"
+      },
+      {
+        "annotation_ids": [
+          "de04c54cac657e5b8a5ed650a855a2bc2b29bb9d",
+          "e9529d7bee73ab821db1cc1c7b07e83740a17818"
+        ],
+        "answerable": true,
+        "paper_id": "1808.10245",
+        "question_id": "8a1c0ef69b6022a0642ca131a8eacb5c97016640"
+      },
+      {
+        "annotation_ids": [
+          "b4858ea7b21f6705974b7e02189349ea82f9d719"
+        ],
+        "answerable": true,
+        "paper_id": "2002.02070",
+        "question_id": "6bf93968110c6e3e3640360440607744007a5228"
+      },
+      {
+        "annotation_ids": [
+          "2a5168cd51e79d51afc28ae6ca396d227d8089b7"
+        ],
+        "answerable": true,
+        "paper_id": "1808.10245",
+        "question_id": "4907096cf16d506937e592c50ae63b642da49052"
+      },
+      {
+        "annotation_ids": [
+          "0ce9451170a61260e3458c996de322c4d6caf1f6",
+          "f52f80b4b459acf13024e484953521ce927c3b24",
+          "f6524c3b1b2294e6e8dffdb005192dad12b30dd8"
+        ],
+        "answerable": true,
+        "paper_id": "1902.09666",
+        "question_id": "d015faf0f8dcf2e15c1690bbbe2bf1e7e0ce3751"
+      },
+      {
+        "annotation_ids": [
+          "e2310072a53cefe9d2cecc45549a77c226e44005"
+        ],
+        "answerable": true,
+        "paper_id": "1905.07791",
+        "question_id": "498c0229f831c82a5eb494cdb3547452112a66a0"
+      },
+      {
+        "annotation_ids": [
+          "bda9755353a74eb09a5f8a1b36b90a6ab7d0a038"
+        ],
+        "answerable": true,
+        "paper_id": "2002.07306",
+        "question_id": "2275b0e195cd9cb25f50c5c570da97a4cce5dca8"
+      },
+      {
+        "annotation_ids": [
+          "84c478d92d97a8d0f982802371eeedbe4786c979",
+          "b98c99aa99b1aebdddd040e8cef5e6e23a7786c0"
+        ],
+        "answerable": true,
+        "paper_id": "1910.06592",
+        "question_id": "2317ca8d475b01f6632537b95895608dc40c4415"
+      },
+      {
+        "annotation_ids": [
+          "8c81c3d2e2dfd0d3f104f6bf85db76db58b042d0",
+          "8da719ed68235004380319f942424aece122588f"
+        ],
+        "answerable": true,
+        "paper_id": "1905.10851",
+        "question_id": "9bb7ae50bff91571a945c1af025ed2e67714a788"
+      },
+      {
+        "annotation_ids": [
+          "5b192b015c89c56f449ab079f4f07a56bcfdfd15",
+          "605b6e58739c3f8b6545e241915fa0e727c49a31"
+        ],
+        "answerable": true,
+        "paper_id": "1707.05236",
+        "question_id": "cd32a38e0f33b137ab590e1677e8fb073724df7f"
+      },
+      {
+        "annotation_ids": [
+          "6b00b3505df58b07d9e07fc3c4aaa67ed5692e57"
+        ],
+        "answerable": true,
+        "paper_id": "1910.06592",
+        "question_id": "483a699563efcb8804e1861b18809279f21c7610"
+      },
+      {
+        "annotation_ids": [
+          "92830880f532ba86a543483ed7d6db1342f06d34",
+          "f7d07f11b8af47759f79fa1d5aa1669df26eab88"
+        ],
+        "answerable": true,
+        "paper_id": "1811.00147",
+        "question_id": "b06512c17d99f9339ffdab12cedbc63501ff527e"
+      },
+      {
+        "annotation_ids": [
+          "a8beaa60bd66c3b6b8d2b2af4f7474f95aa5ed75",
+          "bfa6aaca5266e7ad31b955d44284f18a0991bb76"
+        ],
+        "answerable": true,
+        "paper_id": "1810.12196",
+        "question_id": "18942ab8c365955da3fd8fc901dfb1a3b65c1be1"
+      },
+      {
+        "annotation_ids": [
+          "1ebd58c0b9762e02db554d6baaccd40887e1f476"
+        ],
+        "answerable": true,
+        "paper_id": "2004.02192",
+        "question_id": "e838275bb0673fba0d67ac00e4307944a2c17be3"
+      },
+      {
+        "annotation_ids": [
+          "dd8961cb5cc8da505cc840b9f90989bb254dd39f"
+        ],
+        "answerable": true,
+        "paper_id": "1704.04452",
+        "question_id": "ffeb67a61ecd09542b1c53c3e4c3abd4da0496a8"
+      },
+      {
+        "annotation_ids": [
+          "68e5b6e2318ffbc944b327f6d9b993bf29823a75",
+          "abfce23f61dc2054947059ea728270da766992f8"
+        ],
+        "answerable": true,
+        "paper_id": "1806.00738",
+        "question_id": "b08f88d1facefceb87e134ba2c1fa90035018e83"
+      },
+      {
+        "annotation_ids": [
+          "c24db7234309d8f1b7e337ea0cfed6fa1fb3c882"
+        ],
+        "answerable": true,
+        "paper_id": "1809.03449",
+        "question_id": "d64383e39357bd4177b49c02eb48e12ba7ffd4fb"
+      },
+      {
+        "annotation_ids": [
+          "0dd720954f9a495b90924aa2aaaa282b61c03590"
+        ],
+        "answerable": true,
+        "paper_id": "2004.01862",
+        "question_id": "a2015f02dfb376bf9b218d1c897018f4e70424d7"
+      },
+      {
+        "annotation_ids": [
+          "ded38c0efddb9da4061ffe6ce1f7fa7876c06649",
+          "f1c9ea2601bdb6249a0805085111abe8be0778d2"
+        ],
+        "answerable": true,
+        "paper_id": "1809.00530",
+        "question_id": "b46c0015a122ee5fb95c2a45691cb97f80de1bb6"
+      },
+      {
+        "annotation_ids": [
+          "2ab50d90dd21a54622f95e16167e6d78ad46b8ad",
+          "41f27e20c333f1098158d250598d10cdac4ba0f6"
+        ],
+        "answerable": true,
+        "paper_id": "1704.06194",
+        "question_id": "d3aa0449708cc861a51551b128d73e11d62207d2"
+      },
+      {
+        "annotation_ids": [
+          "9e6a718458e5d5bce1ff6213aa4f2402e41a23a9"
+        ],
+        "answerable": true,
+        "paper_id": "1908.09246",
+        "question_id": "15e481e668114e4afe0c78eefb716ffe1646b494"
+      },
+      {
+        "annotation_ids": [
+          "31c82ccf7692b2fe2aa345c66a99dbe4ff88eaac",
+          "e713cf9d9a988c51b2bdad4b3173cad93d75b72c"
+        ],
+        "answerable": true,
+        "paper_id": "1611.03599",
+        "question_id": "e44a6bf67ce3fde0c6608b150030e44d87eb25e3"
+      },
+      {
+        "annotation_ids": [
+          "5551154b894d01e571ea2b54ba22182a9f705c4b",
+          "bd23023f6189993b3e9fe3b8c6729198d3b79c51"
+        ],
+        "answerable": true,
+        "paper_id": "1908.09246",
+        "question_id": "56b034c303983b2e276ed6518d6b080f7b8abe6a"
+      },
+      {
+        "annotation_ids": [
+          "452482d9de8638fe92341e384e547474024f458b",
+          "8e893bc7d14a8c3786d2ebd0bae85a88db97464e"
+        ],
+        "answerable": true,
+        "paper_id": "1912.00667",
+        "question_id": "bc730e4d964b6a66656078e2da130310142ab641"
+      },
+      {
+        "annotation_ids": [
+          "5c333ecdb187475cc29e6fdaed553f8708452b8a",
+          "765d60937ab33b35b6c3012f047041582de7e9f4"
+        ],
+        "answerable": false,
+        "paper_id": "2001.02885",
+        "question_id": "45be665a4504f0c7f458cf3f75a95d5a75eefd42"
+      },
+      {
+        "annotation_ids": [
+          "3518f530a919fbe6aac27f0a3f73c908dc2db7bb",
+          "cd0a156e80802194d58a65040b4014bf72f0e5ba"
+        ],
+        "answerable": true,
+        "paper_id": "1808.09111",
+        "question_id": "887c6727e9f25ade61b4853a869fe712fe0b703d"
+      },
+      {
+        "annotation_ids": [
+          "8ae507d5fd72264c5e26b804f802e7fe35a3acb3",
+          "ec4e8ed6bad6662d60e71d3c72c741cd3c33e6a9"
+        ],
+        "answerable": true,
+        "paper_id": "1909.02027",
+        "question_id": "2c7e94a65f5f532aa31d3e538dcab0468a43b264"
+      },
+      {
+        "annotation_ids": [
+          "2c6669534d5edca7275dd73d7a46ed0518851f52"
+        ],
+        "answerable": true,
+        "paper_id": "1908.11047",
+        "question_id": "ed6a15f0f7fa4594e51d5bde21cc0c6c1bedbfdc"
+      },
+      {
+        "annotation_ids": [
+          "203140a5b4d44bc2702f6ea51dbeae247c9d29b2",
+          "74f6d0e1e032451923012d95d117b2138329e088"
+        ],
+        "answerable": true,
+        "paper_id": "1909.01362",
+        "question_id": "88e5d37617e14d6976cc602a168332fc23644f19"
+      },
+      {
+        "annotation_ids": [
+          "3af2897323451fbaab795d1bdfa5f5f2706617a3",
+          "e8c7cc12e163d067d5605b45d396fa496715397e"
+        ],
+        "answerable": true,
+        "paper_id": "1809.03449",
+        "question_id": "b0dbe75047310fec4d4ce787be5c32935fc4e37b"
+      },
+      {
+        "annotation_ids": [
+          "645889b8157862eec0c1488ba0473a121add1eec",
+          "cb64593de11fe1cfcc9e999aafec21c0e3d7e70f"
+        ],
+        "answerable": true,
+        "paper_id": "2002.01320",
+        "question_id": "29923a824c98b3ba85ced964a0e6a2af35758abe"
+      },
+      {
+        "annotation_ids": [
+          "0c8a16074f94429635f5568cc0f443a79e88a09d",
+          "5fbb7b3e42a18d9a102fa1b4bfe52ca54ef7e3de"
+        ],
+        "answerable": true,
+        "paper_id": "1909.13104",
+        "question_id": "58355e2a782bf145b61ee2a3e0e426119985c179"
+      },
+      {
+        "annotation_ids": [
+          "1ed76263ec09f0d945f8e7fbc097107f314e1bb6",
+          "44ca4ea359972663d85f5198f2a1a512fec5d942"
+        ],
+        "answerable": true,
+        "paper_id": "1706.01875",
+        "question_id": "bdf93053b1b9b0a21f77ed370cf4d5a10df70e3e"
+      },
+      {
+        "annotation_ids": [
+          "caed5edf81563e6848d570a20aecda804491cfc0",
+          "ece8a6d5b2d6426ac2298564b686a94b84c7f196"
+        ],
+        "answerable": true,
+        "paper_id": "1705.04153",
+        "question_id": "ef396a34436072cb3c40b0c9bc9179fee4a168ae"
+      },
+      {
+        "annotation_ids": [
+          "0ea991696fd52323e53aea094e27ad503c231993",
+          "5009619c8d8d818cd06ea769d20a766f3c693349"
+        ],
+        "answerable": true,
+        "paper_id": "1705.01214",
+        "question_id": "3e432d71512ffbd790a482c716e7079ee78ce732"
+      },
+      {
+        "annotation_ids": [
+          "37b7d27474c2cb202f84de14023399d6169f2645",
+          "855a6afd7cef91b4a83f4819fa4896a0aa919bf1"
+        ],
+        "answerable": true,
+        "paper_id": "1801.10293",
+        "question_id": "435570723b37ee1f5898c1a34ef86a0b2e8701bb"
+      },
+      {
+        "annotation_ids": [
+          "0596e64af3a847e0c948a28419268e69c1b43535",
+          "e30f7ebcf2896a49b716ab1309a0c8b9b8269d1a"
+        ],
+        "answerable": true,
+        "paper_id": "1804.11346",
+        "question_id": "7793805982354947ea9fc742411bec314a6998f6"
+      },
+      {
+        "annotation_ids": [
+          "24f6ef8dd567c63a004dc4f6f3bf48fb17e57ebf"
+        ],
+        "answerable": true,
+        "paper_id": "1803.05223",
+        "question_id": "84bad9a821917cb96584cf5383c6d2a035358d7c"
+      },
+      {
+        "annotation_ids": [
+          "7c2e8dc0aaaf2a652d7b729f546f19831fb7af71",
+          "fefb909937d960954b2498a30a87eb7a40d5210b"
+        ],
+        "answerable": true,
+        "paper_id": "1909.13104",
+        "question_id": "d004ca2e999940ac5c1576046e30efa3059832fa"
+      },
+      {
+        "annotation_ids": [
+          "dc3777893ff991d532c9322acc44c27ba08f6665",
+          "fc476553658428281b1404241a3ac37b38219284"
+        ],
+        "answerable": true,
+        "paper_id": "1912.08904",
+        "question_id": "78a5546e87d4d88e3d9638a0a8cd0b7debf1f09d"
+      },
+      {
+        "annotation_ids": [
+          "bac5971265af8bd80fadec91222358d19fb24d53"
+        ],
+        "answerable": true,
+        "paper_id": "1909.09587",
+        "question_id": "a3d9b101765048f4b61cbd3eaa2439582ebb5c77"
+      },
+      {
+        "annotation_ids": [
+          "c437060afec6461070d4ecd173985fca19f23c01",
+          "c5d2be99f4f6d39a6a248a43ed576ffe1a7154ef"
+        ],
+        "answerable": false,
+        "paper_id": "1910.05603",
+        "question_id": "ceb4bac1f6c506b5dab37607354530faee02ccac"
+      },
+      {
+        "annotation_ids": [
+          "7d4d3a5e45f844f8ec83e4d59f83ed20db1926be",
+          "866675dc6dfbe9c44dcd371db052457a6b7d47ca"
+        ],
+        "answerable": true,
+        "paper_id": "1707.06806",
+        "question_id": "425bd2ccfd95ead91d8f2b1b1c8ab9fc3446cb82"
+      },
+      {
+        "annotation_ids": [
+          "5bf3e125dabc09d06b951726da5e62f5eeb9a355",
+          "d057faf33d735b03146bd8e88acb24144b450c2a"
+        ],
+        "answerable": true,
+        "paper_id": "1909.09587",
+        "question_id": "009ce6f2bea67e7df911b3f93443b23467c9f4a1"
+      },
+      {
+        "annotation_ids": [
+          "11320bef73e775a60a772fc0e3f732ec8e5ade41"
+        ],
+        "answerable": true,
+        "paper_id": "1901.01010",
+        "question_id": "23e2971c962bb6486bc0a66ff04242170dd22a1d"
+      },
+      {
+        "annotation_ids": [
+          "67c5fec2bf2c3efdb763b106df3dbca7a0d3073f",
+          "ccd88cf434b04b8ca2d46c3a24cb47a3ea3d445a"
+        ],
+        "answerable": true,
+        "paper_id": "2002.03407",
+        "question_id": "31735ec3d83c40b79d11df5c34154849aeb3fb47"
+      },
+      {
+        "annotation_ids": [
+          "4073d618697ed6e9ac55649d7eaadcc80ae443e5"
+        ],
+        "answerable": false,
+        "paper_id": "1707.06806",
+        "question_id": "252a645af9876241fb166e5822992ce17fec6eb6"
+      },
+      {
+        "annotation_ids": [
+          "15f42cd9b7ff2e4c4ae8d76accd4ebd036dd8ea5"
+        ],
+        "answerable": false,
+        "paper_id": "1910.03634",
+        "question_id": "63b92dcc701ec77fdb3355ede5d37d2fbf057bcc"
+      },
+      {
+        "annotation_ids": [
+          "86bf8a57a05c1af4857645ee23cba24f8607bf27",
+          "afa4551fcc1888e5b276e19d19fd6f2b367dab76"
+        ],
+        "answerable": false,
+        "paper_id": "1611.08661",
+        "question_id": "2e37e681942e28b5b05639baaff4cd5129adb5fb"
+      },
+      {
+        "annotation_ids": [
+          "227a2ce94ad38012b2768ea7eb4299fc75980eff",
+          "56c8c01df3d6ad678b9e5a2f3040810580ba941a"
+        ],
+        "answerable": false,
+        "paper_id": "1905.10851",
+        "question_id": "ce6a3ca102a5ee62e86fc7def3b20b1f10d1eb25"
+      },
+      {
+        "annotation_ids": [
+          "b2cf6a6d6dd8eec21f9d1ca58db1a60ca31c9190"
+        ],
+        "answerable": false,
+        "paper_id": "1709.10367",
+        "question_id": "7d483077ed7f2f504d59f4fc2f162741fa5ac23b"
+      },
+      {
+        "annotation_ids": [
+          "e9f12ab4ced667d482b8b8cb4a3a9e98f2c42b25"
+        ],
+        "answerable": false,
+        "paper_id": "1905.11268",
+        "question_id": "67ec8ef85844e01746c13627090dc2706bb2a4f3"
+      },
+      {
+        "annotation_ids": [
+          "e732bb153aa6008de5b767d9414703010db23b7d"
+        ],
+        "answerable": false,
+        "paper_id": "1910.03634",
+        "question_id": "8db6f8714bda7f3781b4fbde5ebb3794f2a60cfe"
+      },
+      {
+        "annotation_ids": [
+          "53903ee60627effb0f5440d1c6d5cc28e437392c",
+          "b4a8c50208bc8f23eb02ef6a87bb6445cb40641f"
+        ],
+        "answerable": false,
+        "paper_id": "1901.10133",
+        "question_id": "a8c862d8c5da3f060eedf3395a3d0a97fd8a12d8"
+      },
+      {
+        "annotation_ids": [
+          "d8b4e49946a89214a31043ac5304b5f5661a8f0d"
+        ],
+        "answerable": false,
+        "paper_id": "1601.02403",
+        "question_id": "206739417251064b910ae9e5ff096e867ee10fb8"
+      },
+      {
+        "annotation_ids": [
+          "05debde586693e820135aacf5ce5c2d3fb415bc9"
+        ],
+        "answerable": false,
+        "paper_id": "1910.07601",
+        "question_id": "b80a3fbeb49a8968e149955bdcf199556478eeff"
+      },
+      {
+        "annotation_ids": [
+          "1da3dfb5eb655811b3036fb0db419b8f653688e3"
+        ],
+        "answerable": false,
+        "paper_id": "1810.05241",
+        "question_id": "b2ecfd5480a2a4be98730e2d646dfb84daedab17"
+      },
+      {
+        "annotation_ids": [
+          "f7c6919c984185022d59e0f9767fadf601a92206"
+        ],
+        "answerable": false,
+        "paper_id": "2001.05865",
+        "question_id": "6f024d4c952fbb53b6f8cf27020659aa4d9a6590"
+      },
+      {
+        "annotation_ids": [
+          "0ebc6ca5161ad73f8982fc32879aae2a03b759b3"
+        ],
+        "answerable": false,
+        "paper_id": "1908.07195",
+        "question_id": "c262d3d1c5a8b6fef6b594d5eee86bc2b09e3baf"
+      },
+      {
+        "annotation_ids": [
+          "3f90db9954e19a7841087563d8e0d715f18a1d47",
+          "efbcb595cdc9fbf7e483706fd34d1600db9f5c25"
+        ],
+        "answerable": false,
+        "paper_id": "1908.09246",
+        "question_id": "f3c204723da53c7c8ef4dc1018ffbee545e81056"
+      },
+      {
+        "annotation_ids": [
+          "61b366f5d6c98eb3cb698454b489947248cd54d4"
+        ],
+        "answerable": false,
+        "paper_id": "1910.06592",
+        "question_id": "8e12b5c459fa963b3e549deadb864c244879fe82"
+      },
+      {
+        "annotation_ids": [
+          "3a97f45bb25b1dd3e90a9ccbc64e4604eaba1e21"
+        ],
+        "answerable": false,
+        "paper_id": "1902.09243",
+        "question_id": "63488da6c7aff9e374561a24ba224e9ce7f65e40"
+      },
+      {
+        "annotation_ids": [
+          "4bfc70ebf8b1cf0ca123be1357e29e29b8bbd9fe",
+          "b44bc06229b798fb9fea3461fbadd11ca650d482"
+        ],
+        "answerable": false,
+        "paper_id": "1809.01541",
+        "question_id": "c9b8d3858c112859eabee54248b874331c48f71b"
+      },
+      {
+        "annotation_ids": [
+          "d6512f006a260dd1f37f861425866ab24928dec2"
+        ],
+        "answerable": false,
+        "paper_id": "1911.07555",
+        "question_id": "6415f38a06c2f99e8627e8ba6251aa4b364ade2d"
+      },
+      {
+        "annotation_ids": [
+          "7bac40d9be32452b45d8b60a6da347c0db920ff0"
+        ],
+        "answerable": false,
+        "paper_id": "1903.11283",
+        "question_id": "a66a275a817f980c36e0b67d2e00bd823f63abf8"
+      },
+      {
+        "annotation_ids": [
+          "48fb2739344a063b6ffcb3c07547b1482ad9cae9",
+          "b40308d73f3487a15ea5164c43a876b90a024221"
+        ],
+        "answerable": false,
+        "paper_id": "1906.10225",
+        "question_id": "7784d321ccc64db5141113b6783e4ba92fdd4b20"
+      },
+      {
+        "annotation_ids": [
+          "52f48d694ca7df6384eb4a16185558ef9f44535b",
+          "eb6163622611621da75db685046155544e07eae5"
+        ],
+        "answerable": false,
+        "paper_id": "1903.07406",
+        "question_id": "312e9cc11b9036a6324bdcb64eca6814053ffa17"
+      },
+      {
+        "annotation_ids": [
+          "a9cea0bb56287f05e72342d1de4ee746efaeb334"
+        ],
+        "answerable": false,
+        "paper_id": "1706.01678",
+        "question_id": "0767ca8ff1424f7a811222ca108a33b6411aaa8a"
+      },
+      {
+        "annotation_ids": [
+          "0792ac6dc4d73f7154bf6ab7ac606695da31789c",
+          "26ab084c437b086d3d733820be922c6e35e23f3b"
+        ],
+        "answerable": false,
+        "paper_id": "2002.01320",
+        "question_id": "ffde866b1203a01580eb33237a0bb9da71c75ecf"
+      },
+      {
+        "annotation_ids": [
+          "5162447eb8673ff9ac6583c6f71b5cc62569bc00",
+          "badfc39115267d6c66ae7b51c21758b4cbede5c1"
+        ],
+        "answerable": false,
+        "paper_id": "1802.00396",
+        "question_id": "003d6f9722ddc2ee13e879fefafc315fb8e87cb9"
+      },
+      {
+        "annotation_ids": [
+          "35d4f1851e8906a2ed04f8dab8a67ecf78a4efd6",
+          "5fb7f22f922002cc54624e69332f98529e785124"
+        ],
+        "answerable": false,
+        "paper_id": "1611.04798",
+        "question_id": "de0b650022ad8693465242ded169313419eed7d9"
+      },
+      {
+        "annotation_ids": [
+          "fa29a62043bb436d79c7edd374d08e564cab2df8"
+        ],
+        "answerable": false,
+        "paper_id": "1701.05574",
+        "question_id": "22732cb9476e521452bf0538f3fdb94cf3867651"
+      },
+      {
+        "annotation_ids": [
+          "a3c1b18d98491cbc074f728a0f421427dd646385"
+        ],
+        "answerable": false,
+        "paper_id": "2001.07786",
+        "question_id": "902b3123aec0f3a39319ffa9d05ab8e08a2eb567"
+      },
+      {
+        "annotation_ids": [
+          "45de9d4b7b9c206ecfe1de1d4a17829202882778",
+          "f3eb40d885804d2cfc5f8e349aa32bc2d2f36956"
+        ],
+        "answerable": false,
+        "paper_id": "1909.01383",
+        "question_id": "627b8d7b5b985394428c974aca5ba0c1bbbba377"
+      },
+      {
+        "annotation_ids": [
+          "cdf5e28e55601053a7907e503bf3b7d130626fcf"
+        ],
+        "answerable": false,
+        "paper_id": "1801.02073",
+        "question_id": "c34e80fbbfda0f1786d3b00e06cef5ada78a3f3c"
+      },
+      {
+        "annotation_ids": [
+          "04a224bd787db5dbebb41764f9aa37e55b85c41a",
+          "c1ac982e02f0fdeff02a0bd6ac2a7ec52262d837"
+        ],
+        "answerable": false,
+        "paper_id": "1905.07791",
+        "question_id": "89497e93980ab6d8c34a6d95ebf8c1e1d98ba43f"
+      }
+    ],
+    "test": [
+      {
+        "annotation_ids": [
+          "6136adec513ce0a862b5194ef9edd10b13b2c9c7",
+          "900e0d3e5cf38daadcc9b41b3504453440c371b3",
+          "e731a06cc832c60432ca696b800c99e5d9ede7bf"
+        ],
+        "answerable": true,
+        "paper_id": "1612.07486",
+        "question_id": "7380e62edcb11f728f6d617ee332dc8b5752b185"
+      },
+      {
+        "annotation_ids": [
+          "3d8dfc1c483967e298c62170248b06396767b008",
+          "7d9dcb363af3adb0eb93cf8e5a176bbd85601fe1",
+          "a907336c418cd2fa81704549f1e27c79b75d9231"
+        ],
+        "answerable": true,
+        "paper_id": "1906.05506",
+        "question_id": "a28c73a6a8c46a43a1eec2b42b542dd7fde1e30e"
+      },
+      {
+        "annotation_ids": [
+          "3ce312eeb85dd54c34e56f496df5c5c0f915a876",
+          "ca4351c6a9ef0c7321870d5b1a01cb02b47adaf4"
+        ],
+        "answerable": true,
+        "paper_id": "1905.09439",
+        "question_id": "d3cfbe497a30b750a8de3ea7f2cecf4753a4e1f9"
+      },
+      {
+        "annotation_ids": [
+          "8804b740ce661171d1aad26bf8fecdcf7bbb6121",
+          "ae28daadd0e48a438ea8eeea04e2ab9cf7e2c06e",
+          "f69417fde0a5656c611cd5563f7ba956c370ea2c"
+        ],
+        "answerable": true,
+        "paper_id": "1911.06815",
+        "question_id": "0c4e419fe57bf01d58a44f3e263777c22cdd90dc"
+      },
+      {
+        "annotation_ids": [
+          "4e5526d9620e4df157ee933e241dd2928b3ba6b8",
+          "bb9552d42f3ae47324c6e341b21298cab87c7709"
+        ],
+        "answerable": true,
+        "paper_id": "1907.08540",
+        "question_id": "16cc37e4f8e2db99eaf89337a3d9ada431170d5b"
+      },
+      {
+        "annotation_ids": [
+          "314a8d1ec8be949b9d8916e1cf2b8f177b6fc4d8",
+          "58dc903089bd2d566a4cdc6bbfa12ddb25dd1833",
+          "761669edc7244372295ce2e280c1387ded3bd2f7",
+          "95e7568437e3aa0d8d15d9100ac90387ef8724ee"
+        ],
+        "answerable": true,
+        "paper_id": "1603.07252",
+        "question_id": "f2bcfdbebb418e7da165c19b8c7167719432ee48"
+      },
+      {
+        "annotation_ids": [
+          "01663b8bac6f5e3a366f344894f3188b79b8abe4",
+          "18296e2714014b842e34274c4e087476e189303a",
+          "589c88b8439e2af9913633b813a0b6fc1081f187"
+        ],
+        "answerable": true,
+        "paper_id": "1907.04072",
+        "question_id": "baec99756b80eec7c0234a08bc2855e6770bcaeb"
+      },
+      {
+        "annotation_ids": [
+          "3acb2ca9f2256455abd08e300e1b33947fcad757",
+          "679e017930c852efc550871a6dba8fa8d3607374"
+        ],
+        "answerable": true,
+        "paper_id": "1902.10246",
+        "question_id": "2c60628d54f2492e0cbf0fb8bacd8e54117f0c18"
+      },
+      {
+        "annotation_ids": [
+          "addf7492cfba3574df2b584a32d466b42ccce54f",
+          "df5d44d9d5998dac7946b41e74b4110b60bd92c2"
+        ],
+        "answerable": true,
+        "paper_id": "1709.06365",
+        "question_id": "0fee37ebe0a010cf8bd665fa566306d8e7d12631"
+      },
+      {
+        "annotation_ids": [
+          "67a268c64a242a2810f0bc3fc162091009021ca9",
+          "8e93a908ca00700caa1a8c37fbcf10282f5c0685"
+        ],
+        "answerable": true,
+        "paper_id": "1608.01972",
+        "question_id": "a7e1b13cc42bfe78d37b9c943de6288e5f00f01b"
+      },
+      {
+        "annotation_ids": [
+          "5d16b353320ddcbb93a54869a1a50695bfcb2ac3",
+          "90e0a9058b586cba200c0f77c56c7344f5f9f970"
+        ],
+        "answerable": true,
+        "paper_id": "1701.03578",
+        "question_id": "6d55e377335815b7ad134d1a2977d231ad34a25b"
+      },
+      {
+        "annotation_ids": [
+          "095a03c7e1ede464850ae3b702273a4aac997c01",
+          "bd4cb97c9f37e8599ab1c8cda374159d5cca541c"
+        ],
+        "answerable": true,
+        "paper_id": "1803.06745",
+        "question_id": "5b2839bef513e5d441f0bb8352807f673f4b2070"
+      },
+      {
+        "annotation_ids": [
+          "77c6a9a4aa54e6c4649504e16d47030bacb28bfe",
+          "992edd65018c5602cdb16685b1c2e7b4d2474b65"
+        ],
+        "answerable": true,
+        "paper_id": "1910.07154",
+        "question_id": "e3c44964eb6ddc554901244eb6595f26a9bae47e"
+      },
+      {
+        "annotation_ids": [
+          "53c914bd4056c4ef4539d048ced41f2e40722c38",
+          "5bcbc663a4cbbf57a2c43d708bf0a1ab71ab2c36",
+          "6f3db40fb4f6c5a66f0727f3a9b4d023a06b065e"
+        ],
+        "answerable": true,
+        "paper_id": "1908.07491",
+        "question_id": "acac0606aab83cae5d13047863c7af542d58e54c"
+      },
+      {
+        "annotation_ids": [
+          "4565c2adf13a22526cc22dfa8618e185bec641e3",
+          "4f5d9f3d8a86f8e76ec126160061290667d3391d",
+          "a660b69bd7d94d7c99437c0067f7612d53e98915",
+          "f4b85558016a0d6f033188d637d82a4d9a266872"
+        ],
+        "answerable": true,
+        "paper_id": "2003.07568",
+        "question_id": "43729be0effb5defc62bae930ceacf7219934f1e"
+      },
+      {
+        "annotation_ids": [
+          "de5f3c82e16dfbd37d28ddecbe85052d66a35fc1",
+          "eaf241cd6c69903465b3192daf1929f97de1780a"
+        ],
+        "answerable": true,
+        "paper_id": "1804.00982",
+        "question_id": "f15bc40960bd3f81bc791f43ab5c94c52378692d"
+      },
+      {
+        "annotation_ids": [
+          "63f900a354db553c5eae6a65fcfdf8826b8d00f7",
+          "f160a3b9b480353d860d7888e472f7d0a2eff7f6"
+        ],
+        "answerable": true,
+        "paper_id": "1609.02075",
+        "question_id": "a064337bafca8cf01e222950ea97ebc184c47bc0"
+      },
+      {
+        "annotation_ids": [
+          "6b823cbac99a596dcf0bd1a622b4768f8bc8061c",
+          "bd773b875f19f6fb54bae6812577d2740511f049"
+        ],
+        "answerable": true,
+        "paper_id": "1704.06851",
+        "question_id": "b78bb6fe817c2d4bc69236df998f546e94c3ee21"
+      },
+      {
+        "annotation_ids": [
+          "812961236d33bd03a772f609457521df32801db9",
+          "8a7b881c35efb459484b77710c53c085777c936d",
+          "d7ca50571e67e38e2899b4d0724b210bba79a780"
+        ],
+        "answerable": true,
+        "paper_id": "1804.07445",
+        "question_id": "0bde3ecfdd7c4a9af23f53da2cda6cd7a8398220"
+      },
+      {
+        "annotation_ids": [
+          "708cdef6bf18e78fd46b5e4fba603ccee9696598",
+          "fb33ae38ac5db0fb504a61429a04620ae5f7239b"
+        ],
+        "answerable": true,
+        "paper_id": "1804.08000",
+        "question_id": "610fc593638c5e9809ea9839912d0b282541d42d"
+      },
+      {
+        "annotation_ids": [
+          "7ed620ee70f694bb288277995291be873471447f",
+          "9594760ce27c75a9fec3a9bcccc87f59b937a0dd",
+          "d70d84a6ca0212ba5ca3e9a7f675547076226e35"
+        ],
+        "answerable": true,
+        "paper_id": "1911.12559",
+        "question_id": "3ea82a5ca495ffbd1e30e8655aef1be4ba423efe"
+      },
+      {
+        "annotation_ids": [
+          "5c38b3c5aea2dca772a0d62501e37c67c7b4416d",
+          "84ead7489e895c4b49e7951bff73b8bba07919b5",
+          "caba2fcb074a9f31637d5203be52c30c1836a1b4"
+        ],
+        "answerable": true,
+        "paper_id": "1704.08390",
+        "question_id": "9a7aeecbecf5e30ffa595c233fca31719c9b429f"
+      },
+      {
+        "annotation_ids": [
+          "2fcc6e42f3e4b56dbba7f8426bae3fde3dc1c735",
+          "ee5104d9d87ff5755f3996fd2814d336355393a1"
+        ],
+        "answerable": true,
+        "paper_id": "1607.00167",
+        "question_id": "d97843afec733410d2c580b4ec98ebca5abf2631"
+      },
+      {
+        "annotation_ids": [
+          "b27ed395f86e872f3866fca9fd8770fc354dc20d",
+          "99ca9aaed29dc9f91d7acfd688e076cdf7161b9a",
+          "c1eabd589a40a391732cf2907d4503d2287c29a6"
+        ],
+        "answerable": true,
+        "paper_id": "1706.02427",
+        "question_id": "b57ad10468e1ba2a7a34396688dbb10a575d89f5"
+      },
+      {
+        "annotation_ids": [
+          "3ac79a44f1cdf4e120d453e3560ea92595813cdf",
+          "6ede898fd2b007aa33c681dd2f92c1bb3d64b9e8",
+          "d7cdc3f3fd3b56945024b640002110933e01b3ce"
+        ],
+        "answerable": true,
+        "paper_id": "1707.06519",
+        "question_id": "c7ffef8bf0100eb6148bd932d0409b21759060b1"
+      },
+      {
+        "annotation_ids": [
+          "32c745f7cf37019002fbc08c41bc6b36bdf4e8e8"
+        ],
+        "answerable": true,
+        "paper_id": "1710.11334",
+        "question_id": "d788076c0d19781ff3f6525bd9c05b0ef0ecd0f1"
+      },
+      {
+        "annotation_ids": [
+          "950fdcdc2d63aa8b87199a9362e9ab35d061c506",
+          "eb8529b4c442b50c7b4738a22f422f239387c38c"
+        ],
+        "answerable": true,
+        "paper_id": "1710.11027",
+        "question_id": "a5df7361ae37b9512fb57cb93efbece9ded8cab1"
+      },
+      {
+        "annotation_ids": [
+          "5f4fc82b7c92888892a2a9df96a2762a015f35c4",
+          "76edcf0affe532349cbf9162a6197f9409188210",
+          "bcd61ed2cd5e0df9722c885f56332e8be662473c",
+          "f4d553b05d70a78d4e87ff765d3c0119c8e9fcf2"
+        ],
+        "answerable": true,
+        "paper_id": "1606.07043",
+        "question_id": "a67a2d9acad1787b636ca2681330f4c29a0b0254"
+      },
+      {
+        "annotation_ids": [
+          "1e9859a072e68283d65e8db69891914e545c3aba",
+          "dab8edef85643af95f5855015adacfcff9f1c8c6"
+        ],
+        "answerable": true,
+        "paper_id": "1908.09355",
+        "question_id": "ebb4db9c24aa36db9954dd65ea079a798df80558"
+      },
+      {
+        "annotation_ids": [
+          "6a12b8f0bff4d00739091bdf655eee10205fb368",
+          "c411002487c69ee0d148cf4403c5347bdf920ed1"
+        ],
+        "answerable": true,
+        "paper_id": "1604.02201",
+        "question_id": "00341a46a67d31d36e6dc54d5297626319584891"
+      },
+      {
+        "annotation_ids": [
+          "871f36674634996ce2fae53f98a95805cf0860ef",
+          "9eb04d07381ec3900400126ce3d7f74a2ffab22b",
+          "c524058e1f45f1d2d2237bdd899c49dc178f57f9"
+        ],
+        "answerable": true,
+        "paper_id": "1911.01214",
+        "question_id": "753a187c1dd8d96353187fbb193b5f86293a796c"
+      },
+      {
+        "annotation_ids": [
+          "0a01ff74507ef7a83afadcf729fb317a5f03bd60",
+          "42619d97914b2a3bdd9964bab7ef113a708036a4"
+        ],
+        "answerable": true,
+        "paper_id": "1811.00051",
+        "question_id": "3588988f2230f3329d7523fbb881b20bf177280d"
+      },
+      {
+        "annotation_ids": [
+          "857f538be75d60f06bb2b913f68e656c9baf72e4",
+          "883ed001176e97055b8dde6fbad08e488d163db3"
+        ],
+        "answerable": true,
+        "paper_id": "2002.00175",
+        "question_id": "2f75b0498cf6a1fc35f1fb1cac44fc2fbd3d7878"
+      },
+      {
+        "annotation_ids": [
+          "72fcf2bfbce7fbf7fe5f4f37dc1592e8de3d3cad",
+          "75f32c2edadb97ef0f7e3167ff39826f2ae10662"
+        ],
+        "answerable": true,
+        "paper_id": "1802.02614",
+        "question_id": "2bd702174e915d97884d1571539fb1b5b0b7123a"
+      },
+      {
+        "annotation_ids": [
+          "5e9536a3634813567e8f7cf547f6902935de4fff",
+          "81464803827c8aca76e4b7b95a5d60ed4e546ca6",
+          "d5cd025fb24958874181d9f2cb32dcebabb59849",
+          "d15033d6716431e36b83bf22bf3a7520e36a45cc"
+        ],
+        "answerable": true,
+        "paper_id": "1703.05320",
+        "question_id": "50bcbb730aa74637503c227f022a10f57d43f1f7"
+      },
+      {
+        "annotation_ids": [
+          "74932f8e5955aae5ed3143731db26b2b46c4412f"
+        ],
+        "answerable": true,
+        "paper_id": "1911.01214",
+        "question_id": "dd80a38e578443496d3720d883ad194ce82c5f39"
+      },
+      {
+        "annotation_ids": [
+          "312d015e8a246d60038f9cbf4d8b65aa7fe04104",
+          "7b9e995b679b0582228c82cc34a3e87a40dda666"
+        ],
+        "answerable": true,
+        "paper_id": "2002.09616",
+        "question_id": "99e99f2c25706085cd4de4d55afe0ac43213d7c8"
+      },
+      {
+        "annotation_ids": [
+          "229be2e10f6ecf7fd456feb321045b9ffda9b936",
+          "5005ab5df40aa859a3bee03581c027f09acf676b",
+          "af4f96fe776b481c3f6c629234955134fc468724"
+        ],
+        "answerable": true,
+        "paper_id": "2002.06854",
+        "question_id": "713e1c7b0ab17759ba85d7cd2041e387831661df"
+      },
+      {
+        "annotation_ids": [
+          "1d2b53ad46f1c9eedabdf71273ac780f9340c3f0",
+          "9dbcd0c0ff62dbf51d558e448547222ad602f351"
+        ],
+        "answerable": true,
+        "paper_id": "2004.02143",
+        "question_id": "af948ea91136c700957b438d927f58d9b051c97c"
+      },
+      {
+        "annotation_ids": [
+          "45a45040f2c3efa3d2e10fac483a90c00184bbc6",
+          "6f627da6f5052eca03baa0ab2b8c0d3e35abc0e6",
+          "edb8d7b0cc6d5b88ef6d8d1d92a96b74335dd4c6"
+        ],
+        "answerable": false,
+        "paper_id": "1702.02584",
+        "question_id": "4830459e3d1d204e431025ce7e596ef3f8d757d2"
+      },
+      {
+        "annotation_ids": [
+          "bef920dcecbc13109386e1789248c573f1c9ac74",
+          "f3bea2e5e526fc82ec92b1f47df72b8d527fee0d"
+        ],
+        "answerable": true,
+        "paper_id": "1909.11980",
+        "question_id": "b8bbdc3987bb456739544426c6037c78ede01b77"
+      },
+      {
+        "annotation_ids": [
+          "1e53fc8418cedda42db9ac984a263b74704befe2",
+          "c50a083d2df876578b67ddb255841f4a098356cb"
+        ],
+        "answerable": true,
+        "paper_id": "1704.03279",
+        "question_id": "643645e02ffe8fde45918615ec92013a035d1b92"
+      },
+      {
+        "annotation_ids": [
+          "4d075e35f5969de4e3bb5ea5dd37f4afdf44816c",
+          "d9efd891d393f2b18959c9d465fc13aa47369688"
+        ],
+        "answerable": false,
+        "paper_id": "1908.09355",
+        "question_id": "71e1f06daf6310609d00850340e64a846fbe2dfb"
+      },
+      {
+        "annotation_ids": [
+          "9577d28927b6d719f26dd25d1cc813429b6afb0d",
+          "bba3c745e783ad4cbab5096d4e20f29b2c26556e",
+          "f6d08dae9ec955ebc7cb54b3dcee5b2f45650d75"
+        ],
+        "answerable": true,
+        "paper_id": "1910.14589",
+        "question_id": "eaae11ffd4ff955de2cd6389b888f5fd2c660a32"
+      },
+      {
+        "annotation_ids": [
+          "427e0803d1c2732f0a0d13a7b46b0daac5f5d0cc",
+          "c0cf694327227ed839d8a9f3fb8c0e29a5a032b1"
+        ],
+        "answerable": true,
+        "paper_id": "2002.08902",
+        "question_id": "6683008e0a8c4583058d38e185e2e2e18ac6cf50"
+      },
+      {
+        "annotation_ids": [
+          "7134ef2d69cacc7cedec5aede69d39667e7e487a",
+          "744e7f48f2ed030d7eb8a5d1729d5de78e892999",
+          "9c0407a5b74c9cd154d1e8406f6929e2f9a510bc",
+          "b22a2023e8f1d0de13fdd19d3608dbb56c7d8d55"
+        ],
+        "answerable": true,
+        "paper_id": "1805.11937",
+        "question_id": "887d7f3edf37ccc6bf2e755dae418b04d2309686"
+      },
+      {
+        "annotation_ids": [
+          "4373eafba8a67c91b572ddd1fd914c4dd01e80d5",
+          "e59e09860afa6000eda81d5b71c940944440981e"
+        ],
+        "answerable": true,
+        "paper_id": "1709.06136",
+        "question_id": "30870a962cf88ac8c8e6b7b795936fd62214f507"
+      },
+      {
+        "annotation_ids": [
+          "07cfedefb8625429167e601933158ba9331f148f",
+          "b878a43316b8ba80e2186bb0e9a2c810d5c322ff"
+        ],
+        "answerable": true,
+        "paper_id": "1911.03977",
+        "question_id": "54002c15493d4082d352a66fb9465d65bfe9ddca"
+      },
+      {
+        "annotation_ids": [
+          "0b7e8b0887855815632612b62b989b42c3e03e6d",
+          "804a348ad07f273bcfcea562188e6d0e4ef24abd",
+          "c73376b68ac9b57347557921e25a1831a7f79fa9"
+        ],
+        "answerable": true,
+        "paper_id": "1701.03578",
+        "question_id": "fc62549a8f0922c09996a119b2b6a8b5e829e989"
+      },
+      {
+        "annotation_ids": [
+          "078b8c6aad06ca5f4870a54e3949bae011d9f6e5",
+          "5a419edaa8d756d471b0e4ed70700c392298cdee"
+        ],
+        "answerable": true,
+        "paper_id": "1708.05482",
+        "question_id": "67c16ba64fe27838b1034d15194c07a9c98cdebe"
+      },
+      {
+        "annotation_ids": [
+          "f0c46a930b47696126d3b9c554c6818fd66ea536"
+        ],
+        "answerable": true,
+        "paper_id": "1902.08830",
+        "question_id": "0dc9050c832a6091bc9db3f7fa7be72139f51177"
+      },
+      {
+        "annotation_ids": [
+          "852665b7f6e5aa0b646a6eed25269e25613444ac"
+        ],
+        "answerable": true,
+        "paper_id": "2004.02214",
+        "question_id": "fc9aa04de4018b7d55e19a39663a2e9837328de7"
+      },
+      {
+        "annotation_ids": [
+          "2e187a49c157d5dbe63f323ebf903762336ff3a9",
+          "ac8acf1a1b77d03b0d3572c668ea24988ef907be",
+          "f898c6aeb12e316d09cc25bac30f2694a8792ac9"
+        ],
+        "answerable": true,
+        "paper_id": "1808.10006",
+        "question_id": "991ea04072b3412928be5e6e903cfa54eeac3951"
+      },
+      {
+        "annotation_ids": [
+          "3175ef31ccea31e822d8b7f0f8c4607af4ef2aa6",
+          "36de7fe28ff79e225386c79c34f5bf7ba77f2b6f",
+          "5479d6caa95791b2f148e8f6fc21c29b2d1ffdda"
+        ],
+        "answerable": true,
+        "paper_id": "1909.00091",
+        "question_id": "8b4bd0a962241ea548752212ebac145e2ced7452"
+      },
+      {
+        "annotation_ids": [
+          "2997b988bcd2db60a52c31e9fc1f123d561a4f8f",
+          "4718b310b7e5339478bc877c3aee46f5e3db0549",
+          "77c5725307254dc07d489ce0bae9a3e2bd02b8b5"
+        ],
+        "answerable": true,
+        "paper_id": "1805.04579",
+        "question_id": "6a20a3220c4edad758b912e2d3e5b99b0b295d96"
+      },
+      {
+        "annotation_ids": [
+          "0e76f65dd995b954f90c8766ed0f586db4f857f2",
+          "cd38f6f3dfa933e2435b1e8e2f1f2f7d91ccea13"
+        ],
+        "answerable": true,
+        "paper_id": "1805.07882",
+        "question_id": "47d54a6dd50cab8dab64bfa1f9a1947a8190080c"
+      },
+      {
+        "annotation_ids": [
+          "b6759d3281fa2613befa19cd157740a276be5dac"
+        ],
+        "answerable": true,
+        "paper_id": "1909.07873",
+        "question_id": "3e3e45094f952704f1f679701470c3dbd845999e"
+      },
+      {
+        "annotation_ids": [
+          "8c8d8950cb27577940b9141787e60c93a2f24917",
+          "afbae43ac4108988017d0aa7c0d03892d2a0cdca"
+        ],
+        "answerable": true,
+        "paper_id": "1908.06024",
+        "question_id": "71b29ab3ddcdd11dcc63b0bb55e75914c07a2217"
+      },
+      {
+        "annotation_ids": [
+          "17f0c1ccb2eb9e323c9eec1f013cd4496254a850",
+          "e8ccdc10e8b877c54aab311badebedc2c54d0efe"
+        ],
+        "answerable": true,
+        "paper_id": "1602.04341",
+        "question_id": "da2350395867b5fd4dbf968b5a1cd6921ab6dd37"
+      },
+      {
+        "annotation_ids": [
+          "529a59329b29888475c94ebec42a51c717c72ca0",
+          "d4f7c1278215db411dc5912e84397b74a2871ee5"
+        ],
+        "answerable": true,
+        "paper_id": "1806.09652",
+        "question_id": "1d10e069b4304fabfbed69acf409f0a311bdc441"
+      },
+      {
+        "annotation_ids": [
+          "99972b83b19c6967b1074a172816fd3857ee1645",
+          "c285ec044d021c721f62aced2b593580b0b9742a",
+          "f7c0029aca9c5e39e9f211538e9f1998c2e93caf"
+        ],
+        "answerable": true,
+        "paper_id": "1910.07973",
+        "question_id": "3a33512d253005ac280ee9ca4f9dfa69aa38d48f"
+      },
+      {
+        "annotation_ids": [
+          "53f59ff4d1ae66e7e37b7c3c0e6fb990e6c2c963",
+          "a6abd170cca8053c1bcca8717e9a38ab67803805"
+        ],
+        "answerable": true,
+        "paper_id": "1811.01183",
+        "question_id": "5499440674f0e4a9d6912b9ac29fa1f7b7cd5253"
+      },
+      {
+        "annotation_ids": [
+          "0371f6e7b5b534f86254ac88c26798fa1909664b",
+          "1438fc16757e91647d3a41f2e814d209da5f2009",
+          "2c304afb69a94a421454309b97a773378540e799"
+        ],
+        "answerable": true,
+        "paper_id": "1709.04491",
+        "question_id": "e6bc11bd6cfd4b2138c29602b9b56fc5378a4293"
+      },
+      {
+        "annotation_ids": [
+          "1e79c414ab65e5231a0eaa828b5c46900ba108a9",
+          "61ae540728fdeb8758667c24017db296100de2e2"
+        ],
+        "answerable": true,
+        "paper_id": "1705.00571",
+        "question_id": "bd3562d2b3c162e9d27404d56b77e15f707d8b0f"
+      },
+      {
+        "annotation_ids": [
+          "85debf590311306d2ade18b271f4d23b29b7e151",
+          "fd2f80879c4035d3155c40c51e0e771486a1ff30"
+        ],
+        "answerable": true,
+        "paper_id": "1909.07873",
+        "question_id": "5db47bbb97282983e10414240db78154ea7ac75f"
+      },
+      {
+        "annotation_ids": [
+          "23806315eef9ae37a6750ad952a231d3e9b59237",
+          "758f2e9e94c7b763fd65b02f182d01f306abf9d9"
+        ],
+        "answerable": false,
+        "paper_id": "1911.01940",
+        "question_id": "946d7c877d363f549f84e9500c852dce70ae5d36"
+      },
+      {
+        "annotation_ids": [
+          "bf9a7cb8b74b67e21d8c04073784384ecc90ec3c"
+        ],
+        "answerable": true,
+        "paper_id": "1901.10619",
+        "question_id": "275b2c22b6a733d2840324d61b5b101f2bbc5653"
+      },
+      {
+        "annotation_ids": [
+          "3c070f4ec4055bc7eb8684df18ee64067094b81d",
+          "4999a683d3376d9bf30c1dc96d583134022bc2c7"
+        ],
+        "answerable": true,
+        "paper_id": "1911.09709",
+        "question_id": "fcf9377fc3fce529d4bab1258db3f46b15ae5872"
+      },
+      {
+        "annotation_ids": [
+          "1ac3ebcf2b3bf93ba00aa223fd33bef6ed493a80",
+          "8bf54cd3b3961f6274c0ac935831c32c4e28e9db",
+          "d5636a22c955dfd4226efab5af79a44f71d84adf"
+        ],
+        "answerable": true,
+        "paper_id": "1803.08419",
+        "question_id": "f92c344e9b1a986754277fd0f08a47dc3e5f9feb"
+      },
+      {
+        "annotation_ids": [
+          "0d538c3312278b342f72f11df61e77ae3e59a4ba",
+          "28ab06f4cc5e72bb694d913e3a9b911c46677d14",
+          "65f2d7b53d0678e9a7d5f790b02503d96049dea5"
+        ],
+        "answerable": true,
+        "paper_id": "1911.12722",
+        "question_id": "9887ca3d25e2109f41d1da80eeea05c465053fbc"
+      },
+      {
+        "annotation_ids": [
+          "3809d618c702a4dc46f8279beaee8b2d68436b63",
+          "e6f4e9326c8da28d8a670d77a9e35b2d98b63037",
+          "fa0d1a156175cde585c55681bdffd889487baee0"
+        ],
+        "answerable": true,
+        "paper_id": "1810.02268",
+        "question_id": "554d798e4ce58fd30820200c474d7e796dc8ba89"
+      },
+      {
+        "annotation_ids": [
+          "2f2449ed82833eb924fd9bfb9cae3378bcd70f54",
+          "47042b2fed02961324290f97afad43501b3d436d"
+        ],
+        "answerable": true,
+        "paper_id": "1802.06053",
+        "question_id": "8c288120139615532838f21094bba62a77f92617"
+      },
+      {
+        "annotation_ids": [
+          "91093164af771628d5763e1c2eccba97f6bb1894",
+          "aa8cb2e7b9649dc54176506db4ff52db527a748f",
+          "d65fe76f539c34b8d7a9a1e49766ca69c953f04b"
+        ],
+        "answerable": true,
+        "paper_id": "1703.10152",
+        "question_id": "0778cbbd093f8b779f7cf26302b2a8e081ccfb40"
+      },
+      {
+        "annotation_ids": [
+          "3641cbf2a8b90c1053aaefb7db23ef501bffa196",
+          "8132433c110b826230941f9be14befd651ba9f81",
+          "cc29159cae181a8f86e2afae6bcd31ad40e84a67"
+        ],
+        "answerable": true,
+        "paper_id": "1803.07828",
+        "question_id": "4a201b8b9cc566b56aedb5ab45335f202bc41845"
+      },
+      {
+        "annotation_ids": [
+          "39fcf0e2fe5d0009c4a19d2f6900f35260a4087a",
+          "860b96f240ded411141e757acca6c63051c066ca"
+        ],
+        "answerable": true,
+        "paper_id": "1910.02677",
+        "question_id": "311f9971d61b91c7d76bba1ad6f038390977a8be"
+      },
+      {
+        "annotation_ids": [
+          "1f6557ccbbf97c564c7fd071270159eb40dbb01e"
+        ],
+        "answerable": true,
+        "paper_id": "2002.04745",
+        "question_id": "523bc4e3482e1c9a8e0cb92cfe51eea92c20e8fd"
+      },
+      {
+        "annotation_ids": [
+          "5aae27c325e07afe52bdecc24625c23a7b47f419",
+          "a7620ee6469182b5580a99d63df98f61ddefd266"
+        ],
+        "answerable": true,
+        "paper_id": "1910.01340",
+        "question_id": "595fe416a100bc7247444f25b11baca6e08d9291"
+      },
+      {
+        "annotation_ids": [
+          "22b281e0b76dee2e4e9610d8333ff477909fb8e6",
+          "94bb566c7487270c55f5a7fa1f9e1c0db11f46d7"
+        ],
+        "answerable": true,
+        "paper_id": "1911.06919",
+        "question_id": "4999da863ecbd40378505bfb1f4e395061a3f559"
+      },
+      {
+        "annotation_ids": [
+          "5d0eb078a7e7b18161a784184cd373b2f2c9cbf2",
+          "a27fd9cba407b9b0f5560c2ae703e9d4b694c7f5"
+        ],
+        "answerable": true,
+        "paper_id": "2003.08769",
+        "question_id": "f3b851c9063192c86a3cc33b2328c02efa41b668"
+      },
+      {
+        "annotation_ids": [
+          "0c5bd906f5cc9c40ec8cc4c57494ec24806e74a5",
+          "d8aa39dbacf94023411d39be1a8b1fd55b6e06eb"
+        ],
+        "answerable": true,
+        "paper_id": "1710.11334",
+        "question_id": "e381f1811774806be109f9b05896a2a3c5e1ef43"
+      },
+      {
+        "annotation_ids": [
+          "1de00e6629e3147b381d3fe105007fb3770f1b30",
+          "e98c2fd2039ae029088c2c49fd181cf4af973c28"
+        ],
+        "answerable": true,
+        "paper_id": "1908.05803",
+        "question_id": "8795bb1f874e5f3337710d8c3d5be49e672ab43a"
+      },
+      {
+        "annotation_ids": [
+          "1b262b70d1ce9da1635c93baa62c8b1e4a97b412",
+          "61a1a60e2a9fe9c3a3ae907398cc0a8764390835",
+          "69fb04c5566525d2cce7349d0ca570c95f0395e0"
+        ],
+        "answerable": false,
+        "paper_id": "1912.11585",
+        "question_id": "11360385dff0a9d7b8f4b106ba2b7fe15ca90d7c"
+      },
+      {
+        "annotation_ids": [
+          "8181056b3027150af848f9459ad198e6191887c7"
+        ],
+        "answerable": true,
+        "paper_id": "1806.07042",
+        "question_id": "0b5bf00d2788c534c4c6c007b72290c48be21e16"
+      },
+      {
+        "annotation_ids": [
+          "004e55522e72c85db1b11dc18a70ce17bc96ecd4",
+          "65fdba1ea2117425d94cff944fd4bc615111fe9b",
+          "6df81b43420d1bd8958e189d49d4e794f2b43881",
+          "f870fc4eedd2a205fdd562311df02e79a7cb3872"
+        ],
+        "answerable": true,
+        "paper_id": "1909.09070",
+        "question_id": "42a4ab4607a9eec42c427a817b7e898230d26444"
+      },
+      {
+        "annotation_ids": [
+          "1d91b27b22a138a14652e8b329fa37b413ceb82a"
+        ],
+        "answerable": true,
+        "paper_id": "1603.00957",
+        "question_id": "cbb4eba59434d596749408be5b923efda7560890"
+      },
+      {
+        "annotation_ids": [
+          "5ab6095aa679bd779b2db3940d87b1801cceca80",
+          "67b8d26d76c576225bb670cdf04e703a149c5c62",
+          "b23b13bc5863d3edb1b146023a3353428663f2ef"
+        ],
+        "answerable": true,
+        "paper_id": "1804.05253",
+        "question_id": "43f43b135109ebd1d2d1f9af979c64ce550b5f0f"
+      },
+      {
+        "annotation_ids": [
+          "7ef438e76c2038f174911311a9e1606df9553ef1"
+        ],
+        "answerable": true,
+        "paper_id": "1901.05389",
+        "question_id": "b03249984c26baffb67e7736458b320148675900"
+      },
+      {
+        "annotation_ids": [
+          "031570ce1b9babce381b027869814d5994a8f2f0",
+          "6805c91545574ff5f3c027d9c968b8506d8f332c",
+          "e78afe1423dc38d438b2f829c518884a9d04871f"
+        ],
+        "answerable": true,
+        "paper_id": "2003.11687",
+        "question_id": "b39b278aa1cf2f87ad4159725dff77b387f2df84"
+      },
+      {
+        "annotation_ids": [
+          "56b82311a9f24e6dbe6e1f903b29c6e5078b7baa"
+        ],
+        "answerable": false,
+        "paper_id": "1609.02075",
+        "question_id": "993d5bef2bf1c0cd537342ef76d4b952f0588b83"
+      },
+      {
+        "annotation_ids": [
+          "836d3cb74314ebcf8f30a3806df39db25b56a585",
+          "9971d5fec71a89f984ebabb7e30058b17f2f1a9f",
+          "e65b7c94811b76350e806a0cee4fd946acc7a69e"
+        ],
+        "answerable": true,
+        "paper_id": "1807.08089",
+        "question_id": "fef5b65263c81299acc350a101dabaf5a8cb9c6e"
+      },
+      {
+        "annotation_ids": [
+          "a98bdb099739ebe15f8db679201dbc024a6064fc",
+          "f6482e64d8905251c1405c1784e7751e13150e1b"
+        ],
+        "answerable": true,
+        "paper_id": "1804.07445",
+        "question_id": "f7ee48dd32c666ef83a4ae4aa06bcde85dd8ec4b"
+      },
+      {
+        "annotation_ids": [
+          "205d1f3bea2df7e9362a67f6e4687daaf8f3d174",
+          "809fc706f338b28fbd1640e84ca573172342dac7",
+          "f1daed9b43d8a719215fdc9c091cdd7685fc78b8"
+        ],
+        "answerable": true,
+        "paper_id": "1711.01567",
+        "question_id": "32f2aa2df0152050cbcd27dd2f408b2fa5894031"
+      },
+      {
+        "annotation_ids": [
+          "ce590983744bc62a69b9ab15c5363a2a936ab915",
+          "d6e43d49b397b5e2109300fbfc1f7c6f74c8665f"
+        ],
+        "answerable": true,
+        "paper_id": "1610.03807",
+        "question_id": "8ea4a75dacf6a39f9d385ba14b3dce715a47d689"
+      },
+      {
+        "annotation_ids": [
+          "92e225f283a7d2ee55babccece2acef650384cb6"
+        ],
+        "answerable": true,
+        "paper_id": "1803.08419",
+        "question_id": "a0d45b71feb74774cfdc0d5c6e23cd41bc6bc1f2"
+      },
+      {
+        "annotation_ids": [
+          "3db055f12b05ae9feb4f2a548b0d0ef495525cd8",
+          "685a8ca9a0f44784bae2b673f1c26e944ba9ae65"
+        ],
+        "answerable": true,
+        "paper_id": "1906.05685",
+        "question_id": "d2d9c7177728987d9e8b0c44549bbe03c8c00ef2"
+      },
+      {
+        "annotation_ids": [
+          "18183e8aaa99bb347dd2400a68f1c7b01165bdfe",
+          "c4b5b7116ba84abd67a08eaf7d4720a356e3a804"
+        ],
+        "answerable": true,
+        "paper_id": "1905.08067",
+        "question_id": "a4a9971799c8860b50f219c93f050ebf6a627b3d"
+      },
+      {
+        "annotation_ids": [
+          "7d0d7cc7499c33836b86ff1c81c2c98fe30ee689",
+          "ff63ea71df9e5da8af6d16956b8707538dc8a4a4"
+        ],
+        "answerable": true,
+        "paper_id": "1910.09916",
+        "question_id": "708f5f83a3c356b23b27a9175f5c35ac00cdf5db"
+      },
+      {
+        "annotation_ids": [
+          "2dc524e6062c5ede03075ec93f0372844288368d",
+          "7c84fb594cec81129ed66ae18f32faf7dc845fa6",
+          "a62fff440f3c40dc441a09f7212e89c4b8a1b1a2"
+        ],
+        "answerable": true,
+        "paper_id": "1904.03670",
+        "question_id": "63cdac43a643fc1e06da44910458e89b2c7cd921"
+      },
+      {
+        "annotation_ids": [
+          "53da5e2511f9841201b8cbce5389aabc70c8b109",
+          "a141e12836ac5899d2557a77fbf02523e7ff8c75"
+        ],
+        "answerable": true,
+        "paper_id": "1910.03355",
+        "question_id": "51e9f446d987219bc069222731dfc1081957ce1f"
+      },
+      {
+        "annotation_ids": [
+          "2150f70ef2e69a12872714ab6179aec2b36a1bf2"
+        ],
+        "answerable": true,
+        "paper_id": "1803.04579",
+        "question_id": "65e30c842e4c140a6cb8b2f9498fcc6223ed49c0"
+      },
+      {
+        "annotation_ids": [
+          "1507b37c15070202975d05798fa2160ec37a9c87",
+          "1e766419f4bffed23703d63bb0dbce9abf97322d",
+          "2ae0896bb978fa4989dd04603d4b3f4c57f11f64"
+        ],
+        "answerable": true,
+        "paper_id": "2002.06854",
+        "question_id": "52868394eb2b3b37eb5f47f51c06ad53061f4495"
+      },
+      {
+        "annotation_ids": [
+          "39e7fe0c1ad83de99005d660fbbe0e87a11fe031",
+          "f55939ff6c8f9725be300477bdc792329ad51839"
+        ],
+        "answerable": true,
+        "paper_id": "1710.11027",
+        "question_id": "915e4d0b3cb03789a20380ead961d473cb95bfc3"
+      },
+      {
+        "annotation_ids": [
+          "03ddb61531b5231c62e0080c7e3ee6ab46ca9aca",
+          "eb20b56ce7bbe804cfc58bb067d5185c634b7ad5"
+        ],
+        "answerable": true,
+        "paper_id": "1805.09960",
+        "question_id": "b79ff0a50bf9f361c5e5fed68525283856662076"
+      },
+      {
+        "annotation_ids": [
+          "6f5ff6117e321280427d5ddd4b35f3b4b21af0ff",
+          "e46e008ffda7142504f93826a006ec900536bfb5"
+        ],
+        "answerable": true,
+        "paper_id": "1602.07563",
+        "question_id": "c5ea4da3c760ba89194ad807bc1ef60e1761429f"
+      },
+      {
+        "annotation_ids": [
+          "10ea6836c7e313b0ef86bcca54dfc439729d90fb",
+          "747f13baf31b8679235866a2d42a5819cb27c8e8"
+        ],
+        "answerable": false,
+        "paper_id": "1709.09749",
+        "question_id": "ab097db03652b8b38edddc074f23e2adf9278cba"
+      },
+      {
+        "annotation_ids": [
+          "5fe713216207f3133e103e80a53138a33aa9b708",
+          "ed7800af8bddbdf88b9aa8807ad9f1fa1100c1e2"
+        ],
+        "answerable": true,
+        "paper_id": "2004.04498",
+        "question_id": "cf82251a6a5a77e29627560eb7c05c3eddc20825"
+      },
+      {
+        "annotation_ids": [
+          "1f0d3d1883cc79d743362b7a3631802f9a9cb391",
+          "4391b9706bdde35168d5c8eccc43cf7c2f24065f"
+        ],
+        "answerable": false,
+        "paper_id": "1804.03839",
+        "question_id": "e7ce612f53e9be705cdb8daa775eae51778825ef"
+      },
+      {
+        "annotation_ids": [
+          "2f8e134128b9c4efc957c71a3714318be374e1bb",
+          "4a2e7a885e14bbc460ab4e2e436b6e3516db8a64"
+        ],
+        "answerable": true,
+        "paper_id": "1912.08084",
+        "question_id": "c138a45301713c1a9f6edafeef338ba2f99220ce"
+      },
+      {
+        "annotation_ids": [
+          "f5ad0941473be2367b5c12714496aabfb96924c8",
+          "f77d318eeb37dfbc3123433b29b36c597631b361"
+        ],
+        "answerable": true,
+        "paper_id": "1805.11850",
+        "question_id": "df4895c6ae426006e75c511a304d56d37c42a1c7"
+      },
+      {
+        "annotation_ids": [
+          "16037bea9dd4f1282a766d01a5b34c94df79b382"
+        ],
+        "answerable": true,
+        "paper_id": "1705.10754",
+        "question_id": "9262292ca4cc78de515b5617f6a91e540eb2678c"
+      },
+      {
+        "annotation_ids": [
+          "0768ad749992ae1cdc0329f42a7fc6ea484e570f",
+          "f07aca9d391327eea56a50e7f996f7fb802e923e"
+        ],
+        "answerable": true,
+        "paper_id": "1608.01972",
+        "question_id": "31a3ec8d550054465e55a26b0136f4d50d72d354"
+      },
+      {
+        "annotation_ids": [
+          "7cd526e05fc6a336c4017b8d7a06511f374ea456",
+          "925a62d66543bfc134e72a7ee18454bf69e4dcc5"
+        ],
+        "answerable": true,
+        "paper_id": "2003.12660",
+        "question_id": "2d5d0b0c54105717bf48559b914fefd0c94964a6"
+      },
+      {
+        "annotation_ids": [
+          "56a2fee6a64d14c27ba69fc4848c98a52def3e3f"
+        ],
+        "answerable": true,
+        "paper_id": "2004.01820",
+        "question_id": "5a473f86052cf7781dfe40943ddf99bc9fe8a4e4"
+      },
+      {
+        "annotation_ids": [
+          "1808ffd5e2ce7d8d4d60330a1c171fa78dc363ae",
+          "cc2dfd8cab876f712abe5d0e215f4815cac53559",
+          "fea49dcca640ccb91684c399f0fc2e10d108d654"
+        ],
+        "answerable": false,
+        "paper_id": "1910.07973",
+        "question_id": "c6170bb09ba2a416f8fa9b542f0ab05a64dbf2e4"
+      },
+      {
+        "annotation_ids": [
+          "a43c73cf5f8358676b671eccc4650489141999c9",
+          "d20abb8f5e3b0c4c4e96efcd3cc45b0371756b3b",
+          "d33eae6f15c7340c99baad013df9c5c362ee84a5",
+          "f5c5c3a692c8d503cdb258b6c45cd2dcaeb5077a"
+        ],
+        "answerable": true,
+        "paper_id": "1708.05521",
+        "question_id": "0ac6fbd81e2dd95b800283dc7e59ce969d45fc02"
+      },
+      {
+        "annotation_ids": [
+          "102eddfaa57b6458e9a4add52953d3f32966d55a",
+          "40482b576a1e0dd1544488d5be40da0d4882df79"
+        ],
+        "answerable": true,
+        "paper_id": "1909.08250",
+        "question_id": "87c00edc497274ae6a972c3097818de85b1b384f"
+      },
+      {
+        "annotation_ids": [
+          "0b60ce01baa68e5b8fc911fb0e5d801bf4ab6295",
+          "862a258b24c32fb89cd67793dfb2db8a2e4467be"
+        ],
+        "answerable": true,
+        "paper_id": "1908.07721",
+        "question_id": "0b10cfa61595b21bf3ff13b4df0fe1c17bbbf4e9"
+      },
+      {
+        "annotation_ids": [
+          "1bd93d01b01241685a9bd3786c52a05a4d50ac6d",
+          "9724789c9264afdc7479b7a702e703abf124a4d6"
+        ],
+        "answerable": true,
+        "paper_id": "2004.03090",
+        "question_id": "a24b2269b292fd0ee81d50303d1315383c594382"
+      },
+      {
+        "annotation_ids": [
+          "bf559aae9dff4afc60cf8af4c1028f7ce5a4df57"
+        ],
+        "answerable": true,
+        "paper_id": "1603.00957",
+        "question_id": "90eeb1b27f84c83ffcc8a88bc914a947c01a0c8b"
+      },
+      {
+        "annotation_ids": [
+          "01d5dbcb4ff925897fab9c38736ec210cd3a09b6"
+        ],
+        "answerable": true,
+        "paper_id": "1903.10318",
+        "question_id": "2ba4477d597b1fd123d14be07a7780ccb5c4819b"
+      },
+      {
+        "annotation_ids": [
+          "38f9bc78397a0861c3df02694ba35fa961aae4ab",
+          "71f68ef0a40442a7bf8eb3972b556f678db0212d"
+        ],
+        "answerable": true,
+        "paper_id": "1907.08540",
+        "question_id": "e0c80d31d590df46d33502169b1d32f0aa1ea6e3"
+      },
+      {
+        "annotation_ids": [
+          "be9afd03e405d22c53243a97db0c35bd65a362fe"
+        ],
+        "answerable": true,
+        "paper_id": "1610.00479",
+        "question_id": "f6ba0a5cfd5b35219efe5e52b0a5b86ae85c5abd"
+      },
+      {
+        "annotation_ids": [
+          "317f81267d7147028eb81378003fb9865f1200c6",
+          "fabe532bb169318253cf5522492cfc79053919c9"
+        ],
+        "answerable": true,
+        "paper_id": "1708.05482",
+        "question_id": "9863f5765ba70f7ff336a580346ef70205abbbd8"
+      },
+      {
+        "annotation_ids": [
+          "292ec85e3df3f626f22890da388c9f431155c9da",
+          "89e309bc8570b40c5b1648b6cba1e09ffbaf9f5f"
+        ],
+        "answerable": true,
+        "paper_id": "1805.04833",
+        "question_id": "f2dba5bf75967407cce5d0a9c2618269225081f5"
+      },
+      {
+        "annotation_ids": [
+          "3010fd9ddcaf7c8ba7d145147efedb9e0e36cab5",
+          "41c0f6c00d0e3b6c9ebde5d6e9ce2540ba06ed3d",
+          "649d67e68b8b9a48025d118b75dc3d9b105cc9d0",
+          "d700045d1c5bda3de3edeb36e9dedb5aecd3e7a0"
+        ],
+        "answerable": true,
+        "paper_id": "1909.09070",
+        "question_id": "c5221bb28e58a4f13cf2eccce0e1b1bec7dd3c13"
+      },
+      {
+        "annotation_ids": [
+          "d3434912ff20486205a195a31968af9908e55c48"
+        ],
+        "answerable": true,
+        "paper_id": "1603.00957",
+        "question_id": "55bafa0f7394163f4afd1d73340aac94c2d9f36c"
+      },
+      {
+        "annotation_ids": [
+          "9bb4bdd560f76cf854f1a2548207ecc64b38ce15",
+          "cd709b9ed52f45e9d34cf7a742533fe1959e653f"
+        ],
+        "answerable": true,
+        "paper_id": "1801.05617",
+        "question_id": "85ab5f773b297bcf48a274634d402a35e1d57446"
+      },
+      {
+        "annotation_ids": [
+          "5391fea9fc674e54281de49f15dc621ff243a341",
+          "d16c48697bc81bde04859cfe9ef595ee24c057af"
+        ],
+        "answerable": true,
+        "paper_id": "1702.02584",
+        "question_id": "88757bc49ccab76e587fba7521f0981d6a1af2f7"
+      },
+      {
+        "annotation_ids": [
+          "19410fe649f090bb89301c8b3392b11915e81031"
+        ],
+        "answerable": true,
+        "paper_id": "1901.09381",
+        "question_id": "0871827cfeceed4ee78ce7407aaf6e85dd1f9c25"
+      },
+      {
+        "annotation_ids": [
+          "09dca28028fc45f8f52b7cbbdbf916b60df2e493",
+          "160ccb685496a2f5fec06a286528dc338e912859",
+          "80eefea9620961cc4c81835e180aa57995369ba9"
+        ],
+        "answerable": true,
+        "paper_id": "1909.04242",
+        "question_id": "ecaa10a2d9927fa6ab6a954488f12aa6b42ddc1a"
+      },
+      {
+        "annotation_ids": [
+          "b26a4be590f588025d6cd9c7fc0e17341a9d24b3",
+          "bcf8077db73b0105efd23787adf99b8371300101"
+        ],
+        "answerable": true,
+        "paper_id": "1712.02555",
+        "question_id": "ed7ce13cd95f7664a5e4fc530dcf72dc3808dced"
+      },
+      {
+        "annotation_ids": [
+          "1385da8338772d085992109bba81a739558a844e"
+        ],
+        "answerable": true,
+        "paper_id": "1707.02892",
+        "question_id": "91d4fd5796c13005fe306bcd895caaed7fa77030"
+      },
+      {
+        "annotation_ids": [
+          "2c2fbbea5e4873fd45b750c7ad276939308af9a4",
+          "8dccd47351e2e407b5412934e422d7c5a2434815",
+          "fa3c30dc6062d778c5cf1fb378fdb8c1f71bd2f2"
+        ],
+        "answerable": true,
+        "paper_id": "1905.08067",
+        "question_id": "2ecd12069388fd58ad5f8f4ae7ac1bb4f56497b9"
+      },
+      {
+        "annotation_ids": [
+          "137be3470225276b3da1c65345d05a43e2708b77",
+          "d14056c8a6ec9682f84e5fc9c981707ad01589cc",
+          "f4412d098c8d09e20859171aa1421fc035b305a4"
+        ],
+        "answerable": true,
+        "paper_id": "1911.12559",
+        "question_id": "c72e05dd41ed5a85335ffeca5a03e71514e60e84"
+      },
+      {
+        "annotation_ids": [
+          "2b2338910587d4f53d086e33823e30df3981fd98",
+          "2dad500c665d3a6507180aa7213f3d185969435e",
+          "7db08f106e3f9df2b0f69c1768af1b3abda8de9c"
+        ],
+        "answerable": true,
+        "paper_id": "1812.00382",
+        "question_id": "60e6296ca2a697892bd67558a21a83ef01a38177"
+      },
+      {
+        "annotation_ids": [
+          "037dcc306709aa8467042fa6f81373cddb751ac7",
+          "5f490249eaa219f2d4793fd25e9e3045cca3bbf3"
+        ],
+        "answerable": true,
+        "paper_id": "1806.06571",
+        "question_id": "5ae005917efc17a505ba1ba5e996c4266d6c74b6"
+      },
+      {
+        "annotation_ids": [
+          "0b8f4461ca4b3b057e971b99071dfed8c2da7feb",
+          "14c719c913ce1a0689f10ca5d3c6d592d6022a6a"
+        ],
+        "answerable": true,
+        "paper_id": "1705.00571",
+        "question_id": "22225ba18a6efe74b1315cc08405011d5431498e"
+      },
+      {
+        "annotation_ids": [
+          "6a08fcda2ae1797cb9fb1a8b2dd414a4a6c64f1e",
+          "8928db1f2ed89b813df6a2f1adb645ba030ead74"
+        ],
+        "answerable": true,
+        "paper_id": "1909.11706",
+        "question_id": "7969b8d80e12aa3ebb89b5622bc564f44e98329f"
+      },
+      {
+        "annotation_ids": [
+          "af42f242d18c991ed72564fb7b20724d0283beba"
+        ],
+        "answerable": true,
+        "paper_id": "1905.10039",
+        "question_id": "8126c6b8a0cab3e22661d3d71d96aa57360da65c"
+      },
+      {
+        "annotation_ids": [
+          "01448f46cbd6b9af4b94ff9cf65a7d60bdcfa79c",
+          "2b55ef43ccce0cb2f8e62c7a740caa4809c2ab13",
+          "6fff26727f82935e76bf6367e32ecd4201b33cfe",
+          "9a21045e1c0436d63272e893f6398e075d983624"
+        ],
+        "answerable": true,
+        "paper_id": "1908.11049",
+        "question_id": "d9e7633004ed1bc1ee45be58409bcc1fa6db59b2"
+      },
+      {
+        "annotation_ids": [
+          "06f9122c9f70c74d32aa4a701e6a32db8e565c97"
+        ],
+        "answerable": true,
+        "paper_id": "1809.00129",
+        "question_id": "bd817a520a62ddd77e65e74e5a7e9006cdfb19b3"
+      },
+      {
+        "annotation_ids": [
+          "0a183ef4b339941b7a854a205d9fd384fed4d529",
+          "cf4cd5b132084ebfdf0af0b5d1b20cdc89a4e441"
+        ],
+        "answerable": true,
+        "paper_id": "1802.08969",
+        "question_id": "d64fa192a7e9918c6a22d819abad581af0644c7d"
+      },
+      {
+        "annotation_ids": [
+          "1bcfbbdd061fa386c7604d2c7c7b94e23d63eb0a",
+          "c8908ad997aa5208e8f8ece8717042fac3fb0fec"
+        ],
+        "answerable": true,
+        "paper_id": "1911.10401",
+        "question_id": "35e0e6f89b010f34cfb69309b85db524a419c862"
+      },
+      {
+        "annotation_ids": [
+          "02e5463c8fcf2856c844a9653f868addefda9352"
+        ],
+        "answerable": true,
+        "paper_id": "2004.02143",
+        "question_id": "014830892d93e3c01cb659ad31c90de4518d48f3"
+      },
+      {
+        "annotation_ids": [
+          "538c485c136354df717bf8213dcec2e7fb527c64",
+          "95a27af0ea105cb48e92f8da869a654178bab9f8"
+        ],
+        "answerable": true,
+        "paper_id": "1911.11025",
+        "question_id": "3e5162e6399c7d03ecc7007efd21d06c04cf2843"
+      },
+      {
+        "annotation_ids": [
+          "00b9c6da2266bd020fa4343dc5c19e15f7668686",
+          "aa697d1a20323c47b3b2a48e1b9189e6bb69d091"
+        ],
+        "answerable": true,
+        "paper_id": "1611.00440",
+        "question_id": "65b39676db60f914f29f74b7c1264422ee42ad5c"
+      },
+      {
+        "annotation_ids": [
+          "4fd61e9949de2140a958d03822e29fe311887ec8"
+        ],
+        "answerable": true,
+        "paper_id": "1909.13466",
+        "question_id": "54b25223ab32bf8d9205eaa8a570e99c683f0077"
+      },
+      {
+        "annotation_ids": [
+          "d0ff8cff4f4dce573b523c53e90216d317c4f89a",
+          "f6afe55709b9486415238dd1678dc6cd335a8061"
+        ],
+        "answerable": true,
+        "paper_id": "1603.00957",
+        "question_id": "1d9d7c96c5e826ac06741eb40e89fca6b4b022bd"
+      },
+      {
+        "annotation_ids": [
+          "3aede2ae132eb6a675aae77f40615d9be971b917",
+          "945e9e9105758091b1d69ef3dfd7bf4bb3f47137",
+          "dffef7b42d03bd327036165d7d48e2631035cc69"
+        ],
+        "answerable": true,
+        "paper_id": "1805.11850",
+        "question_id": "4485e32052741972877375667901f61e602ec4de"
+      },
+      {
+        "annotation_ids": [
+          "464b4721baa4c17da1bf47d8d306b99653de6755"
+        ],
+        "answerable": true,
+        "paper_id": "1611.01884",
+        "question_id": "05118578b46e9d93052e8a760019ca735d6513ab"
+      },
+      {
+        "annotation_ids": [
+          "35a52b94300bc1ef86915f6c453ed28e95f65fa8",
+          "3d997e92d027b0bbdaec1eb72b757998dbdaa3e7"
+        ],
+        "answerable": true,
+        "paper_id": "1612.07486",
+        "question_id": "4cf05da602669a4c09c91ff5a1baae6e30adefdf"
+      },
+      {
+        "annotation_ids": [
+          "4e23be942e25b3468b4731214ebc17b3306bd5a4"
+        ],
+        "answerable": true,
+        "paper_id": "1707.07568",
+        "question_id": "4e568134c896c4616bc7ab4924686d8d59b57ea1"
+      },
+      {
+        "annotation_ids": [
+          "18512128bfb6ce6355ade7bc7d28aa4928c1f37b",
+          "cfb8855213f9db7624305362dc1e2b6e46b500c6"
+        ],
+        "answerable": true,
+        "paper_id": "1605.05156",
+        "question_id": "8ddf78dbdc6ac964a7102ae84df18582841f2e3c"
+      },
+      {
+        "annotation_ids": [
+          "15aa4f02de69ab96efc8640b06bebe8f5fdac40d",
+          "4d6e8ce4649adc90c2711d13050849f7b76bffb6"
+        ],
+        "answerable": false,
+        "paper_id": "1902.10246",
+        "question_id": "3e4e415e346a313f5a7c3764fe0f51c11f51b071"
+      },
+      {
+        "annotation_ids": [
+          "e9121c250e2cedee1a7acc8731eb2aa905bef292"
+        ],
+        "answerable": true,
+        "paper_id": "1808.07733",
+        "question_id": "59f41306383dd6e201bded0f1c7c959ec4f61c5a"
+      },
+      {
+        "annotation_ids": [
+          "25fea29bb0d5938ef71ea3a4d4dd7df89029bfe8",
+          "793e8b6492460b7840dbf093f01a0ee48005eb4f",
+          "f03e115c4a2bab6045fbf73d11b2a9565ac809ed"
+        ],
+        "answerable": true,
+        "paper_id": "1912.02866",
+        "question_id": "20632fc4d2b693b5aabfbbc99ee5c1e9fc485dea"
+      },
+      {
+        "annotation_ids": [
+          "3981ce9b185b4c9f9f3a10dfa2bf3f1cfab7e006",
+          "801aa02a9a15930ed72967af430a4c43de630585"
+        ],
+        "answerable": false,
+        "paper_id": "1809.03695",
+        "question_id": "1fa9b6300401530738995f14a37e074c48bc9fd8"
+      },
+      {
+        "annotation_ids": [
+          "054b1aa400f91ef18f021015c76bcb551eb2b6ac",
+          "37810ce816a45648bb0647d1f1f9ef3fc9756da2",
+          "60a0f20bd88f0de4495415c090133594792affd2"
+        ],
+        "answerable": true,
+        "paper_id": "1901.05389",
+        "question_id": "c68946ae2e548ec8517c7902585c032b3f3876e6"
+      },
+      {
+        "annotation_ids": [
+          "1f50d1243eb81ab85e1e26f7654180c4f506b3fc",
+          "5aa87e0395f8a38b4f950ea69efaea6df93e2474"
+        ],
+        "answerable": true,
+        "paper_id": "1703.05320",
+        "question_id": "fac273ecb3e72f2dc94cdbc797582d7225a8e070"
+      },
+      {
+        "annotation_ids": [
+          "75d7f29dca4fecf6c8130b9d7962b7cfd4ea6fe0",
+          "8659f1f960447f827fa1ef8d5c0de446b976fcec"
+        ],
+        "answerable": true,
+        "paper_id": "1906.05685",
+        "question_id": "175cddfd0bcd77b7327b62f99e57d8ea93f8d8ba"
+      },
+      {
+        "annotation_ids": [
+          "87dad0adf082d002e1d354ba54e2c374bafadb74",
+          "e5a0d9ce51ffe514b21165a48b9baee40b6f7a0b"
+        ],
+        "answerable": true,
+        "paper_id": "2004.03090",
+        "question_id": "b9d9803ba24127f91ba4d7cff4da11492da20f09"
+      },
+      {
+        "annotation_ids": [
+          "0bd10fa6cab5a049289823bae7462330bd490a23",
+          "6607b89163cc6f4553ad07646a48919d6e61889f",
+          "858c9d75cb7687e45813c4c9f52e2fd4c99bb87f"
+        ],
+        "answerable": true,
+        "paper_id": "1909.01720",
+        "question_id": "ce23849e9e9a22626965f1ca8ca948a5c87280e9"
+      },
+      {
+        "annotation_ids": [
+          "0b58eb8ae6eced6e137d217f9d64bb1c40980b69",
+          "a286f11986c622ad1a927b922fab8b7501c4f55e",
+          "ec4f368a2fccd7fdc0ae8ea91bdebe36ef970b0c"
+        ],
+        "answerable": true,
+        "paper_id": "1906.04287",
+        "question_id": "5f7f4a1d4380c118a58ed506c057d3b7aa234c1e"
+      },
+      {
+        "annotation_ids": [
+          "0a7557846d6cc51e31fa0ed48820a8b7e15d8a7f",
+          "58cecc7bfa023fed22302f01bbac666bb7768390",
+          "72348c2f99e5f536f0dde9136ee591c102aaedf1"
+        ],
+        "answerable": true,
+        "paper_id": "1804.07445",
+        "question_id": "051034cc94f2c02d3041575c53f969b3311c9ea1"
+      },
+      {
+        "annotation_ids": [
+          "09bf11867be4db5644a8e3742bdc6c3f070b9008",
+          "cfa039ce379f5b71a1afbaf46336cb3bd7e7d1f7"
+        ],
+        "answerable": true,
+        "paper_id": "1709.05295",
+        "question_id": "1fd31fdfff93d65f36e93f6919f6976f5f172197"
+      },
+      {
+        "annotation_ids": [
+          "5874a58c69caa8f05d5a2531160513a3b94878ef"
+        ],
+        "answerable": true,
+        "paper_id": "1806.06571",
+        "question_id": "72c04eb3fc323c720f7f8da75c70f09a35abf3e6"
+      },
+      {
+        "annotation_ids": [
+          "172331a689d95f5b07fc09fb785fb7de8cafd212",
+          "62080f0e9a877713d57daaa9d1f302b8cf15da4d"
+        ],
+        "answerable": true,
+        "paper_id": "1909.02855",
+        "question_id": "34e9e54fa79e89ecacac35f97b33ef3ca3a00f85"
+      },
+      {
+        "annotation_ids": [
+          "289275f8e2fec74f7759a034b021db5661418d2c",
+          "65d132c5d922c2b17eae797131a5d7a4ba0932e7"
+        ],
+        "answerable": true,
+        "paper_id": "1909.13466",
+        "question_id": "e5be900e70ea86c019efb06438ba200e11773a7c"
+      },
+      {
+        "annotation_ids": [
+          "0091d3a90f3795a47589abf5e9d45b778b705742",
+          "85f4ad0fac577dcc1f124e58a312d40ddf7e2238",
+          "cf5a72c882ec297030e483458406c0e2ee98d746"
+        ],
+        "answerable": true,
+        "paper_id": "1906.01076",
+        "question_id": "1002bd01372eba0f3078fb4a951505278ed45f2e"
+      },
+      {
+        "annotation_ids": [
+          "3d9c8966785305ff489db15f49387dcb40da24c4",
+          "9bf26c3886d431b53d9816930da751a092980938",
+          "ab026ba3bbeb2b1c77cf8fe434abbb3de985dc3d",
+          "b34f595ccaf1258ce200fc2ea5eadb2621a6ef8e"
+        ],
+        "answerable": true,
+        "paper_id": "1903.02930",
+        "question_id": "9b868c7d17852f46a8fe725f24cb9548fdbd2b05"
+      },
+      {
+        "annotation_ids": [
+          "06c54b1371450b4a109b8cd1d6afb75f3831fdc4",
+          "ba668fe557e88bb0e4934b922b3353c678aca57e"
+        ],
+        "answerable": true,
+        "paper_id": "1908.05758",
+        "question_id": "a9eb8039431e2cb885cfcf96eb58c0675b36b3bd"
+      },
+      {
+        "annotation_ids": [
+          "646cd5a94a691ff2d1de7aa00b9e83a1d4d49ff6",
+          "6c4c4e1ad30999e1d70ce30fde0343c9befd91e4"
+        ],
+        "answerable": true,
+        "paper_id": "1911.04128",
+        "question_id": "aa7c5386aedfb13a361a2629b67cb54277e208d2"
+      },
+      {
+        "annotation_ids": [
+          "1b89e57c1ba58f21392ca842171fcf0813c9b9cc",
+          "e0f6ca2ccb0fa2849a7154cf65f04b9fec9dbd58"
+        ],
+        "answerable": true,
+        "paper_id": "1605.05156",
+        "question_id": "dc473819b196c0ea922773e173a6b283fa778791"
+      },
+      {
+        "annotation_ids": [
+          "0afa2e3852af182a12aa4037a2ee60f775ab6c03",
+          "cd07c94a26e8e165fb005dd62417d7af2ea229d8"
+        ],
+        "answerable": true,
+        "paper_id": "1909.11980",
+        "question_id": "334aa5540c207768931a0fe78aa4981a895ba37c"
+      },
+      {
+        "annotation_ids": [
+          "0aa996cb4caaa57df45d3bb1ee1697e0d3f942cd",
+          "82d361aa7c158b7706d8d5d99749888eebb559ad"
+        ],
+        "answerable": true,
+        "paper_id": "1707.02892",
+        "question_id": "fcdafaea5b1c9edee305b81f6865efc8b8dc50d3"
+      },
+      {
+        "annotation_ids": [
+          "16f6108476331587c6806eefac2b5e508e34cba4",
+          "81d04ccb4f3adbf3bd15a26e00bc16a7ab86cfa0",
+          "f1ee85d890987279b7c3c06062489d405c099989",
+          "b8955f181ff1451f2cbe6d8cf48cf6c10a261edb"
+        ],
+        "answerable": true,
+        "paper_id": "1810.02229",
+        "question_id": "c97306c1be5d59cf27b1054adfa8f1da47d292ce"
+      },
+      {
+        "annotation_ids": [
+          "047b7c6c847008fe5b62f5d05c0f24f98b5fc5ab",
+          "557fbb079a190c557b4ac9c6204a39e02ab0457e",
+          "e155c3ef165ef9f0e19237194ca9cc879fa84979"
+        ],
+        "answerable": true,
+        "paper_id": "1901.10619",
+        "question_id": "e12166fa9d6f63c4e92252c95c6a7bc96977ebf4"
+      },
+      {
+        "annotation_ids": [
+          "869a9e6c05b29cce893c78e6cd39c74ba7348c5c",
+          "899c532eeb81c3f95883b1ea056e4ab4ea2a3a8d"
+        ],
+        "answerable": true,
+        "paper_id": "1605.05195",
+        "question_id": "9aabcba3d44ee7d0bbf6a2c019ab9e0f02fab244"
+      },
+      {
+        "annotation_ids": [
+          "645f4a101a60b8e7fa8d10a307ebeab866cc5975",
+          "6d605b6106918192c3a5e7954b8f63dbc558c850"
+        ],
+        "answerable": true,
+        "paper_id": "1610.09722",
+        "question_id": "dfdd309e56b71589b25412ba85b0a5d79a467ceb"
+      },
+      {
+        "annotation_ids": [
+          "32494608f9272ad54d3b37f3d2406bb1aabee4fd",
+          "cc2435079ab01578724b55f75059ab37359cd603",
+          "d88cad9c4585c5525d514b73e94dae1125a98611"
+        ],
+        "answerable": true,
+        "paper_id": "1707.06875",
+        "question_id": "f11856814a57b86667179e1e275e4f99ff1bcad8"
+      },
+      {
+        "annotation_ids": [
+          "4fcc24fb31ad69dac38871b3736402d09fc19c55",
+          "e65e97e6cb01a2aab6ca3934206c3df306b0c3ba",
+          "ec5087417c63ae2350aed4bbde9e96249d441b1b"
+        ],
+        "answerable": true,
+        "paper_id": "1911.05652",
+        "question_id": "2301424672cb79297cf7ad95f23b58515e4acce8"
+      },
+      {
+        "annotation_ids": [
+          "081ff5f95b69fccd56201c6c7914cad15d72ce53",
+          "34be1536f6c845811f241c0d3f75c3fbeab83add",
+          "60cda0dbf33886b2e576c9057358366aebd9a689"
+        ],
+        "answerable": true,
+        "paper_id": "1707.05589",
+        "question_id": "58a3cfbbf209174fcffe44ce99840c758b448364"
+      },
+      {
+        "annotation_ids": [
+          "4aedd36337434ba831df5159caac4756ca3c262f",
+          "ae6933639d9ce20ffcc3c50b49ef1c0f77c8d418"
+        ],
+        "answerable": true,
+        "paper_id": "1803.02155",
+        "question_id": "1d7b99646a1bc05beec633d7a3beb083ad1e8734"
+      },
+      {
+        "annotation_ids": [
+          "160ddf474627ae1c348b81414b89428c874180ab",
+          "6dbb86df6e76de08db144ad57f8b9a19ec1ed855",
+          "f7e92250c8ac68aac9d31c300116aeea766a4092"
+        ],
+        "answerable": true,
+        "paper_id": "1910.07973",
+        "question_id": "53a8c3cf22d6bf6477bc576a85a83d8447ee0484"
+      },
+      {
+        "annotation_ids": [
+          "60c8f59921a40ce4f01c7c7f8215a1fbd4bec33c",
+          "dc4d8e91ec240c38c3d865e24d35f117fefe62bf",
+          "f67b0ebf3a97265282e0206fd8cb781cfc8fd7bf"
+        ],
+        "answerable": false,
+        "paper_id": "1909.04242",
+        "question_id": "2a55076a66795793d79a3edfae1041098404fbc3"
+      },
+      {
+        "annotation_ids": [
+          "232a20a0c74e592c8987aa28722eebbd086c2feb",
+          "b1c2b588f586820f5f7376ecde119aa19e03f229",
+          "b5cb087d5d35d03a6ee37cee99855e1229fc7bb0"
+        ],
+        "answerable": true,
+        "paper_id": "1804.05253",
+        "question_id": "000549a217ea24432c0656598279dbb85378c113"
+      },
+      {
+        "annotation_ids": [
+          "27584b8b6d0de6575f8292c79595a74f737e8170",
+          "4c93c6a7cdc64948201e9dc780468022f6a373bf"
+        ],
+        "answerable": true,
+        "paper_id": "1804.01155",
+        "question_id": "90756bdcd812b7ecc1c5df2298aa7561fd2eb02c"
+      },
+      {
+        "annotation_ids": [
+          "4aec768e82dd4fe1a568e2bd913557d590fe6a9c",
+          "6fb793778d2a9a24ec9c21197d9611f389f920b3",
+          "aefbf9c686c03d8b13fb1d7fd94724127081b60f"
+        ],
+        "answerable": true,
+        "paper_id": "1806.03369",
+        "question_id": "ba7fea78b0b888a714cb7d89944b69c5038a1ef1"
+      },
+      {
+        "annotation_ids": [
+          "efae1483147dcef3f470ec02f0e0ce7b646d79e9"
+        ],
+        "answerable": true,
+        "paper_id": "1709.05295",
+        "question_id": "9e378361b6462034aaf752adf04595ef56370b86"
+      },
+      {
+        "annotation_ids": [
+          "9c6bf458f86dcc3ef2ba3704775dedb45e538ff5",
+          "a44611e5f3862f6c4f88aea96c43e42d8b84eb6f",
+          "a82db6645ee3820fc45089c45ba396d64daace0a"
+        ],
+        "answerable": true,
+        "paper_id": "1909.12079",
+        "question_id": "3f717e6eceab0a066af65ddf782c1ebc502c28c0"
+      },
+      {
+        "annotation_ids": [
+          "108fedbd9065c7885b3b9640c33493b40e6cde4e"
+        ],
+        "answerable": true,
+        "paper_id": "1607.07514",
+        "question_id": "0ba8f04c3fd64ee543b9b4c022310310bc5d3c23"
+      },
+      {
+        "annotation_ids": [
+          "8c67be1d3fb45d3c79f01953b949b2834897fb81",
+          "9fa3a840d918193b9d72db201f50ee2211d13d8f",
+          "c51405511200230a4d443cbdad67fd4e4a363c4b"
+        ],
+        "answerable": true,
+        "paper_id": "1709.04491",
+        "question_id": "4748a50c96acb1aa03f7efd1b43376c193b2450a"
+      },
+      {
+        "annotation_ids": [
+          "dda6ac02fee87f2aa2063b377e0143f78cf6e5b4"
+        ],
+        "answerable": true,
+        "paper_id": "1901.05415",
+        "question_id": "73a5783cad4ed468a8dbb31b5de2c618ce351ad1"
+      },
+      {
+        "annotation_ids": [
+          "e63cd6d774316ae13c2de0771b22b0772b8e5f87"
+        ],
+        "answerable": true,
+        "paper_id": "1611.06322",
+        "question_id": "8cbe3fa4ec0f66071e3d6b829b09b6395b631c44"
+      },
+      {
+        "annotation_ids": [
+          "4dad974f16b98a0b20f39bdcf8a63fff94b1fea7",
+          "917b69cdf70b023421bc9077839fc612ea559c28"
+        ],
+        "answerable": true,
+        "paper_id": "1612.03762",
+        "question_id": "6c9b3b2f2e5aac1de1cbd916dc295515301ee2a2"
+      },
+      {
+        "annotation_ids": [
+          "62586625f55ac7e9d3273b01967711c882f71cc5",
+          "9b9c11f4510e0e214add684e185578da0e84bb31",
+          "eb558d610df82d74f297adaf1a571b175b02dd28"
+        ],
+        "answerable": true,
+        "paper_id": "1712.00733",
+        "question_id": "74acaa205a5998af4ad7edbed66837a6f2b5c58b"
+      },
+      {
+        "annotation_ids": [
+          "4ccd26242432ad9c9ff7ee0147d547adbd4bb676"
+        ],
+        "answerable": true,
+        "paper_id": "1912.11585",
+        "question_id": "875fbf4e5f93c3da63e28a233ce1d8405c7dfe63"
+      },
+      {
+        "annotation_ids": [
+          "38ff970615afb4800b93bcf7e8d9c188fa1ccd5f",
+          "dcb05ba5362ccec15bcc0fd770a9fb033e8fac72"
+        ],
+        "answerable": true,
+        "paper_id": "1910.12203",
+        "question_id": "66dfcdab1db6a8fcdf392157a478b4cca0d87961"
+      },
+      {
+        "annotation_ids": [
+          "4c76c354dc36c292e8b7c829d9d2cd6886fac0d0",
+          "8aeee059f13728d5ce97eebf43e7de0af6f97539"
+        ],
+        "answerable": false,
+        "paper_id": "1911.05652",
+        "question_id": "fa468c31dd0f9095d7cec010f2262eeed565a7d2"
+      },
+      {
+        "annotation_ids": [
+          "fe35a88ac4e4211c0c3a8c39f3c02e32e1bed4e0",
+          "a94c6bea52c9b0d4a9cdc76409b450dc4f3afc34",
+          "58417c34edc848217ca7be6e8dbbf98ff0d2e43f"
+        ],
+        "answerable": true,
+        "paper_id": "1910.13793",
+        "question_id": "12dc04e0ec1d3ba5ec543069fe457dfa4a1cac07"
+      },
+      {
+        "annotation_ids": [
+          "109e45ebea249dac66ce77dca41cb67cb4a2e906",
+          "d27df10debeb09e2157e8fbd73dd0fa47128c0ed",
+          "fc0b52d77c8da1f60f8c6d3091a7aafb16504e8c"
+        ],
+        "answerable": true,
+        "paper_id": "1908.10090",
+        "question_id": "6c1614991647705265fb348d28ba60dd3b63b799"
+      },
+      {
+        "annotation_ids": [
+          "23557323a3d64de20d95d335209c42e8a5334ffa",
+          "9251cd4162d80da2d7be96ac0c237549d3133868"
+        ],
+        "answerable": false,
+        "paper_id": "2002.04745",
+        "question_id": "6073be8b88f0378cd0c4ffcad87e1327bc98b991"
+      },
+      {
+        "annotation_ids": [
+          "2afe292528d6e31f35723d0a699266af45c51bb7",
+          "5bb46f0439f133eb9b73176b91cb875b6cb2b005",
+          "f3073e6639ac7d0c93feeb9f37037f993a24cb41"
+        ],
+        "answerable": true,
+        "paper_id": "1607.03895",
+        "question_id": "f0404673085517eea708c5e91f32fb0f7728fa08"
+      },
+      {
+        "annotation_ids": [
+          "b7fc9b2988bb88c70cf88e00b9c8bb47a7cde3b2",
+          "5dd3c0a5cfd596e9beba529770e17a240538e6a3",
+          "7204d0776bc966db479c2771ee9338a01f5ab145"
+        ],
+        "answerable": false,
+        "paper_id": "1905.00472",
+        "question_id": "04914917d01c9cd8718cd551dc253eb3827915d8"
+      },
+      {
+        "annotation_ids": [
+          "e160ddee743cc94f7632b39157228b9cb102611c",
+          "f0664796023701ba79d9b65837d9659ad9f40150"
+        ],
+        "answerable": true,
+        "paper_id": "1910.01160",
+        "question_id": "71b07d08fb6ac8732aa4060ae94ec7c0657bb1db"
+      },
+      {
+        "annotation_ids": [
+          "26cfc4c42d73fd17fdad5ce32a5d6436f5855816"
+        ],
+        "answerable": true,
+        "paper_id": "1911.09247",
+        "question_id": "1e4f45c956dfb40fadb8e10d4c1bfafa8968be4d"
+      },
+      {
+        "annotation_ids": [
+          "6aa17261fba9253a26baf695b1434ede2d1532ad",
+          "8e5e75d3d26bde3d96e6203828b3efa2bb471d95"
+        ],
+        "answerable": true,
+        "paper_id": "1909.12016",
+        "question_id": "3a19dc6999aeb936d8a1c4509ebd5bfcda50f0f1"
+      },
+      {
+        "annotation_ids": [
+          "96938504c56963d96097267e887058827966e469",
+          "aa41a7a07eed1f433f1c142a69c6228fed5e2959",
+          "c6f43c5202d9d5480779e3136832c614b26600f8"
+        ],
+        "answerable": true,
+        "paper_id": "1908.06893",
+        "question_id": "4f57ac24f3f4689a2f885715cd84b7d867fe3f12"
+      },
+      {
+        "annotation_ids": [
+          "05739aac3c3b891450be1e83bfe56d5a4451d314",
+          "4fe97202a908469d4a612f064addd0a541a1c1a0"
+        ],
+        "answerable": true,
+        "paper_id": "1612.04118",
+        "question_id": "02a5acb484bda77ef32a13f5d93d336472cf8cd4"
+      },
+      {
+        "annotation_ids": [
+          "76a44f276e73e8b09a7621473ee1c7a45105db77",
+          "ae2fc98ba415cc7e01518899a7555bb99ffccc28"
+        ],
+        "answerable": false,
+        "paper_id": "1905.08392",
+        "question_id": "173060673cb15910cc310058bbb9750614abda52"
+      },
+      {
+        "annotation_ids": [
+          "484fb230d8e5d133ae4eb712d4317464de7ac93d",
+          "90d58e0afc3086ade3a398f44e84362576c6411e"
+        ],
+        "answerable": true,
+        "paper_id": "1911.11025",
+        "question_id": "bd255aadf099854541d06997f83a0e478f526120"
+      },
+      {
+        "annotation_ids": [
+          "13e58d6000f163a01a8a0d01910070b210e85fdc",
+          "54ab2010fe225555ec4ea8254f8f606e0422d0aa",
+          "ab28b76260de2f45c66f7a86f19ef4e01251062f"
+        ],
+        "answerable": true,
+        "paper_id": "1708.01065",
+        "question_id": "86d1c990c1639490c239c3dbf5492ecc44ab6652"
+      },
+      {
+        "annotation_ids": [
+          "32e66d12c81f097236c0dcd6747c0b703a938973",
+          "b830a4f1b76d98454895bbf93c3d7b675e3997ef"
+        ],
+        "answerable": true,
+        "paper_id": "1805.04558",
+        "question_id": "0bd3bea892c34a3820e98c4a42cdeda03753146b"
+      },
+      {
+        "annotation_ids": [
+          "366b3bcf05b371635788b96f4387863ee0af015c",
+          "aa7c5935bd8a794ae46f2865b4f5ab412ffe87d2"
+        ],
+        "answerable": true,
+        "paper_id": "2002.00175",
+        "question_id": "8276671a4d4d1fbc097cd4a4b7f5e7fadd7b9833"
+      },
+      {
+        "annotation_ids": [
+          "9ce7d51e5398992d43b1b8068a3efd183d25a50f"
+        ],
+        "answerable": true,
+        "paper_id": "1808.09716",
+        "question_id": "ac482ab8a5c113db7c1e5f106a5070db66e7ba37"
+      },
+      {
+        "annotation_ids": [
+          "348cd472744ac4df7a9f796a8989a730383cafd6",
+          "569bc90853e3fb60a6ab6be26788be2eff3c6126"
+        ],
+        "answerable": true,
+        "paper_id": "1909.01720",
+        "question_id": "246e924017c48fa1f069361c44133fdf4f0386e1"
+      },
+      {
+        "annotation_ids": [
+          "1d646003617afa51d9c704dea98acbb21f2776bd",
+          "5c8b526242c77976c71cc4d65a45b33834dda6f5"
+        ],
+        "answerable": false,
+        "paper_id": "1911.04128",
+        "question_id": "3a3c372b6d73995adbdfa26103c85b32d071ff10"
+      },
+      {
+        "annotation_ids": [
+          "28e09e2adef4852e0ac7e4532a57670d674fa301",
+          "7bfe291191826f02da1797fafb07a85356f2c718"
+        ],
+        "answerable": true,
+        "paper_id": "1908.07888",
+        "question_id": "909ecf675f874421eecc926a9f7486475aa1423c"
+      },
+      {
+        "annotation_ids": [
+          "0ab12cb28724b881bb7e1a73903c56899c1cd7eb",
+          "2e487c43fe87fba20bdc40f453cd90ff96a68121"
+        ],
+        "answerable": true,
+        "paper_id": "1611.04887",
+        "question_id": "c3befe7006ca81ce64397df654c31c11482dafbe"
+      },
+      {
+        "annotation_ids": [
+          "085b7016d24ed8fcaa63ea2bd95c79c437e9c131",
+          "6d7e383ebdb8091c4e77886d10fbaccdaa7374df",
+          "87956b0e7295f6113df2d23faaaec980d6a67876",
+          "c90d403bd2e4c3a16feecaffb596d62a60568fba"
+        ],
+        "answerable": true,
+        "paper_id": "1604.02038",
+        "question_id": "bc8526d4805e2554adb2e9c01736d3f3a3b19895"
+      },
+      {
+        "annotation_ids": [
+          "18ee05e63e95cf30da12e45bca7f39214b45adb0",
+          "5f2db275a581887ab9d4d380f0d44277f1cc2aa0",
+          "cefa35262312398148a7a571ab29b05dc6a0a070"
+        ],
+        "answerable": true,
+        "paper_id": "1603.09405",
+        "question_id": "420862798054f736128a6f0c4393c7f9cc648b40"
+      },
+      {
+        "annotation_ids": [
+          "bf96e87ca09276eebfd6b40fa6e63f3bbf70945a",
+          "c2784bba2dc68e1ac019b541248fc6c6401205d4"
+        ],
+        "answerable": false,
+        "paper_id": "1903.01411",
+        "question_id": "5138121b9e9bd56962e69bfe49d5df5301cb7745"
+      },
+      {
+        "annotation_ids": [
+          "932256f3201cec36f75b0f41f52700d421be92b9",
+          "de35b2cd76b574d19d1460c18e1aec72a2e98cbf"
+        ],
+        "answerable": true,
+        "paper_id": "2003.13028",
+        "question_id": "bd53399be8ff59060792da4c8e42a7fc1e6cbd85"
+      },
+      {
+        "annotation_ids": [
+          "8832773c682bf12c9f7e55038cd17c9659ac1d60",
+          "ae62e6b9ae62a33ef2916f1c95dc69b685293b6f",
+          "e82fa04239ecc62a06f5a14fd109841e55adf4f6"
+        ],
+        "answerable": true,
+        "paper_id": "1911.04474",
+        "question_id": "cb4086ad022197da79f28dc609d0de90108c4543"
+      },
+      {
+        "annotation_ids": [
+          "2f2dd9220d6beed178842af8651debef6b8658e6",
+          "38f223b431a71c085c69e3c0d8570894d9a16892",
+          "9511e0eee210bf6e4eac6e1ec8ea666299cce8e6"
+        ],
+        "answerable": true,
+        "paper_id": "1802.09059",
+        "question_id": "1d6d21043b9fd0ed3ccccdc6317dcf5a1347ef03"
+      },
+      {
+        "annotation_ids": [
+          "b329a399ced25f53969117d06f98ae60f47e99f7",
+          "e861d5d01ad596b46ba66bd0ddbbcc19351b88f5"
+        ],
+        "answerable": true,
+        "paper_id": "1702.02367",
+        "question_id": "860257956b83099cccf1359e5d960289d7d50265"
+      },
+      {
+        "annotation_ids": [
+          "0a51272d2877b2e7822e48d8e98c30b2c44516a4",
+          "928bb8b317dbe2b3febca7a30015073c4bce8ed8",
+          "b2b83c29d4864b8a344a7f7dd9ed57dbe955d167"
+        ],
+        "answerable": true,
+        "paper_id": "1907.08540",
+        "question_id": "cc78a08f5bfe233405c99cb3dac1f11f3a9268b1"
+      },
+      {
+        "annotation_ids": [
+          "7332f7b9fa4d2e077fd4b0908620f6fe006f4dab",
+          "98e52bc5f4e87000eec16f3615fb23e5a59be7d1",
+          "a02ea3e4485868a4c1ae399c958e70efc4c96c8f"
+        ],
+        "answerable": true,
+        "paper_id": "1805.11598",
+        "question_id": "1ec0be667a6594eb2e07c50258b120e693e040a8"
+      },
+      {
+        "annotation_ids": [
+          "6cf8a1a253cf7feb20c87da4b279ef9363d8a9a3",
+          "8f62a43336ed07495794b31fad52922fa4999d9c",
+          "9c4b7dcb27e7404fc35205d7ecd8b00eadf26295"
+        ],
+        "answerable": true,
+        "paper_id": "1909.13184",
+        "question_id": "7e906dc00e92088a25df3719104d1750e5a27485"
+      },
+      {
+        "annotation_ids": [
+          "4549aa4cb737ec8f4b70129d8d2c30b020a63396",
+          "6ecf504f7cd59d37af69baa8550cad539dae637a",
+          "78da5e99bda73a9dee63324e9adcc8bb0ac5873d"
+        ],
+        "answerable": true,
+        "paper_id": "1803.09000",
+        "question_id": "e90425ac05a15dc145bbf3034e78b56e7cec36ac"
+      },
+      {
+        "annotation_ids": [
+          "66b0f741e4fbd06f8bdda25c5e017238657a100f",
+          "77dffa78c2abea2e7ede80d7b656e6f49f64dffb",
+          "84a0aeaf2d358e241fa70a1a9145847cb324d248"
+        ],
+        "answerable": true,
+        "paper_id": "2003.09244",
+        "question_id": "3a25f82512d56d9e1ffba72f977f515ae3ba3cca"
+      },
+      {
+        "annotation_ids": [
+          "3ff47e3b685313782382141dfaf192fc2adf2a99",
+          "6e7187758c0de141f88bdcf9edeb0d4ad886d6d3",
+          "d3c7cd11404ed6bc6ea35159c905f07e3eb9314a"
+        ],
+        "answerable": true,
+        "paper_id": "1911.12893",
+        "question_id": "90dde59e1857a0d2b1ee4615ab017fee0741f29f"
+      },
+      {
+        "annotation_ids": [
+          "2a550859df6666abbf3b185bb200271e4d8bf0ac",
+          "75cc416faecfe0a0d49dfde16773bd4e445fb8ae",
+          "dabf601c7b01ccdb18d1499f30c705f945da2a89"
+        ],
+        "answerable": true,
+        "paper_id": "1907.04072",
+        "question_id": "46d051b8924ad0ef8cfba9c7b5b84707ee72f26a"
+      },
+      {
+        "annotation_ids": [
+          "1152cb5acd11aefcd7e46d8b09ec128aa293db96",
+          "4841892ef5ff1d6eb84d8be5737a64c3e1664436",
+          "d2125da5370f486d0bb64f7866d947006b270830"
+        ],
+        "answerable": true,
+        "paper_id": "1909.13184",
+        "question_id": "138ad61b43c85d5db166ea9bd3d3b19bb2e2bbfb"
+      },
+      {
+        "annotation_ids": [
+          "aec6d187943165f39d0ee8be814e01f5e659ae90",
+          "b1f41fc35091704b8374874f0cb98bdde5ab5774",
+          "ca17f7efdcf5006231f473a04ab8ad0b5e98474c"
+        ],
+        "answerable": true,
+        "paper_id": "1810.02268",
+        "question_id": "ebe1084a06abdabefffc66f029eeb0b69f114fd9"
+      },
+      {
+        "annotation_ids": [
+          "3abf3b8fd8647ab9bb506667148bd49ab35bab78",
+          "66ed26eafa0c9053eb8edd5eb01b20591e96d8ad"
+        ],
+        "answerable": true,
+        "paper_id": "2001.05540",
+        "question_id": "ed15a593d64a5ba58f63c021ae9fd8f50051a667"
+      },
+      {
+        "annotation_ids": [
+          "2d08ecc2dec2313c77d7c2094776ca8956c4c5c5",
+          "6db3b0098a96ea86a27e367f4d0db6978abd0551",
+          "6f96029f9aa0e72ebeeb9383434395216ed2a342"
+        ],
+        "answerable": true,
+        "paper_id": "1603.01547",
+        "question_id": "70512cc9dcd45157e40c8d1f85e82d21ade7645b"
+      },
+      {
+        "annotation_ids": [
+          "1dcd0ce50409648eb6612e357cdef868cb04f4c9",
+          "58dfcfd0a6c467b18de64f1fedd2c182f6e090db"
+        ],
+        "answerable": true,
+        "paper_id": "1905.05644",
+        "question_id": "157284acedf13377cbc6d58c8f3648d3a62f5db5"
+      },
+      {
+        "annotation_ids": [
+          "303d754f4723fcb85ae3f7239ceff8c3a84df4da",
+          "4603465a73edf2980cdc95923ffe5c5c132ba548",
+          "65c85408ece446a2e0f34967aee692395ab02f32",
+          "e2a7b8c914e9e36b63a59e2e8c801e1195cbfcd2"
+        ],
+        "answerable": true,
+        "paper_id": "1906.08871",
+        "question_id": "d36a6447bfe58204e0d29f9213d84be04d875624"
+      },
+      {
+        "annotation_ids": [
+          "19db334ffb8401f699e0c915f9c190bb0424a9f4",
+          "dfe5363ec3ec2fccc972f5a79b5763a0702bdbbd"
+        ],
+        "answerable": true,
+        "paper_id": "1703.10152",
+        "question_id": "d4456e9029fcdcb6e0149dd8f57b77d16ead1bc4"
+      },
+      {
+        "annotation_ids": [
+          "0530b496bd2590b14d6c4586b3541a16d461244a",
+          "d178d217fb1bb3245ee3be07d1aee066012c90e8"
+        ],
+        "answerable": true,
+        "paper_id": "1912.03010",
+        "question_id": "ab8b0e6912a7ca22cf39afdac5531371cda66514"
+      },
+      {
+        "annotation_ids": [
+          "99bb6591440440c092152cb4cff8f4a41e041bb6",
+          "c779e0f4ca6d12b9d9517af56ca6e37eed420323"
+        ],
+        "answerable": true,
+        "paper_id": "1602.03483",
+        "question_id": "19ebfba9aa5a9596b09a0cfb084ff8ebf24a3b91"
+      },
+      {
+        "annotation_ids": [
+          "85d2c0c91a296ba570e59c753d88bb72231274d9",
+          "9d78dfb59788e9e4a7fc7cb0c5388efac1dd2a1d"
+        ],
+        "answerable": false,
+        "paper_id": "1610.07149",
+        "question_id": "bfcbb47f3c54ee1a459183e04e4c5a41ac9ae83b"
+      },
+      {
+        "annotation_ids": [
+          "8150f6fa5491117dbbdb05e01fb2895eb4cc6654",
+          "bd6c1da455b10c077979e36651ce696e85eca0c8"
+        ],
+        "answerable": true,
+        "paper_id": "1911.03090",
+        "question_id": "441be93e2830cc0fc65afad6959db92754c9f5a8"
+      },
+      {
+        "annotation_ids": [
+          "064a7f6030d4576c2e33f599d97efb0c7fa925d5",
+          "5769d5f2119de030c0462c54b3d4ba5f4402e854",
+          "f28b073eb28eb85fc67d1a5a3a774014581e4c49"
+        ],
+        "answerable": true,
+        "paper_id": "1910.10670",
+        "question_id": "5695908a8c6beb0e3863a1458a1b93aab508fd34"
+      },
+      {
+        "annotation_ids": [
+          "66e1e8bd498a039b311a2b25481b59983e9afd71"
+        ],
+        "answerable": true,
+        "paper_id": "1612.03762",
+        "question_id": "ab37ae82e38f64d3fa95782f2c791488f26cd43f"
+      },
+      {
+        "annotation_ids": [
+          "3a909be7352ee1324dabd8f848b2ce49a2e9ad29",
+          "3d55e38d4168c71407845001e758713dfa863732",
+          "58a695497c60c6765b200fc75a0be5e514d51900"
+        ],
+        "answerable": true,
+        "paper_id": "1805.11598",
+        "question_id": "8246d1eee1482555d075127ac84f2e1d0781a446"
+      },
+      {
+        "annotation_ids": [
+          "726c3501e9d30520b0825620c6d58f9be79dc3cc"
+        ],
+        "answerable": true,
+        "paper_id": "1912.07076",
+        "question_id": "654306d26ca1d9e77f4cdbeb92b3802aa9961da1"
+      },
+      {
+        "annotation_ids": [
+          "1d908483b66f36c2ca1deea2ad8f1d5cfddded65",
+          "94cdbcf97d0c5496f204d25b2d2bfa38d52367f6"
+        ],
+        "answerable": true,
+        "paper_id": "1908.08788",
+        "question_id": "15aeda407ae3912419fd89211cdb98989d9cde58"
+      },
+      {
+        "annotation_ids": [
+          "2c68b56655d4ba75ae1e9d5b3cf848a295ad61b5",
+          "3e1185197829dcd2e083bc54e10523575fcd3daf"
+        ],
+        "answerable": true,
+        "paper_id": "1708.09025",
+        "question_id": "ce504a7ee2c1f068ef4dde8d435245b4e77bb0b5"
+      },
+      {
+        "annotation_ids": [
+          "8cc8fa7a4aedf098b9db373f8b641c938890de69",
+          "a23e2a9b75739fabbb6879e46ff45c2cb8dc478e",
+          "bb258d4983358d5d140536d58c4d49b615ef8b8c"
+        ],
+        "answerable": true,
+        "paper_id": "1905.08067",
+        "question_id": "824629b36a75753b1500d9dcaee0fc3c758297b1"
+      },
+      {
+        "annotation_ids": [
+          "57b5daf1eabdd3b3e60e0ddc82b91040818c5105"
+        ],
+        "answerable": true,
+        "paper_id": "1603.09405",
+        "question_id": "ad8411edf11d3429c9bdd08b3e07ee671464d73c"
+      },
+      {
+        "annotation_ids": [
+          "2481c2e7052ed5cfe356c952e446cd0236d114e2",
+          "59d13d391a004cc0d568960f9b9994d3623aec3d"
+        ],
+        "answerable": true,
+        "paper_id": "1909.02855",
+        "question_id": "6e63db22a2a34c20ad341eb33f3422f40d0001d3"
+      },
+      {
+        "annotation_ids": [
+          "0b934d16c1556f17a48e87759539914defec10de",
+          "e5cd635074809c8ed11c9ec32aa7b0d337eb16a0",
+          "5c82c4ab86752bf6bee3782404359add5967412a"
+        ],
+        "answerable": true,
+        "paper_id": "2003.11687",
+        "question_id": "814e945668e2b6f31b088918758b120fb00ada7d"
+      },
+      {
+        "annotation_ids": [
+          "5d5fe5a5dd170bca2ca8fe7538d2960a492a52a8",
+          "c7bb2c8d7efcb2fcaca4e5170959b63d24e81b46"
+        ],
+        "answerable": true,
+        "paper_id": "1602.07563",
+        "question_id": "4683812cba21c92319be68c03260b5a8175bbb6e"
+      },
+      {
+        "annotation_ids": [
+          "06b50457d2ee5535076a88ae0a76ef0e07316654",
+          "c64052e61d9b0b284581a34d95354be4ebac97f1"
+        ],
+        "answerable": true,
+        "paper_id": "1910.09387",
+        "question_id": "9e9aa8af4b49e2e1e8cd9995293a7982ea1aba0e"
+      },
+      {
+        "annotation_ids": [
+          "1c6c0fd7eb21ec857127b5e5ba9ad6848b3ed2e9",
+          "85bd98f471fd915be2109602cce8eff5e4f387af"
+        ],
+        "answerable": true,
+        "paper_id": "1912.11637",
+        "question_id": "a98ae529b47362f917a398015c8525af3646abf0"
+      },
+      {
+        "annotation_ids": [
+          "151308d05e0c72153a5fc57a6188339a6a9c4055",
+          "f4d023402d81ea4ab333a9aec001df908030db2d"
+        ],
+        "answerable": true,
+        "paper_id": "1707.07568",
+        "question_id": "2f23bd86a9e27dcd88007c9058ddfce78a1a377b"
+      },
+      {
+        "annotation_ids": [
+          "28821d29836d81053ac716deb63820c0fd9a615b",
+          "6ac0783abdac714bcb4950f7378d0373369f9568"
+        ],
+        "answerable": false,
+        "paper_id": "1908.07721",
+        "question_id": "67104a5111bf8ea626532581f20b33b851b5abc1"
+      },
+      {
+        "annotation_ids": [
+          "0caa054cb0800b18a2fe4a4a156128489fe7ea2b",
+          "4fbb401a4101f9079adb3f02b46de2d72e6deccb",
+          "a46cb3eeb0514a210d6bc9fea5a0af213e70ad56"
+        ],
+        "answerable": false,
+        "paper_id": "1802.09233",
+        "question_id": "0035b351df63971ec57e36d4bfc6f7594bed41ae"
+      },
+      {
+        "annotation_ids": [
+          "3644d38477dd196a1ea1bd93b12d5c9873e8bbc1",
+          "68954c947eac3fe24142f876f90686130ee5add9"
+        ],
+        "answerable": false,
+        "paper_id": "1906.05506",
+        "question_id": "3dad6b792044018bb968ac0d0fd4628653f9e4b7"
+      },
+      {
+        "annotation_ids": [
+          "46d547db72fae32682615f11ebc593d77535b4c6",
+          "4ee33d0e422b52ca9c42fb0d56f2eba5f4b9bb87",
+          "f2afb1d27fc77a99b0d3e5c484d2420da8cfb5fa"
+        ],
+        "answerable": false,
+        "paper_id": "1907.00168",
+        "question_id": "044c66c6b7ff7378682f24887b05e1af79dcd04f"
+      },
+      {
+        "annotation_ids": [
+          "3dc94570cf70702bf263b42816c682d003ecce95",
+          "4f147f4927faed23028a5aecae44eb85cf5ce657"
+        ],
+        "answerable": false,
+        "paper_id": "2003.13028",
+        "question_id": "3e3d123960e40bcb1618e11999bd2031ccc1d155"
+      },
+      {
+        "annotation_ids": [
+          "3dab1b35f94b5cb09bedbe9e4baf1ca24b7d8e5a",
+          "7fb51ed438fcb3192469cef9e267a3829413720f"
+        ],
+        "answerable": false,
+        "paper_id": "1905.08392",
+        "question_id": "98c8ed9019e43839ffb53a714bc37fbb1c28fe2c"
+      },
+      {
+        "annotation_ids": [
+          "202132a78a73234173d20840ec1eca04927664b5",
+          "52222111f459ed60b471113e8e3023934fbae5fb"
+        ],
+        "answerable": false,
+        "paper_id": "1910.12477",
+        "question_id": "e86b9633dc691976dd00ed57d1675e1460f7167b"
+      },
+      {
+        "annotation_ids": [
+          "72a7763959e716b502a3121b9f3cdaa83a3837af",
+          "7c200f1862c9e9e4e63a8f56b3157a8ac9b1fcf0"
+        ],
+        "answerable": false,
+        "paper_id": "1910.09942",
+        "question_id": "58df55002fbcba76b9aeb2181d78378b8c01a827"
+      },
+      {
+        "annotation_ids": [
+          "1b4925ca44974c13c772923ca121a354fcb511a2",
+          "547448cb3ec491592debdaad563493b9a689e488"
+        ],
+        "answerable": false,
+        "paper_id": "1812.05813",
+        "question_id": "e500948fa01c74e5cb3e6774f66aaa9ad4b3e435"
+      },
+      {
+        "annotation_ids": [
+          "00f44375587100ea64690b8a236ccefbc74eb06f",
+          "530b6023b8fded9308e8aea335366486f9a1f997"
+        ],
+        "answerable": false,
+        "paper_id": "1908.08917",
+        "question_id": "de346decb1fbca8746b72c78ea9d1208902f5e0a"
+      },
+      {
+        "annotation_ids": [
+          "1c4c25d421e694b8a07cd68711da4fc3646fd6ed",
+          "7df7b9f6deefe085a3919b34a4e738d1bd568874"
+        ],
+        "answerable": false,
+        "paper_id": "1909.08357",
+        "question_id": "9bf60073fbb69fbf860196513fc6fd2f466535f6"
+      },
+      {
+        "annotation_ids": [
+          "baa8c0935f45955491713db1ade220d056da0756"
+        ],
+        "answerable": false,
+        "paper_id": "1612.09535",
+        "question_id": "c316d7d0c80b8f720ff90a8bb84a8b879a3ef7ea"
+      },
+      {
+        "annotation_ids": [
+          "ee633dc9ebbb3d67a486fc65864a49c50ffa7578"
+        ],
+        "answerable": false,
+        "paper_id": "2003.03131",
+        "question_id": "526dc757a686a1fe41e77f7e3848e3507940bfc4"
+      },
+      {
+        "annotation_ids": [
+          "72984520164e4f7ac0dd2a530e9083af6fdfe31b",
+          "ac554c80e160152523525b5861180d7b17282b61"
+        ],
+        "answerable": false,
+        "paper_id": "1809.03695",
+        "question_id": "9d98975ab0b75640b2c83e29e1438c76a959fbde"
+      },
+      {
+        "annotation_ids": [
+          "2300e73d708582c6f07b5b3b01bf936e88c0a271",
+          "58e62673e2bf2abfb4504e7f53d76c15750e802d"
+        ],
+        "answerable": false,
+        "paper_id": "1711.11118",
+        "question_id": "39d20b396f12f0432770c15b80dc0d740202f98d"
+      },
+      {
+        "annotation_ids": [
+          "1265b629ad3b305965ca12e5b0286e7151561c0a",
+          "132b9983a959e0db59f8c14f697e81eb23bf4760"
+        ],
+        "answerable": false,
+        "paper_id": "1906.06349",
+        "question_id": "0b5a505c1fca92258b9e83f53bb8cfeb81cb655a"
+      },
+      {
+        "annotation_ids": [
+          "13a6f0b3e659250e1116dfba4ee9bb5eea5c94f0",
+          "2ce0fa85b0401b3197e81f18376a0e1a6abb1d50",
+          "b54b5ec8e3c5c8af5f6b32ab51557eeab43f3838"
+        ],
+        "answerable": false,
+        "paper_id": "1802.09059",
+        "question_id": "b1d255f181b18f7cf8eb3dd2369a082a2a398b7b"
+      },
+      {
+        "annotation_ids": [
+          "faf09b518209f93e53ab88c6e1645457a74f53a4",
+          "fc0713b2869affb36672ea0d77cc1700da2e38f9"
+        ],
+        "answerable": false,
+        "paper_id": "1912.00239",
+        "question_id": "fd556a038c36abc88a800d9d4f2cfa0aef6f5aba"
+      },
+      {
+        "annotation_ids": [
+          "03104e4dbdca1bdbb241185d82ca5468d201f606",
+          "a49c839c5d89281ddc9ab799741c394ecf74331b"
+        ],
+        "answerable": false,
+        "paper_id": "1907.01339",
+        "question_id": "a913aa14d4e05cc9d658bf6697fe5b2652589b1b"
+      },
+      {
+        "annotation_ids": [
+          "0df546c1949acf5453a7057eee364829c60124f0",
+          "923d600ccb51990a0c6ed481c4608dc127de79cb",
+          "f5207f400a6c3204900bead95cf16c739394c522"
+        ],
+        "answerable": false,
+        "paper_id": "1906.08871",
+        "question_id": "010fd15696580d9924ac0275a4ff269005e5808d"
+      },
+      {
+        "annotation_ids": [
+          "0fd78c6b963f44da7e9b3527dcc1825a91d6ad0f",
+          "80ea8f7a51a02401bf570386a67f21cbaa745899"
+        ],
+        "answerable": false,
+        "paper_id": "1703.04357",
+        "question_id": "86de8de906e30bb2224a2f70f6e5cf5e5ad4be72"
+      },
+      {
+        "annotation_ids": [
+          "350e18fa5429b9e3d274f2a241077f03716dfd9b",
+          "6302453a9ccbba6b5d1bfa8343c5723023ae14c3"
+        ],
+        "answerable": false,
+        "paper_id": "1709.04491",
+        "question_id": "3fafde90eebc1c00ba6c3fb4c5b984009393ce7f"
+      },
+      {
+        "annotation_ids": [
+          "c5e937d4ce4439bba9ec8421fd6bad34d72dcec5",
+          "c7ef7c046ade7d45ffe84d1b62a5f2d9a849b2c8"
+        ],
+        "answerable": false,
+        "paper_id": "1710.11027",
+        "question_id": "7f8fc3c7d59aba80a3e7c839db6892a1fc329210"
+      },
+      {
+        "annotation_ids": [
+          "6a87f453fa5e2d57c0880a09bb882a5c51cd1503",
+          "76f415fdce6fdd69a3f9eba2f82b6339680e11da",
+          "92fb81f3fd2a35f938ab7c77eb7ab43b7318e400"
+        ],
+        "answerable": false,
+        "paper_id": "1906.04287",
+        "question_id": "d427e9d181434078c78b7ee33a26b269f160f6d2"
+      },
+      {
+        "annotation_ids": [
+          "c44fc41aab1a66c195c6ff3edbceb64284e537a3",
+          "f1b682d6cc121ee8fdee589fcc41d696c9eb8b0c"
+        ],
+        "answerable": false,
+        "paper_id": "1908.05925",
+        "question_id": "63279ecb2ba4e51c1225e63b81cb021abc10d0d1"
+      },
+      {
+        "annotation_ids": [
+          "9ee5a8c89b71c2ef9141a5da424dc7815f52c343",
+          "b2d4c777ae66b27c15aab2a9afbf508d14ac8952",
+          "ba33c75c420f8f802414b920e8f4f49b2388cd9d"
+        ],
+        "answerable": false,
+        "paper_id": "1804.03839",
+        "question_id": "6c5a64b5150305c584326882d37af5b0e58de2fd"
+      },
+      {
+        "annotation_ids": [
+          "676aab88c22de606638f417587ef6f67899470df",
+          "a3f94021f0bc463058d9f1ca64447bd9e1118d2f"
+        ],
+        "answerable": false,
+        "paper_id": "1711.11118",
+        "question_id": "4e0df856b39055a9ba801cc9c8e56d5b069bda11"
+      },
+      {
+        "annotation_ids": [
+          "6dff642903484365ad480a6fd8279569358b456f",
+          "db727c0704abc81aedb8bf71b7360f55a5e279d1"
+        ],
+        "answerable": false,
+        "paper_id": "2004.03090",
+        "question_id": "a97137318025a6642ed0634f7159255270ba3d4f"
+      },
+      {
+        "annotation_ids": [
+          "2093f6bcd6f11d6f7d1fa58697c2347786c186aa",
+          "924d9f16cf5c02e6fb68b7db8bfdfdade4356aed"
+        ],
+        "answerable": false,
+        "paper_id": "1710.01789",
+        "question_id": "d3d6a4a721b8bc9776f62759b8d9be1a19c6b0d2"
+      },
+      {
+        "annotation_ids": [
+          "0492dbd085d76226439a531a6fbf5249990741d3",
+          "72c46d6a134093c522660247f5fd021a7e1fa087"
+        ],
+        "answerable": false,
+        "paper_id": "1910.09387",
+        "question_id": "87523fb927354ddc8ad1357a81f766b7ea95f53c"
+      },
+      {
+        "annotation_ids": [
+          "4d16aa2c4231d414f51209a4a8c999dc46f5eb31",
+          "cf39f2a3340002de50023ad9a6b1530d04e86079"
+        ],
+        "answerable": false,
+        "paper_id": "1910.12477",
+        "question_id": "b0edb9023f35a5a02eb8fb968e880e36233e66b3"
+      },
+      {
+        "annotation_ids": [
+          "94e57f0ec54937b4c481b2400091f573e26d0bba",
+          "980231104caf9183f234dc6f3b857e714288fe2f",
+          "d033b5131b4b6ddfe9fcd331c476caa3f01db685",
+          "f9575a1eeae3d932eb14289df57d0ae65c94c7b4"
+        ],
+        "answerable": false,
+        "paper_id": "1708.05521",
+        "question_id": "622efbecd9350a0f4487bdff2b8b362ef2541f3c"
+      },
+      {
+        "annotation_ids": [
+          "279d08ce2df12e981ee3bf418345f0fcf9b68f69",
+          "977931d38a177b1c69d3262c40acb2243572696e",
+          "c91d8287bcfd0fb36d184ccda72fba72abad1314"
+        ],
+        "answerable": false,
+        "paper_id": "1812.00382",
+        "question_id": "592df9831692b8fde213257ed1894344da3e0594"
+      },
+      {
+        "annotation_ids": [
+          "4f84d8acffc73df5a939d904a53872a7b7cbbfd7",
+          "d7c2b4525f11448a02e3fb296b6dd7481bb1a3e0"
+        ],
+        "answerable": false,
+        "paper_id": "1908.08788",
+        "question_id": "c8b2fb9e0d5fb9014a25b88d559d93b6dceffbc0"
+      },
+      {
+        "annotation_ids": [
+          "5120db55dc9716b6771328a50e5dfd3c3ef62c00",
+          "c05a00176bdd967ac9207334cc6975aedbf25087"
+        ],
+        "answerable": false,
+        "paper_id": "2003.12450",
+        "question_id": "0ba1514fb193c52a15c31ffdcd5c3ddbb2bb2c40"
+      },
+      {
+        "annotation_ids": [
+          "37cbfe6fc0d66da67d93a94b2bb3beb641197b45",
+          "982e4f2bd4cf1c4b17ac60ad140023d8b537085c",
+          "fda16c20aed51610421149fa24b84e8e30778c8d"
+        ],
+        "answerable": false,
+        "paper_id": "1909.08357",
+        "question_id": "4beb50ba020f624446ff1ef5bf4adca5ed318b98"
+      },
+      {
+        "annotation_ids": [
+          "42a8db3f5bb659cbc61cd8d4405994cb2d4653ab",
+          "bb6e8f0ecd51485b8ed650cf5407db4b5ac5caa8",
+          "ddcb71e081eaf5a94f187d8f5ce0f7a572065836"
+        ],
+        "answerable": false,
+        "paper_id": "1906.01010",
+        "question_id": "a926d71e6e58066d279d9f7dc3210cd43f410164"
+      },
+      {
+        "annotation_ids": [
+          "4d46ba098196a45a5af5d59be57c1bec5fb865c5",
+          "5cf4bb54c868fda47fadeb4e1fe7e6c284daa96e",
+          "6e3f738468f3b2136424d5ae43282fa40b213dca"
+        ],
+        "answerable": false,
+        "paper_id": "1910.07973",
+        "question_id": "a17fc7b96753f85aee1d2036e2627570f4b50c30"
+      },
+      {
+        "annotation_ids": [
+          "a6c40e8f4fa717904a657e7de638e579a1efd138",
+          "b1132b472b402d3b15ced850d61b16fae58785fb"
+        ],
+        "answerable": false,
+        "paper_id": "1909.01860",
+        "question_id": "78a0c25b83cdeaeaf0a4781f502105a514b2af0e"
+      },
+      {
+        "annotation_ids": [
+          "0842773a226b4acf7dcf1bf0f3aeff502d853757",
+          "54eee592a2c170f84296cac5669192424b76129b"
+        ],
+        "answerable": false,
+        "paper_id": "2003.03728",
+        "question_id": "c626637ed14dee3049b87171ddf326115e59d9ee"
+      },
+      {
+        "annotation_ids": [
+          "76107b2d8cc718ebcdd5eae948aec90d6551d7ad",
+          "df92813447243202d0a3cb4472f3102050bc188a"
+        ],
+        "answerable": false,
+        "paper_id": "2001.11316",
+        "question_id": "538430077b1820011c609c8ae147389b960932c8"
+      },
+      {
+        "annotation_ids": [
+          "938136d01befee33e029ee7c4d34fc24a32990ee",
+          "a725c3f742a9faf694224767cee705f772b35667"
+        ],
+        "answerable": false,
+        "paper_id": "1906.04236",
+        "question_id": "84f9952814d6995bc99bbb3abb372d90ef2f28b4"
+      }
+    ]
+  },
+  "settings": {
+    "dev_review_count": 30,
+    "generation": {
+      "dev": {
+        "answerable": 40,
+        "unanswerable": 10
+      },
+      "test": {
+        "answerable": 80,
+        "unanswerable": 20
+      }
+    },
+    "retrieval": {
+      "dev": {
+        "answerable": 160,
+        "unanswerable": 40
+      },
+      "test": {
+        "answerable": 240,
+        "unanswerable": 60
+      }
+    },
+    "seed": 42,
+    "version": "v1"
+  },
+  "version": "v1"
+}

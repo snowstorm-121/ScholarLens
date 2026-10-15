@@ -2,6 +2,13 @@
   "dataset_version": "qasper-v0.3",
   "normalization": "nfc-whitespace-v1",
   "output_dir": "data/qasper/v0.3",
+  "evaluation": {
+    "version": "v1",
+    "seed": 42,
+    "retrieval": {"dev": {"answerable": 160, "unanswerable": 40}, "test": {"answerable": 240, "unanswerable": 60}},
+    "generation": {"dev": {"answerable": 40, "unanswerable": 10}, "test": {"answerable": 80, "unanswerable": 20}},
+    "dev_review_count": 30
+  },
   "sources": [
     {
       "url": "https://qasper-dataset.s3.us-west-2.amazonaws.com/qasper-train-dev-v0.3.tgz",

@@ -1,9 +1,10 @@
-"""T2 data-preparation entry point. Later commands belong to later tasks."""
+"""Data preparation and frozen-dataset validation; no model evaluation here."""
 
 import argparse
 import json
 
 from .data import prepare
+from .dataset import build_dataset, validate_dataset
 
 
 def main():
@@ -12,8 +13,17 @@ def main():
     command = commands.add_parser("prepare")
     command.add_argument("--config", required=True)
     command.add_argument("--sample-train", type=int)
+    for name in ("freeze", "validate"):
+        command = commands.add_parser(name)
+        command.add_argument("--config", required=True)
     args = parser.parse_args()
-    print(json.dumps(prepare(args.config, args.sample_train), ensure_ascii=False, indent=2))
+    if args.command == "prepare":
+        result = prepare(args.config, args.sample_train)
+    elif args.command == "freeze":
+        result = build_dataset(args.config)
+    else:
+        result = validate_dataset(args.config)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
