@@ -1,0 +1,19 @@
+{
+  "dataset_version": "qasper-v0.3",
+  "normalization": "nfc-whitespace-v1",
+  "output_dir": "data/qasper/v0.3",
+  "sources": [
+    {
+      "url": "https://qasper-dataset.s3.us-west-2.amazonaws.com/qasper-train-dev-v0.3.tgz",
+      "local_path": "data/t1/qasper-train-dev-v0.3.tgz",
+      "sha256": "a28fdf966db827bcee3d873107d6b6669864fb7ca8fbf73a192f5e39191bdb5a",
+      "members": {"train": "qasper-train-v0.3.json", "dev": "qasper-dev-v0.3.json"}
+    },
+    {
+      "url": "https://qasper-dataset.s3.us-west-2.amazonaws.com/qasper-test-and-evaluator-v0.3.tgz",
+      "local_path": "data/t1/qasper-test-and-evaluator-v0.3.tgz",
+      "sha256": "72a52a41193e2838b8074f80ac074b94f956b84886c36a61c58a7df4171bdd72",
+      "members": {"test": "qasper-test-v0.3.json"}
+    }
+  ]
+}

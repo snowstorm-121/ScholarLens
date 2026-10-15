@@ -1,95 +1,41 @@
-# Traceable RAG
+# 研知 ScholarLens · Traceable RAG
 
-[![tests](https://github.com/snowstorm-121/traceable-rag/actions/workflows/tests.yml/badge.svg)](https://github.com/snowstorm-121/traceable-rag/actions/workflows/tests.yml)
+面向 AI 论文阅读的个人科研文献助手：通过论文证据检索、本地模型问答与来源引用，帮助核对研究方法、实验设置和结论依据。
 
-一个从零实现的本地可追溯 RAG 检索原型，覆盖文档切分、向量化、Top-k 检索、上下文组装、审计记录与自动化测试。
+当前是开发中的个人原型，不是生产系统。正式检索与生成评测尚未完成，不承诺跨论文推理能力。
 
-> A transparent local RAG baseline with traceable retrieval, audit logs, and reproducible tests.
+## 版本与进度
 
-## 项目亮点
+| 目录 | 内容 | 当前状态 |
+|---|---|---|
+| [v0](v0/README.md) | NumPy / BGE 检索与可追溯审计基础练习 | MockGenerator，不是真实 LLM 问答 |
+| v1/ | 早期官方文档语料、规范化与标注练习 | 历史学习版本，不作为当前应用入口 |
+| [v2](v2/README.scholar.md) | Kotaemon + QASPER + Ollama 的科研文献助手 | 当前开发主线 |
 
-- **透明实现：** 不依赖 LangChain、LlamaIndex 或向量数据库，核心数据流可以直接阅读和调试。
-- **结果可追溯：** 每次查询保留来源、chunk id、相似度、context、Prompt 和生成器信息。
-- **数据契约明确：** 查询前检查文本块数量是否与向量行数一致，数量不一致时停止执行。
-- **行为可验证：** 使用标准库 unittest 覆盖文档处理、向量持久化、检索排序和端到端问答组装。
+V2 已完成：
 
-## 数据流
+- T1：在 Apple M5 / 16GB 上跑通两篇论文的真实本地问答和原文引用，保存失败边界。
+- T2：转换 1,584 篇可用 QASPER 论文、81,549 个段落，分离正文与问答标注并保留精确证据位置。
+- 数据转换测试 27 项、V0 测试 11 项、V1 测试 10 项通过。
 
-```mermaid
-flowchart LR
-    A[Markdown / TXT] --> B[清洗与固定字符切分]
-    B --> C[文本与 metadata]
-    C --> D[BGE Embedding]
-    D --> E[NumPy 向量索引]
-    Q[用户问题] --> F[查询向量]
-    E --> G[余弦相似度与 Top-k]
-    F --> G
-    G --> H[带来源的 context]
-    H --> I[Prompt]
-    I --> J[MockGenerator]
-    J --> K[JSON 审计记录]
-```
+**数据转换不等于已经建库。** 网页目前仍使用 T1 的两篇 train 样例；全量索引、评测题集冻结与正式指标仍待完成。
 
-## Quick Start
+## 从哪里开始
 
-以下命令在仓库根目录使用 Python 3.11 运行：
+- [V2 启动与数据准备](v2/README.scholar.md)
+- [T1 本机可行性报告](v2/reports/t1-feasibility.md)
+- [T2 数据转换报告](v2/reports/t2-data.md)
+- [上游来源与个人修改](v2/UPSTREAM.md)
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-python build_index.py examples/sample_document.md
-python ask.py "什么是可追溯检索？" --top-k 2
-```
+V2 使用独立 Python 3.10 环境；本机已验证 Ollama 0.15.6、`qwen3:4b-instruct-2507-q4_K_M` 与 `nomic-embed-text`。
+详细安装约束、依赖警告及烟测命令见 V2 说明，不将本机运行记录冒充跨平台安装保证。
 
-如果模型已经下载到本机缓存，可以在建库时增加 `--local-files-only`，完全离线加载模型。
+## 数据、复现与许可证
 
-## 示例结果
+论文与标注来自 [QASPER 官方数据集](https://huggingface.co/datasets/allenai/qasper)，获取地址和固定 SHA-256 在
+[数据配置](v2/configs/local.json) 中。正文、答案/证据标签分开导出，后者不作为索引输入。
+原始语料、转换全文、模型、环境、数据库、索引、密钥和本机运行日志不提交 Git；通过脚本在本地准备。
 
-运行示例后，终端会展示查询向量 shape、全量得分 shape、Top-k 来源和分数，并将完整记录写入 `artifacts/queries/`。经过脱敏的真实输出见 [`examples/sample_query.json`](examples/sample_query.json)。
-
-## 项目结构
-
-```text
-rag/                 文档处理、向量、检索和问答组装
-build_index.py       离线建库入口
-ask.py               查询与审计记录入口
-examples/            可公开复现的示例语料和输出
-tests/               自动化测试
-```
-
-## 关键设计
-
-### 文本块与向量数量一致性检查
-
-建库时，文本块与向量按同一顺序写入 `chunks.jsonl` 和 `embeddings.npy`。查询前会检查文本块数量与向量行数；数量不一致时抛出错误，避免明显的索引不完整问题。当前实现不检测数量相同但顺序被人为交换的情况。
-
-### 中间结果完整保留
-
-审计记录包含 query、Top-k、context、Prompt、mock answer 和 shape 信息，便于定位问题发生在切分、召回还是生成输入阶段。
-
-### 依赖保持最小
-
-项目只使用 sentence-transformers 生成向量，并用 NumPy 完成持久化和余弦检索，便于理解最小 RAG 链路。
-
-## 测试
-
-```bash
-PYTHONPATH=. python -m unittest discover -s tests -v
-```
-
-测试使用 fake embedding model，不需要下载真实模型，覆盖文档规范化、overlap、metadata、向量读写、Top-k 排序、索引完整性和端到端审计记录。
-
-## 已知限制
-
-- 当前仅校验文本块数量与向量行数，不检测二者数量相同但顺序被人为交换的情况。
-- 当前按 500 字符切分，overlap 为 80，尚未实现语义切分。
-- 当前只有 dense vector retrieval，没有 hybrid search、rerank 或 query rewriting。
-- `MockGenerator` 不调用真实 LLM，因此本项目是“检索与可追溯问答组装原型”，不是完整问答产品。
-- 当前以 CPU 和单机文件为运行环境，没有提供线上服务。
-
-## 后续方向
-
-- 在独立评测集上比较不同切分和检索策略；
-- 增加关键词混合检索与 rerank 对照实验；
-- 在保持审计字段不变的前提下接入可替换的真实生成器。
+V2 复用固定版本的 [Kotaemon](https://github.com/Cinnamon/kotaemon)，保留其
+[Apache-2.0 许可证](v2/LICENSE.txt)、上游文档与署名。QASPER 标注按数据卡的 CC BY 4.0 使用，保留论文原有权利。
+本项目的贡献范围是场景适配、数据转换、证据位置与后续评测工程，不声称从零开发上游框架。
