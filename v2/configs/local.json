@@ -2,6 +2,18 @@
   "dataset_version": "qasper-v0.3",
   "normalization": "nfc-whitespace-v1",
   "output_dir": "data/qasper/v0.3",
+  "generation": {
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 8192,
+    "num_predict": 512,
+    "timeout": 180,
+    "think": false,
+    "max_chunks": 5,
+    "context_tokens": 4500
+  },
   "index": {
     "name": "ScholarLens QASPER 1600-200",
     "chunk_size": 1600,

@@ -17,7 +17,7 @@ ScholarLens 围绕“选论文、问问题、查依据”的流程，构建本�
 
 ### 本地问答闭环
 
-在 Apple M5 / 16GB 环境验证了两篇论文的本地问答：
+在 Apple M5 / 16GB 环境接入全量论文索引，并完成真实网页/CLI 问答烟测：
 
 ```text
 选择论文与输入问题
@@ -81,10 +81,45 @@ bash scripts/start_app.sh
 .venv/bin/python -m pytest tests_scholarlens/test_data.py -q
 ```
 
-当前 84 项测试通过，覆盖数据/题集校验、精确 span、向量角色、三路排名、真实临时存储过滤及中断恢复。
+当前 150 项测试通过，覆盖数据/题集校验、span、检索与恢复、预算、引用、错误审计，以及指标和运行器。
 重复转换不会追加重复记录；已有输出变化时明确报错，不静默覆盖。
 全量存储计数、真实向量和 UI/CLI 验收见 [T4 报告](reports/t4-indexing.md)；
-训练问题的网页问答烟测不等于正式评测成绩。网页旧分数格式会把小数显示为 `0.0`，待 T5 改造。
+训练问题的网页问答烟测不等于正式评测成绩。
+
+### 可核对的论文证据与生成审计
+
+标题关键词筛选后单选论文，网页和 CLI 复用同一个 `answer()`。
+本地 Qwen tokenizer 将 context 限制在最多 5 个完整块、4500 token，记录被丢弃的块。
+引用必须属于实际 context，并在指定块中精确定位；页面展示标题、章节、段落、字符区间及来源。
+模型离线、超时、空输出、截断不会冒充正确拒答；输出协议错误单独标记，不静默切换模拟生成。
+实际模型请求参数、原始响应及完整 audit 可复核。
+
+已运行三个固定 Dev 演示，保留多证据未完整召回、注入样例输出格式失败，未开展正式 Test 评测。
+引用可定位不保证陈述语义正确，单次烟测也不证明注入防护。见 [T5 验收](reports/t5-qa.md)
+和 [排障及面试复盘](reports/t5-interview-log.md)。
+
+早期模型接入、数据质量、评测冻结、论文隔离及建库续跑的问题与处理，见
+[T1–T4 面试复盘](reports/t1-t4-interview-log.md)。其中区分实际故障、审查后复现和未解决限制。
+
+### 可复算的评测运行器
+
+复用固定提交的 QASPER 官方 evaluator 计算 Answer/Evidence F1；另实现段落完整 span 覆盖的
+EvidenceRecall@1/3/5、AllEvidence@5、MRR@10，以及实际 context 覆盖、引用/拒答/系统错误统计。
+UI 与批量调用同一检索与生成适配层，完整保存实验配置、版本和逐题首次结果，支持同契约续跑。
+
+只完成固定五道 train 的功能验收，不是正式质量成绩：存在检索不足、可回答题拒答和输出截断；
+尚未运行 T7 Dev 对照或 T8 Test。无引用时可追溯率为 N/A，不伪报满分。
+见 [T6 验收与口径](reports/t6-evaluation.md) 和 [T6 面试排障](reports/t6-interview-log.md)。
+
+```sh
+.venv/bin/python -m scholarlens.cli evaluate --config configs/local.json \
+  --split train --stage retrieval --method hybrid
+```
+
+```sh
+.venv/bin/python -m scholarlens.cli ask --config configs/local.json \
+  --paper-id 1601.01705 --query "Which release of the VQA dataset do the authors use?" --method hybrid
+```
 
 ## 代码导航
 
@@ -98,6 +133,12 @@ bash scripts/start_app.sh
 | `scholarlens/framework.py` | 复用 FileIndex 身份表、LanceDB/Chroma 的 UI/CLI 共同适配层 |
 | `scholarlens/retrieval.py` | 论文范围内 BM25 / Dense / RRF 排名 |
 | `scholarlens/build_index.py` | 分批建库、断点续跑及映射记录 |
+| `scholarlens/qa.py` | 共同问答入口、引用检查、拒答/错误及审计 |
+| `scholarlens/context.py` | 实际 Qwen tokenizer、完整块 token 预算 |
+| `scholarlens/generation.py` | 本地真实请求、参数捕获与串行生成 |
+| `scholarlens/ui.py` | 标题筛选与原文证据页面适配 |
+| `scholarlens/metrics.py` | 完整段落覆盖与官方评分器适配、聚合分母 |
+| `scholarlens/evaluate.py` | 共同 pipeline 运行器、不可覆盖记录及复算 |
 | `configs/local.json` | 固定来源、校验值及转换配置 |
 | `t1_components.py` | 本地检索默认配置与引用问答适配 |
 | `t1_ollama.py` | 本地模型参数调用适配 |

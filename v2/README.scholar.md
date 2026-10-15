@@ -130,7 +130,7 @@ and `reports/t3-review.md`. See `reports/t3-dataset.md` for exact filters and li
 ```
 
 The registered collection is **ScholarLens QASPER 1600-200**, separate from the T1 HTML samples.
-Select exactly one `.qasper.json` paper and disable the T1 collection when querying this collection.
+Use the title keyword filter and select exactly one paper from this collection.
 Use the retrieval setting `ScholarLens retrieval` to choose BM25, Dense or RRF Hybrid.
 Do not select all papers: joint cross-paper retrieval is outside this version's scope.
 
@@ -144,3 +144,45 @@ for future experiments. Keep frozen question/answer exports out of index inputs.
 See `reports/t4-indexing.md` for invariants, U1/U2 calculations, regression tests and acceptance results.
 Local generated index mappings and runtime verification are Git-ignored under `data/indexes/`
 and `artifacts/t4/`. Do not run simultaneous indexing processes or launch duplicate web servers.
+
+## T5: shared real QA and evidence UI
+
+The active page now uses ScholarQA. Search titles in the ScholarLens collection, select one
+paper, ask a question, and click its citation to inspect the actual evidence and audit JSON.
+The old T1 collection remains stored, but the new QA accepts only the ScholarLens collection;
+historical T1 smoke scripts exercise legacy components, not this active pipeline.
+
+```sh
+.venv/bin/python -m scholarlens.cli ask --config configs/local.json \
+  --paper-id 1601.01705 --query "Which release of the VQA dataset do the authors use?" --method hybrid
+.venv/bin/python -m pytest tests_scholarlens -q
+.venv/bin/python scripts/t5_verify.py
+```
+
+The verification script needs previously saved T5 smoke artifacts and the existing local models.
+Shared `qa.answer()` enforces whole-block 4500-token/5-chunk budgets and exact citation membership.
+Generation settings live in `configs/local.json`; actual wire requests are captured, and failures
+are not converted to refusals or Mock output. Generation is serialized across local processes.
+121 tests pass. Three Dev demos are not a benchmark: one multi-evidence case misses part of gold;
+a synthetic injection case answers the fact but fails the strict output protocol. No Test scoring.
+See `reports/t5-qa.md` and `reports/t5-interview-log.md` for retained failures and limitations.
+
+## T6: reproducible metric/runner acceptance
+
+```sh
+.venv/bin/python -m scholarlens.cli evaluate --config configs/local.json \
+  --split train --stage retrieval --method hybrid
+.venv/bin/python -m scholarlens.cli evaluate --config configs/local.json \
+  --split train --stage generation --method hybrid
+.venv/bin/python scripts/t6_verify.py
+```
+
+The last command needs the recorded final T6 smoke artifacts and makes no model calls.
+Train always uses the fixed three-answerable/two-unanswerable smoke set, selected before predictions.
+Dev interfaces are ready; this task did not run Dev comparisons. Test execution is locked until T8 approval.
+Use `--experiment-id NAME --resume` only with identical code/config/data/runtime; saved failures are not retried.
+Reports include immutable per-question predictions, actual context and independent original-paragraph
+Evidence F1 adaptation. Missing/failed answers keep their denominator and zero official F1; a later model
+failure does not erase successfully observed retrieval/context coverage. Empty citation rates are N/A.
+150 tests pass; actual five-question results have failures and are not quality benchmarks.
+Read `reports/t6-evaluation.md`, `reports/t6-interview-log.md`, and `scholarlens/vendor/README.md`.

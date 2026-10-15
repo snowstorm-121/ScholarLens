@@ -1,4 +1,4 @@
-"""Data preparation and frozen-dataset validation; no model evaluation here."""
+"""Data, retrieval, shared QA and evaluation command entry points."""
 
 import argparse
 import json
@@ -25,6 +25,19 @@ def main():
     command.add_argument("--query", required=True)
     command.add_argument("--method", choices=["bm25", "dense", "hybrid"], default="hybrid")
     command.add_argument("--k", type=int, default=5)
+    command = commands.add_parser("ask")
+    command.add_argument("--config", required=True)
+    command.add_argument("--paper-id", required=True)
+    command.add_argument("--query", required=True)
+    command.add_argument("--method", choices=["bm25", "dense", "hybrid"], default=None)
+    command = commands.add_parser("evaluate")
+    command.add_argument("--config", required=True)
+    command.add_argument("--split", choices=["train", "dev", "test"], required=True)
+    command.add_argument("--stage", choices=["retrieval", "generation"], required=True)
+    command.add_argument("--method", choices=["bm25", "dense", "hybrid"], default="hybrid")
+    command.add_argument("--limit", type=int)
+    command.add_argument("--experiment-id")
+    command.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     if args.command == "prepare":
         result = prepare(args.config, args.sample_train)
@@ -36,6 +49,13 @@ def main():
     elif args.command == "retrieve":
         from .retrieval import retrieve
         result = retrieve(args.query, args.paper_id, args.method, args.k, args.config)
+    elif args.command == "ask":
+        from .qa import answer
+        result = answer(args.query, args.paper_id, args.config, method=args.method)
+    elif args.command == "evaluate":
+        from .evaluate import evaluate
+        result = evaluate(args.config, split=args.split, stage=args.stage, method=args.method,
+                          limit=args.limit, experiment_id=args.experiment_id, resume=args.resume)
     else:
         result = validate_dataset(args.config)
     print(json.dumps(result, ensure_ascii=False, indent=2))

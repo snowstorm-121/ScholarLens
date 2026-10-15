@@ -11,9 +11,9 @@ if GRADIO_TEMP_DIR is None:
     os.environ["GRADIO_TEMP_DIR"] = GRADIO_TEMP_DIR
 
 
-from ktem.main import App  # noqa
+from scholarlens.ui import ScholarApp  # noqa
 
-app = App()
+app = ScholarApp()
 demo = app.make()
 demo.queue().launch(
     favicon_path=app._favicon,

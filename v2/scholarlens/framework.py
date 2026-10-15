@@ -204,12 +204,12 @@ class ScholarRetrieverPipeline(BaseFileIndexRetriever):
     def backend(self):
         return FrameworkBackend(self.Source, self.Index, self.DS, self.VS, self.user_id, self.fingerprint)
 
-    def retrieve(self, query, paper_id, method=None, k=5):
+    def retrieve(self, query, paper_id, method=None, k=5, *, trace=None):
         encoder = NomicEncoder(self.scholar_settings["embedding"])
         if (method or self.method) != "bm25":
             encoder.verify_model()
         return Retriever(self.backend(), encoder, self.scholar_settings["retrieval"]).retrieve(
-            query, paper_id, method or self.method, k)
+            query, paper_id, method or self.method, k, trace=trace)
 
     def run(self, text, doc_ids=None, **kwargs):
         selected = self.selected if doc_ids is None else doc_ids
@@ -236,8 +236,9 @@ def application_retriever(config_path, paper_id, method="hybrid"):
     from ktem.main import App
 
     app = App()
-    app.make()
+    # __init__ registers indices/settings; rendering pages here fetches remote Help content.
     index = next(i for i in app.index_manager.indices if i.name == config["index"]["name"])
+    index.get_selector_component_ui()
     settings = app.default_settings.flatten()
     settings[f"index.options.{index.id}.scholar_method"] = method
     backend = FrameworkBackend(index._resources["Source"], index._resources["Index"],

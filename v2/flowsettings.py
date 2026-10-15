@@ -439,7 +439,11 @@ KH_RERANKINGS = {
         "default": True,
     }
 }
-KH_REASONINGS = ["t1_components.LocalQAPipeline"]
+KH_REASONINGS = ["scholarlens.ui.ScholarQA"]
+KH_APP_NAME = "研知 ScholarLens"
+KH_WEB_SEARCH_BACKEND = None
+KH_CHAT_MSG_PLACEHOLDER = "正在检索当前论文并核验证据…"
+FILE_INDEX_SELECTOR_UI = "scholarlens.ui.PaperSelector"
 FILE_INDEX_RETRIEVER_PIPELINES = ["t1_components.LocalRetrievalPipeline"]
 SETTINGS_REASONING["max_context_length"]["value"] = 4500
 STORAGE["prefix"] = str(KH_APP_DATA_DIR / "theflow")

@@ -36,7 +36,7 @@ class Retriever:
     def __init__(self, backend, encoder, settings):
         self.backend, self.encoder, self.settings = backend, encoder, settings
 
-    def retrieve(self, query, paper_id, method="hybrid", k=5):
+    def retrieve(self, query, paper_id, method="hybrid", k=5, *, trace=None):
         if method not in {"bm25", "dense", "hybrid"}:
             raise ValueError("Unknown retrieval method")
         if not isinstance(k, int) or k < 1:
@@ -73,6 +73,10 @@ class Retriever:
             output = rrf(rankings, self.settings["rrf_constant"])
         else:
             output = rankings[method]
+        if trace is not None:
+            trace.update({name: [{key: row[key] for key in ("chunk_id", "score", "rank")}
+                                for row in ranking[:self.settings["branch_k"]]]
+                          for name, ranking in rankings.items()})
         return [{**row, "method": method} for row in output[:k]]
 
 
