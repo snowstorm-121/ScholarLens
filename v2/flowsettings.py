@@ -443,3 +443,17 @@ KH_REASONINGS = ["t1_components.LocalQAPipeline"]
 FILE_INDEX_RETRIEVER_PIPELINES = ["t1_components.LocalRetrievalPipeline"]
 SETTINGS_REASONING["max_context_length"]["value"] = 4500
 STORAGE["prefix"] = str(KH_APP_DATA_DIR / "theflow")
+
+# T4: a separate prefixed QASPER collection; keep the original T1 collection intact.
+import json as _scholar_json
+_scholar_index = _scholar_json.loads((this_dir / "configs/local.json").read_text())["index"]
+KH_INDICES.append({
+    "name": _scholar_index["name"],
+    "index_type": "ktem.index.file.FileIndex",
+    "config": {
+        "private": True,
+        "supported_file_types": ".qasper.json",
+        "FILE_INDEX_PIPELINE": "scholarlens.framework.ScholarIndexPipeline",
+        "FILE_INDEX_RETRIEVER_PIPELINES": ["scholarlens.framework.ScholarRetrieverPipeline"],
+    },
+})

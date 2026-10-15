@@ -9,4 +9,5 @@
 - Tested model: official `qwen3:4b-instruct-2507-q4_K_M`; original `qwen3:4b` did not complete the constrained QA output reliably in these diagnostics.
 - T2 changes: `scholarlens/data.py`, `scholarlens/cli.py`, `configs/local.json` and `tests_scholarlens/` add QASPER corpus/annotation separation, stable paragraph spans, archive/hash validation and deterministic conversion. See `reports/t2-data.md`.
 - T3 changes: `scholarlens/dataset.py` adds deterministic filtering/sampling, official-format gold exports, immutable freeze snapshots and structural validation. User-delegated assistant semantic review covers 30 Dev questions, not independent human verification; reference risks are documented. See `reports/t3-dataset.md` and `reports/t3-review.md`.
-- T4–T9 indexed application adaptation and controlled experiments are not implemented.
+- T4 additions: `scholarlens/indexing.py`, `embedding.py`, `framework.py`, `build_index.py` and `retrieval.py` implement a QASPER reader and shared FileIndex adapters, paragraph-preserving chunks, role-prefixed Nomic embeddings, stable identity/resumption, paper-scoped BM25/Dense and deterministic RRF. LanceDB/Chroma and SQL file identity tables remain upstream components. See `reports/t4-indexing.md` for verification status.
+- T5–T9 application polish, formal controlled experiments and final materials are not implemented.

@@ -47,10 +47,22 @@ ScholarLens 围绕“选论文、问问题、查依据”的流程，构建本�
 证据只有在精确且唯一匹配时才完成定位；无法映射、重复文本歧义和图表依赖分别记录原因。
 缺正文的 1 篇论文及对应 3 道题明确隔离，不补造内容。
 
-**上述论文已完成数据转换，尚未全量建立向量索引。** 网页仍使用两篇演示论文。
+上述 1,584 篇论文已全量建立索引，共 82,491 个 chunk；网页新增独立的
+`ScholarLens QASPER 1600-200` collection，原两篇演示论文索引保留。
 问题数量不是已评测题数。已冻结检索 Dev/Test 的 200/300 题，以及其中的生成子集 50/100 题；
 30 道 Dev 已按用户委托完成助手辅助语义审查，非人类独立审核，标注疑点仍保留；
 三路检索对照与生成指标尚未运行。见 [T3 报告](reports/t3-dataset.md) 和 [辅助审查记录](reports/t3-review.md)。
+
+### 带定位的三路检索
+
+索引层提供段落内 `1600/200` 字符切分，保存论文、段落与全文字符区间；
+复用 LanceDB 保存原文/metadata，Chroma 保存完整 768 维归一化 Nomic 向量。
+正文和问题分别使用 `search_document:` / `search_query:` 前缀。
+
+提供 BM25、Dense 和 RRF Hybrid 三种检索方式。BM25 统计和 Dense metadata 过滤均限定在用户选定论文内；
+Hybrid 融合两路各 Top-20 的排名，不直接相加不同量纲的分数，同分按稳定 chunk_id 排序。
+UI 与 CLI 复用同一注册适配层，不启用额外重排、MMR、查询改写或 LLM 相关性评分。
+这仍是单论文问答，不将全量知识库等同于跨论文推理。
 
 ## 运行与验证
 
@@ -69,8 +81,10 @@ bash scripts/start_app.sh
 .venv/bin/python -m pytest tests_scholarlens/test_data.py -q
 ```
 
-当前 48 项数据与题集测试通过，覆盖哈希变化、归档越界、重复 ID、缺正文、完整证据组、位置一致性、冻结和重复运行。
+当前 84 项测试通过，覆盖数据/题集校验、精确 span、向量角色、三路排名、真实临时存储过滤及中断恢复。
 重复转换不会追加重复记录；已有输出变化时明确报错，不静默覆盖。
+全量存储计数、真实向量和 UI/CLI 验收见 [T4 报告](reports/t4-indexing.md)；
+训练问题的网页问答烟测不等于正式评测成绩。网页旧分数格式会把小数显示为 `0.0`，待 T5 改造。
 
 ## 代码导航
 
@@ -79,6 +93,11 @@ bash scripts/start_app.sh
 | `scholarlens/data.py` | 发布包校验、正文/标注分离、规范化与证据位置映射 |
 | `scholarlens/cli.py` | 数据准备命令入口 |
 | `scholarlens/dataset.py` | 题集筛选、确定性抽样、gold 导出及冻结校验 |
+| `scholarlens/indexing.py` | 正文 reader、段落内切分、稳定 chunk ID 和索引指纹 |
+| `scholarlens/embedding.py` | Nomic 文档/查询角色、模型 digest、维度与归一化校验 |
+| `scholarlens/framework.py` | 复用 FileIndex 身份表、LanceDB/Chroma 的 UI/CLI 共同适配层 |
+| `scholarlens/retrieval.py` | 论文范围内 BM25 / Dense / RRF 排名 |
+| `scholarlens/build_index.py` | 分批建库、断点续跑及映射记录 |
 | `configs/local.json` | 固定来源、校验值及转换配置 |
 | `t1_components.py` | 本地检索默认配置与引用问答适配 |
 | `t1_ollama.py` | 本地模型参数调用适配 |

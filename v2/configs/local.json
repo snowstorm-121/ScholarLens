@@ -2,6 +2,19 @@
   "dataset_version": "qasper-v0.3",
   "normalization": "nfc-whitespace-v1",
   "output_dir": "data/qasper/v0.3",
+  "index": {
+    "name": "ScholarLens QASPER 1600-200",
+    "chunk_size": 1600,
+    "overlap": 200,
+    "alternative_chunk_size": 2400,
+    "batch_size": 32,
+    "embedding": {
+      "model": "nomic-embed-text",
+      "model_digest": "8688dbc0926c1dfdc1b8b7489034e1fedb06f6ac66472dd2d7f0ed6d7d23ba29",
+      "dimensions": 768
+    },
+    "retrieval": {"method": "hybrid", "k1": 1.5, "b": 0.75, "rrf_constant": 60, "branch_k": 20}
+  },
   "evaluation": {
     "version": "v1",
     "seed": 42,

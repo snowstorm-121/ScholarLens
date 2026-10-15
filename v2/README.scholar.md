@@ -1,8 +1,9 @@
-# ScholarLens — T1 local feasibility
+# ScholarLens — local operation and verification
 
 This source snapshot reuses [Kotaemon](https://github.com/Cinnamon/kotaemon).
 See `UPSTREAM.md` and the retained `LICENSE.txt`. The T1 application uses upstream indexing,
-vector retrieval, Gradio and citation QA. QASPER evaluation and controlled Hybrid are later tasks.
+vector retrieval, Gradio and citation QA. The project adds QASPER data/evaluation preparation
+and a paper-scoped BM25/Dense/RRF indexing and retrieval adapter. Formal scoring is a later task.
 
 ## Start on this Mac
 
@@ -63,7 +64,8 @@ citations and supplies a concise prompt compatible with the upstream citation pa
 `t1_ollama.py` bridges `think=False` into the native SDK because the pinned old
 LangChain wrapper does not expose it. That flag alone did not disable reasoning in the
 original model; the final model is specifically non-thinking. Upstream defaults are
-otherwise retained for this smoke check; paragraph spans and task prefixes are T4 work.
+otherwise retained for this historical smoke check. The separate T4 collection uses paragraph
+spans and explicit task prefixes; it does not silently replace this historical index.
 
 The successful configuration is locked by upstream `uv.lock`. If installation through the
 current proxy stalls, the tested command changes proxy settings only for that process:
@@ -97,8 +99,8 @@ Stable paragraph IDs and normalized Unicode character spans are independent of c
 The cached official archives and exported corpus are Git-ignored. Changed hashes fail closed;
 repeat conversions do not append records or silently overwrite changed output.
 
-This does not build embeddings or change the UI corpus: the web app still uses the two T1
-papers until T4/T5. T3 sampling/freezing and the user-delegated assistant review are complete;
+T2 conversion alone did not build embeddings. T4 now indexes all 1,584 usable papers into
+82,491 chunks in a separate collection. T3 sampling/freezing and the user-delegated assistant review are complete;
 independent human review was not performed, and reference risks remain documented.
 Test scoring has not run.
 
@@ -117,3 +119,28 @@ in `configs/evaluation-v1.freeze.json`. Changed inputs or outputs require a new 
 The original user worksheet at `artifacts/t3/v1/dev-review.md` is not marked as human-reviewed.
 The delegated assistant review is separately recorded in `artifacts/t3/v1/assistant-review.json`
 and `reports/t3-review.md`. See `reports/t3-dataset.md` for exact filters and limitations.
+
+## T4: one shared indexing/retrieval adapter
+
+```sh
+.venv/bin/python -m scholarlens.cli index --config configs/local.json
+.venv/bin/python scripts/t4_verify.py
+.venv/bin/python -m scholarlens.cli retrieve --config configs/local.json \
+  --paper-id 1601.01705 --query "Which release of the VQA dataset do the authors use?" --method hybrid --k 5
+```
+
+The registered collection is **ScholarLens QASPER 1600-200**, separate from the T1 HTML samples.
+Select exactly one `.qasper.json` paper and disable the T1 collection when querying this collection.
+Use the retrieval setting `ScholarLens retrieval` to choose BM25, Dense or RRF Hybrid.
+Do not select all papers: joint cross-paper retrieval is outside this version's scope.
+
+`index` resumes by stable IDs; it does not silently replace changed source files or fingerprints.
+`--limit 2` is an optional train-only pilot, not a full-build acceptance result.
+Both UI and CLI use the registered pipeline and existing SQL identity tables, LanceDB and Chroma.
+The CLI rejects settings that differ from the currently registered UI configuration; it does not
+silently substitute default settings. Change the active configuration and collection explicitly
+for future experiments. Keep frozen question/answer exports out of index inputs.
+
+See `reports/t4-indexing.md` for invariants, U1/U2 calculations, regression tests and acceptance results.
+Local generated index mappings and runtime verification are Git-ignored under `data/indexes/`
+and `artifacts/t4/`. Do not run simultaneous indexing processes or launch duplicate web servers.
