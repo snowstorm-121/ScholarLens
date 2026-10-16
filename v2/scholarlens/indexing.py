@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import os
 from importlib.metadata import version
 from pathlib import Path
 
@@ -11,10 +12,20 @@ from .data import NORMALIZATION, sha256, validate_spans, write_json
 
 
 ROOT = Path(__file__).resolve().parents[1]
+_ACTIVE_CONFIG_PATH = Path(os.environ.get("SCHOLAR_CONFIG") or ROOT / "configs/local.json").resolve()
+
+
+def active_config_path():
+    """Pin configuration before imports; changing it requires a new process."""
+    current = Path(os.environ.get("SCHOLAR_CONFIG") or ROOT / "configs/local.json").resolve()
+    if current != _ACTIVE_CONFIG_PATH:
+        raise ValueError("SCHOLAR_CONFIG changed after import; start a new process before loading settings")
+    return _ACTIVE_CONFIG_PATH
 
 
 def index_context(config_path=None):
-    path = Path(config_path or ROOT / "configs/local.json").resolve()
+    active = active_config_path()
+    path = Path(config_path).resolve() if config_path else active
     config = json.loads(path.read_text())
     corpus = path.parent.parent / config["output_dir"]
     manifest = json.loads((corpus / "corpus_manifest.json").read_text())

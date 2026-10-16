@@ -10,7 +10,7 @@ from pathlib import Path
 
 import httpx
 
-from .indexing import ROOT
+from .indexing import ROOT, active_config_path
 
 
 INSUFFICIENT = "[INSUFFICIENT_EVIDENCE]"
@@ -111,10 +111,10 @@ def answer(query, paper_id, config=None, *, method=None, retriever=None, generat
     from .generation import LocalGenerator
 
     if not isinstance(config, dict):
-        config_path = Path(config or ROOT / "configs/local.json")
+        config_path = Path(config) if config else active_config_path()
         config = json.loads(config_path.read_text())
     else:
-        config_path = ROOT / "configs/local.json"
+        config_path = active_config_path()
     start = time.monotonic()
     experiment_id = "qa-" + uuid.uuid4().hex
     settings = config["generation"]

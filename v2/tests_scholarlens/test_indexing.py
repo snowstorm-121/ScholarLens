@@ -223,6 +223,66 @@ def test_real_vector_store_filters_foreign_paper_before_ranking(stored_pipeline)
     assert "foreign-chunk" not in ids
 
 
+def test_dense_full_paper_scoring_uses_native_get_not_ann(monkeypatch):
+    import scholarlens.framework as framework
+
+    class Collection:
+        metadata = None
+
+        def get(self, *, where, include):
+            assert where == {"$and": [{"paper_id": "p1"}, {"file_id": "file1"}]}
+            assert include == ["embeddings", "metadatas"]
+            return {"ids": ["chunk-b", "chunk-a"],
+                    "embeddings": [[0.0, 1.0], [2.0, 0.0]],
+                    "metadatas": [{"paper_id": "p1", "file_id": "file1"}] * 2}
+
+    def broken_ann(**kwargs):
+        raise RuntimeError("Cannot return the results in a contigious 2D array. Probably ef or M is too small")
+
+    vs = SimpleNamespace(_client=SimpleNamespace(client=Collection()), query=broken_ann)
+    backend = framework.FrameworkBackend(None, None, None, vs, "tester", "fingerprint")
+    monkeypatch.setattr(backend, "source_for", lambda **kwargs: ("file1", {"chunks": 2}))
+    scores, ids = backend.dense_scores([1.0, 0.0], "p1", 2)
+    assert ids == ["chunk-b", "chunk-a"]
+    # Nonunit fixture proves stored vectors are not silently renormalized.
+    assert scores == pytest.approx([np.exp(-2.0), np.exp(-1.0)])
+
+
+@pytest.mark.parametrize("invalid", ["count", "duplicate", "foreign", "metadata", "dimensions",
+                                     "nan", "query_dimensions", "query_nan", "space"])
+def test_exact_dense_rejects_invalid_native_results(monkeypatch, invalid):
+    import scholarlens.framework as framework
+
+    records = {"ids": ["a", "b"], "embeddings": [[1.0, 0.0], [0.0, 1.0]],
+               "metadatas": [{"paper_id": "p1", "file_id": "file1"},
+                             {"paper_id": "p1", "file_id": "file1"}]}
+    vector, count, metadata = [1.0, 0.0], 2, None
+    if invalid == "count":
+        count = 3
+    elif invalid == "duplicate":
+        records["ids"] = ["a", "a"]
+    elif invalid == "foreign":
+        records["metadatas"][1]["file_id"] = "foreign"
+    elif invalid == "metadata":
+        records["metadatas"] = None
+    elif invalid == "dimensions":
+        records["embeddings"] = [[1.0], [0.0]]
+    elif invalid == "nan":
+        records["embeddings"][0][0] = float("nan")
+    elif invalid == "query_dimensions":
+        vector = [[1.0, 0.0]]
+    elif invalid == "query_nan":
+        vector = [float("nan"), 0.0]
+    elif invalid == "space":
+        metadata = {"hnsw:space": "cosine"}
+    collection = SimpleNamespace(metadata=metadata, get=lambda **kwargs: records)
+    vs = SimpleNamespace(_client=SimpleNamespace(client=collection))
+    backend = framework.FrameworkBackend(None, None, None, vs, "tester", "fingerprint")
+    monkeypatch.setattr(backend, "source_for", lambda **kwargs: ("file1", {"chunks": 2}))
+    with pytest.raises(ValueError):
+        backend.dense_scores(vector, "p1", count)
+
+
 def test_resume_after_vector_commit_before_relation_commit(stored_pipeline, monkeypatch):
     pipeline, path, framework = stored_pipeline
     original = framework.record_relationships

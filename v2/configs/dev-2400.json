@@ -1,0 +1,80 @@
+{
+  "dataset_version": "qasper-v0.3",
+  "normalization": "nfc-whitespace-v1",
+  "output_dir": "data/qasper/v0.3",
+  "generation": {
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 8192,
+    "num_predict": 512,
+    "timeout": 180,
+    "think": false,
+    "max_chunks": 5,
+    "context_tokens": 4500
+  },
+  "index": {
+    "name": "ScholarLens QASPER 2400-200",
+    "chunk_size": 2400,
+    "overlap": 200,
+    "alternative_chunk_size": 2400,
+    "batch_size": 32,
+    "embedding": {
+      "model": "nomic-embed-text",
+      "model_digest": "8688dbc0926c1dfdc1b8b7489034e1fedb06f6ac66472dd2d7f0ed6d7d23ba29",
+      "dimensions": 768
+    },
+    "retrieval": {
+      "method": "hybrid",
+      "k1": 1.5,
+      "b": 0.75,
+      "rrf_constant": 60,
+      "branch_k": 20
+    }
+  },
+  "evaluation": {
+    "version": "v1",
+    "seed": 42,
+    "retrieval": {
+      "dev": {
+        "answerable": 160,
+        "unanswerable": 40
+      },
+      "test": {
+        "answerable": 240,
+        "unanswerable": 60
+      }
+    },
+    "generation": {
+      "dev": {
+        "answerable": 40,
+        "unanswerable": 10
+      },
+      "test": {
+        "answerable": 80,
+        "unanswerable": 20
+      }
+    },
+    "dev_review_count": 30
+  },
+  "sources": [
+    {
+      "url": "https://qasper-dataset.s3.us-west-2.amazonaws.com/qasper-train-dev-v0.3.tgz",
+      "local_path": "data/t1/qasper-train-dev-v0.3.tgz",
+      "sha256": "a28fdf966db827bcee3d873107d6b6669864fb7ca8fbf73a192f5e39191bdb5a",
+      "members": {
+        "train": "qasper-train-v0.3.json",
+        "dev": "qasper-dev-v0.3.json"
+      }
+    },
+    {
+      "url": "https://qasper-dataset.s3.us-west-2.amazonaws.com/qasper-test-and-evaluator-v0.3.tgz",
+      "local_path": "data/t1/qasper-test-and-evaluator-v0.3.tgz",
+      "sha256": "72a52a41193e2838b8074f80ac074b94f956b84886c36a61c58a7df4171bdd72",
+      "members": {
+        "test": "qasper-test-v0.3.json"
+      }
+    }
+  ]
+}

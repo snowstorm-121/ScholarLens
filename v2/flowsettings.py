@@ -450,7 +450,8 @@ STORAGE["prefix"] = str(KH_APP_DATA_DIR / "theflow")
 
 # T4: a separate prefixed QASPER collection; keep the original T1 collection intact.
 import json as _scholar_json
-_scholar_index = _scholar_json.loads((this_dir / "configs/local.json").read_text())["index"]
+from scholarlens.indexing import active_config_path as _scholar_config_path
+_scholar_index = _scholar_json.loads(_scholar_config_path().read_text())["index"]
 KH_INDICES.append({
     "name": _scholar_index["name"],
     "index_type": "ktem.index.file.FileIndex",

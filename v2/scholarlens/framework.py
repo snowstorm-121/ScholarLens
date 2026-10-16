@@ -1,12 +1,14 @@
 """Thin adapters over existing file identity tables, LanceDB and Chroma APIs."""
 
 from pathlib import Path
+import math
+
+import numpy as np
 
 from ktem.db.models import engine
 from ktem.index.file.base import BaseFileIndexRetriever
 from ktem.index.file.pipelines import IndexDocumentPipeline, IndexPipeline
 from llama_index.core.readers.base import BaseReader
-from llama_index.core.vector_stores import MetadataFilter, MetadataFilters
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -174,12 +176,27 @@ class FrameworkBackend:
         return docs
 
     def dense_scores(self, vector, paper_id, count):
-        file_id, _ = self.source_for(paper_id=paper_id)
-        # Mandatory storage-side prefilter: the upstream Chroma adapter ignores node_ids.
-        filters = MetadataFilters(filters=[MetadataFilter(key="paper_id", value=paper_id),
-                                            MetadataFilter(key="file_id", value=file_id)])
-        _, scores, ids = self.vs.query(embedding=vector, top_k=count, filters=filters)
-        return scores, ids
+        file_id, note = self.source_for(paper_id=paper_id)
+        collection = self.vs._client.client
+        if (collection.metadata or {}).get("hnsw:space", "l2") != "l2":
+            raise ValueError("Unexpected Chroma distance space")
+        # Enumerate the selected paper natively: filtered ANN cannot guarantee all IDs.
+        stored = collection.get(where={"$and": [{"paper_id": paper_id}, {"file_id": file_id}]},
+                                include=["embeddings", "metadatas"])
+        ids, metadata = stored["ids"], stored["metadatas"]
+        if (len(ids) != count or count != note["chunks"] or len(set(ids)) != count
+                or metadata is None or len(metadata) != count
+                or any(not meta or meta.get("paper_id") != paper_id or meta.get("file_id") != file_id
+                       for meta in metadata)):
+            raise ValueError("Vector/document identity mismatch or foreign retrieval")
+        query = np.asarray(vector, dtype=np.float32)
+        vectors = np.asarray(stored["embeddings"], dtype=np.float32)
+        if (query.ndim != 1 or query.size == 0 or vectors.shape != (count, query.size)
+                or not np.isfinite(query).all() or not np.isfinite(vectors).all()):
+            raise ValueError("Invalid stored/query vector dimensions or nonfinite values")
+        distances = np.sum((vectors - query) ** 2, axis=1)
+        # Preserve the locked adapter's exp(-squared_L2) score contract.
+        return [math.exp(-float(distance)) for distance in distances], ids
 
 
 class ScholarRetrieverPipeline(BaseFileIndexRetriever):
@@ -191,7 +208,8 @@ class ScholarRetrieverPipeline(BaseFileIndexRetriever):
 
     @classmethod
     def get_user_settings(cls):
-        return {"scholar_method": {"name": "ScholarLens retrieval", "value": "hybrid",
+        _, config, _, _ = index_context()
+        return {"scholar_method": {"name": "ScholarLens retrieval", "value": config["index"]["retrieval"]["method"],
                                    "choices": [("BM25", "bm25"), ("Dense", "dense"), ("RRF Hybrid", "hybrid")],
                                    "component": "dropdown"}}
 

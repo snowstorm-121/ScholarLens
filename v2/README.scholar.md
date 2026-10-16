@@ -3,7 +3,7 @@
 This source snapshot reuses [Kotaemon](https://github.com/Cinnamon/kotaemon).
 See `UPSTREAM.md` and the retained `LICENSE.txt`. The T1 application uses upstream indexing,
 vector retrieval, Gradio and citation QA. The project adds QASPER data/evaluation preparation
-and a paper-scoped BM25/Dense/RRF indexing and retrieval adapter. Formal scoring is a later task.
+and a paper-scoped BM25/Dense/RRF indexing and retrieval adapter, with a reproducible evaluation runner.
 
 ## Start on this Mac
 
@@ -23,7 +23,7 @@ bash scripts/start_app.sh
 Open http://127.0.0.1:7860/. Both services use this machine only.
 If a service is already running, reuse it instead of launching a duplicate on the same port.
 Ollama 0.15.6 is installed at `/Applications/Ollama.app`. Models are in
-`/Users/yyy/.ollama/models`, cloned from the original project-local store without downloading again.
+`~/.ollama/models`, cloned from the original project-local store without downloading again.
 Unused project-local Ollama runtimes/model backups and installation archives were removed
 after desktop migration. `uv` remains project-local; its installation cache was cleaned.
 The launcher sets local-only and single-parallel environment variables for this login session;
@@ -186,3 +186,45 @@ Evidence F1 adaptation. Missing/failed answers keep their denominator and zero o
 failure does not erase successfully observed retrieval/context coverage. Empty citation rates are N/A.
 150 tests pass; actual five-question results have failures and are not quality benchmarks.
 Read `reports/t6-evaluation.md`, `reports/t6-interview-log.md`, and `scholarlens/vendor/README.md`.
+
+## T7: bounded Dev comparisons
+
+Status: six Dev retrieval runs and one 50-question generation run completed and recomputed;
+Test remains locked. U3 was completed by the assistant at the user's request; the final configuration freeze remains pending. The candidate is 2400/200 Dense, not a quality-certified final release.
+Independent snapshots are `configs/dev-1600.json` and `configs/dev-2400.json`.
+Set `SCHOLAR_CONFIG` before starting a **new process**, using the same path as `--config`:
+
+```sh
+SCHOLAR_CONFIG="$PWD/configs/dev-2400.json" .venv/bin/python -m scholarlens.cli index \
+  --config configs/dev-2400.json
+SCHOLAR_CONFIG="$PWD/configs/dev-2400.json" .venv/bin/python -m scholarlens.cli evaluate \
+  --config configs/dev-2400.json --split dev --stage retrieval --method hybrid \
+  --experiment-id YOUR_NEW_EXPERIMENT_ID
+```
+
+Do not run these commands concurrently with an active index build or reuse an existing experiment ID.
+The no-environment-variable path remains `configs/local.json`; it is not silently replaced.
+Changing the environment after imports is rejected, and editing an active configuration file during
+an experiment is not supported. A selection snapshot is not authorization to score Test.
+
+T7 Dense reads stored vectors with Chroma's native paper/file metadata filter and computes exact
+squared-L2 scores within that paper. It does not perform whole-library ANN retrieval.
+This fixed a filtered HNSW full-enumeration failure; all old `t7-1600-*-v1` batches are retained but
+invalidated, and selection uses only consistently rerun `*-v2` batches.
+
+The offline analysis phases are `scripts/t7_analyze.py --phase chunk`, `--phase select`, and
+`--phase report`, invoked with `.venv/bin/python`. They require the complete prescribed matrix,
+verify comparison contracts and recompute raw outputs; they do not call models or score Test.
+After the candidate selection exists, use
+`SCHOLAR_CONFIG="$PWD/configs/selected_config.json" .venv/bin/python scripts/t7_verify.py`.
+It additionally audits source spans, actual model context/requests, official batch scores and native
+stores, then compares the selected UI default with CLI on one train retrieval probe (local embedding
+only, no generated answer). See `reports/t7-interview-log.md` for failures and fixes.
+
+All 1,584 papers are present in each collection: 82,491 chunks at 1600/200 and 81,670 at 2400/200.
+The selected Dev EvidenceRecall@5 is 0.649321, AllEvidence@5 is 0.6, and MRR@10 is 0.472617.
+Generation has 9/50 truncation errors, 13/40 answerable refusals, and only 24/30 traced citations;
+the whole-set Answer F1 of 0.251667 is not a semantic correctness guarantee.
+See `reports/dev-retrieval.md`, `reports/dev-generation.md`, `reports/dev-errors.md`, and `reports/t7-u3.md`.
+To launch the candidate explicitly, use `SCHOLAR_CONFIG="$PWD/configs/selected_config.json" bash scripts/start_app.sh`
+in a fresh process. The ordinary launcher still uses unchanged `configs/local.json` (1600/Hybrid).

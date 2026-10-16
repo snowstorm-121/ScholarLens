@@ -47,11 +47,12 @@ ScholarLens 围绕“选论文、问问题、查依据”的流程，构建本�
 证据只有在精确且唯一匹配时才完成定位；无法映射、重复文本歧义和图表依赖分别记录原因。
 缺正文的 1 篇论文及对应 3 道题明确隔离，不补造内容。
 
-上述 1,584 篇论文已全量建立索引，共 82,491 个 chunk；网页新增独立的
-`ScholarLens QASPER 1600-200` collection，原两篇演示论文索引保留。
+上述 1,584 篇论文已全量建立独立的 `1600/200`（82,491 块）与 `2400/200`（81,670 块）索引；
+原两篇演示论文索引保留。默认启动仍使用 `configs/local.json`，不会静默覆盖为 Dev 候选配置。
 问题数量不是已评测题数。已冻结检索 Dev/Test 的 200/300 题，以及其中的生成子集 50/100 题；
 30 道 Dev 已按用户委托完成助手辅助语义审查，非人类独立审核，标注疑点仍保留；
-三路检索对照与生成指标尚未运行。见 [T3 报告](reports/t3-dataset.md) 和 [辅助审查记录](reports/t3-review.md)。
+T7 已完成六组 Dev 检索对照及 50 题生成验证；U3 已按用户委托由助手完成，最终配置冻结仍待处理，Test 未运行。
+见 [T3 报告](reports/t3-dataset.md)、[辅助审查记录](reports/t3-review.md) 和下方 Dev 结果。
 
 ### 带定位的三路检索
 
@@ -61,6 +62,8 @@ ScholarLens 围绕“选论文、问问题、查依据”的流程，构建本�
 
 提供 BM25、Dense 和 RRF Hybrid 三种检索方式。BM25 统计和 Dense metadata 过滤均限定在用户选定论文内；
 Hybrid 融合两路各 Top-20 的排名，不直接相加不同量纲的分数，同分按稳定 chunk_id 排序。
+T7 修复了将 HNSW 查询误作全量枚举的问题：Dense 先从 Chroma 按论文/文件元数据读取已存向量，
+再在该论文范围内精确打分；这里不是全库 ANN 搜索，也不在失败时偷偷切换算法。
 UI 与 CLI 复用同一注册适配层，不启用额外重排、MMR、查询改写或 LLM 相关性评分。
 这仍是单论文问答，不将全量知识库等同于跨论文推理。
 
@@ -81,7 +84,7 @@ bash scripts/start_app.sh
 .venv/bin/python -m pytest tests_scholarlens/test_data.py -q
 ```
 
-当前 150 项测试通过，覆盖数据/题集校验、span、检索与恢复、预算、引用、错误审计，以及指标和运行器。
+当前 184 项测试通过，覆盖数据/题集校验、span、检索与恢复、预算、引用、错误审计，以及指标和运行器。
 重复转换不会追加重复记录；已有输出变化时明确报错，不静默覆盖。
 全量存储计数、真实向量和 UI/CLI 验收见 [T4 报告](reports/t4-indexing.md)；
 训练问题的网页问答烟测不等于正式评测成绩。
@@ -107,9 +110,34 @@ bash scripts/start_app.sh
 EvidenceRecall@1/3/5、AllEvidence@5、MRR@10，以及实际 context 覆盖、引用/拒答/系统错误统计。
 UI 与批量调用同一检索与生成适配层，完整保存实验配置、版本和逐题首次结果，支持同契约续跑。
 
-只完成固定五道 train 的功能验收，不是正式质量成绩：存在检索不足、可回答题拒答和输出截断；
-尚未运行 T7 Dev 对照或 T8 Test。无引用时可追溯率为 N/A，不伪报满分。
+T6 阶段只完成固定五道 train 的功能验收，不是正式质量成绩：存在检索不足、可回答题拒答和输出截断；
+T7 已完成有界 Dev 对照，尚未运行 T8 Test。无引用时可追溯率为 N/A，不伪报满分。
 见 [T6 验收与口径](reports/t6-evaluation.md) 和 [T6 面试排障](reports/t6-interview-log.md)。
+T7 的配置对齐、HNSW 枚举错误和整批失效重跑依据见 [T7 面试排障](reports/t7-interview-log.md)。
+
+### Dev 实测与当前限制
+
+在冻结的 200 道 Dev 中，以 160 道可回答题计算完整 gold 段落覆盖指标。
+按预注册规则先选切分、再在同一 chunk 集选择方法，候选为 **2400/200 + Dense**：
+EvidenceRecall@5=64.93%，AllEvidence@5=60%，MRR@10=0.4726；六组检索均无系统错误。
+Hybrid 在两种切分下都未优于对应 Dense，不将这次结果推广到所有语料。
+完整对照见 [Dev 检索报告](reports/dev-retrieval.md)。
+
+固定生成子集 50 题已包含在上述 Dev 中，不是新增 50 道独立问题；所选方法就是 Dense，仅跑一组。
+整体 Answer F1=0.2517、Evidence F1=0.3767；有 9/50 次输出截断、13/40 次可回答题拒答。
+无答案题为 7/10 正确拒答、2/10 回答、1/10 系统错误；解析出的引用仅 24/30 可追溯。
+可回答题 Answer F1 均值为 0.1396，不能用无答案题得分掩盖其效果。
+引用存在或可定位不等于事实被支持，当前结果不构成质量达标声明。
+见 [生成报告](reports/dev-generation.md)、[错误分析](reports/dev-errors.md) 与 [U3 任务](reports/t7-u3.md)。
+
+候选保存在 `configs/selected_config.json`，标记 `ready_for_test=false`；其状态字段保留了 U3 完成前的候选快照，最终冻结时需刷新。Test 尚未运行。
+若要用候选配置查看应用，请在未占用端口的情况下启动一个新进程：
+
+```sh
+SCHOLAR_CONFIG="$PWD/configs/selected_config.json" bash scripts/start_app.sh
+```
+
+它不会修改 `local.json`；未指定环境变量时仍沿用历史 1600/Hybrid 默认配置。
 
 ```sh
 .venv/bin/python -m scholarlens.cli evaluate --config configs/local.json \
