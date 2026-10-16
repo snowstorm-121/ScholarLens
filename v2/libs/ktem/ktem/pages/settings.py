@@ -382,7 +382,7 @@ class SettingsPage(BasePage):
             statement = select(Settings).where(Settings.user == user_id)
             result = session.exec(statement).all()
             if result:
-                settings = result[0].setting
+                settings = {**settings, **result[0].setting}
 
         output = [settings]
         output += tuple(settings[name] for name in self.component_names())

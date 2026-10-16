@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+from types import SimpleNamespace
 
 import pytest
 
@@ -42,6 +43,27 @@ from scholarlens.indexing import ROOT, active_config_path, index_context
 assert active_config_path() == ROOT / 'configs/local.json'
 assert index_context() == index_context(ROOT / 'configs/local.json')
 """)
+
+
+def test_saved_settings_missing_new_index_option_use_current_default(monkeypatch):
+    import ktem.pages.settings as settings_page
+
+    class SavedSession:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            pass
+
+        def exec(self, statement):
+            return SimpleNamespace(all=lambda: [SimpleNamespace(setting={"old": "saved"})])
+
+    monkeypatch.setattr(settings_page, "Session", lambda engine: SavedSession())
+    page = SimpleNamespace(_settings_dict={"old": "default", "index.options.3.scholar_method": "dense"},
+                           component_names=lambda: ["old", "index.options.3.scholar_method"])
+    state, old, method = settings_page.SettingsPage.load_setting(page)
+    assert state["old"] == old == "saved"
+    assert state["index.options.3.scholar_method"] == method == "dense"
 
 
 def test_new_process_uses_alternative_for_index_registration_and_qa(alternative):

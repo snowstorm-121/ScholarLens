@@ -1,5 +1,9 @@
 # ScholarLens — local operation and verification
 
+ScholarLens is a local assistant for checking claims and experimental details in AI papers.
+Select one paper, ask a question, then inspect the answer's source paragraph and audit trail.
+It is a paper-scoped research prototype, not a cross-paper review agent or production service.
+
 This source snapshot reuses [Kotaemon](https://github.com/Cinnamon/kotaemon).
 See `UPSTREAM.md` and the retained `LICENSE.txt`. The T1 application uses upstream indexing,
 vector retrieval, Gradio and citation QA. The project adds QASPER data/evaluation preparation
@@ -14,10 +18,10 @@ do not also run `ollama serve`. Alternatively, this launcher opens the same app:
 bash scripts/start_ollama.sh
 ```
 
-Then start the RAG application in a terminal from this directory:
+Then start the selected, formally evaluated RAG configuration in a terminal from this directory:
 
 ```sh
-bash scripts/start_app.sh
+SCHOLAR_CONFIG="$PWD/configs/selected_config.json" bash scripts/start_app.sh
 ```
 
 Open http://127.0.0.1:7860/. Both services use this machine only.
@@ -102,7 +106,8 @@ repeat conversions do not append records or silently overwrite changed output.
 T2 conversion alone did not build embeddings. T4 now indexes all 1,584 usable papers into
 82,491 chunks in a separate collection. T3 sampling/freezing and the user-delegated assistant review are complete;
 independent human review was not performed, and reference risks remain documented.
-Test scoring has not run.
+Formal Test scoring is complete; see the T8 results below. The earlier T2/T3/T7 sections
+retain their historical development context.
 
 ## T3: freeze and validate evaluation data
 
@@ -165,6 +170,7 @@ Generation settings live in `configs/local.json`; actual wire requests are captu
 are not converted to refusals or Mock output. Generation is serialized across local processes.
 121 tests pass. Three Dev demos are not a benchmark: one multi-evidence case misses part of gold;
 a synthetic injection case answers the fact but fails the strict output protocol. No Test scoring.
+This sentence describes T5 only; formal T8 Test results are reported below.
 See `reports/t5-qa.md` and `reports/t5-interview-log.md` for retained failures and limitations.
 
 ## T6: reproducible metric/runner acceptance
@@ -179,7 +185,8 @@ See `reports/t5-qa.md` and `reports/t5-interview-log.md` for retained failures a
 
 The last command needs the recorded final T6 smoke artifacts and makes no model calls.
 Train always uses the fixed three-answerable/two-unanswerable smoke set, selected before predictions.
-Dev interfaces are ready; this task did not run Dev comparisons. Test execution is locked until T8 approval.
+At T6, Dev interfaces were ready but comparisons had not run, and Test was still locked.
+T7 and T8 later completed those stages; see below.
 Use `--experiment-id NAME --resume` only with identical code/config/data/runtime; saved failures are not retried.
 Reports include immutable per-question predictions, actual context and independent original-paragraph
 Evidence F1 adaptation. Missing/failed answers keep their denominator and zero official F1; a later model
@@ -190,7 +197,9 @@ Read `reports/t6-evaluation.md`, `reports/t6-interview-log.md`, and `scholarlens
 ## T7: bounded Dev comparisons
 
 Status: six Dev retrieval runs and one 50-question generation run completed and recomputed;
-Test remains locked. U3 was completed by the assistant at the user's request; the final configuration freeze remains pending. The candidate is 2400/200 Dense, not a quality-certified final release.
+the 2400/200 Dense configuration was frozen pending T8 authorization at that time.
+T8 was subsequently authorized and run once; U3 was completed by the assistant at the user's request.
+This is not a quality-certified final release; see `reports/t7-freeze.md`.
 Independent snapshots are `configs/dev-1600.json` and `configs/dev-2400.json`.
 Set `SCHOLAR_CONFIG` before starting a **new process**, using the same path as `--config`:
 
@@ -212,14 +221,20 @@ squared-L2 scores within that paper. It does not perform whole-library ANN retri
 This fixed a filtered HNSW full-enumeration failure; all old `t7-1600-*-v1` batches are retained but
 invalidated, and selection uses only consistently rerun `*-v2` batches.
 
-The offline analysis phases are `scripts/t7_analyze.py --phase chunk`, `--phase select`, and
-`--phase report`, invoked with `.venv/bin/python`. They require the complete prescribed matrix,
-verify comparison contracts and recompute raw outputs; they do not call models or score Test.
-After the candidate selection exists, use
-`SCHOLAR_CONFIG="$PWD/configs/selected_config.json" .venv/bin/python scripts/t7_verify.py`.
-It additionally audits source spans, actual model context/requests, official batch scores and native
-stores, then compares the selected UI default with CLI on one train retrieval probe (local embedding
-only, no generated answer). See `reports/t7-interview-log.md` for failures and fixes.
+The Dev analysis phases `scripts/t7_analyze.py --phase chunk`, `--phase select`, and
+`--phase report` created the historical selection. After freezing, `--phase report` deliberately
+rejects overwriting `configs/selected_config.json`; it is not the replay command. For the current
+configuration, run the verification below with Ollama available. LlamaIndex's local cache already
+contains `punkt_tab`, so this process skips its redundant import-time download call:
+
+```sh
+SCHOLAR_CONFIG="$PWD/configs/selected_config.json" .venv/bin/python -c 'import nltk, runpy; nltk.download = lambda *args, **kwargs: True; runpy.run_path("scripts/t7_verify.py", run_name="__main__")'
+```
+
+This recomputes all saved Dev rows and official batch scores, audits source spans and actual model
+context/requests, checks native stores, and compares the selected UI default with CLI on one train
+retrieval probe (local embedding only, no generated answer or Test scoring). See
+`reports/t7-freeze.md` and `reports/t7-interview-log.md` for the freeze and troubleshooting record.
 
 All 1,584 papers are present in each collection: 82,491 chunks at 1600/200 and 81,670 at 2400/200.
 The selected Dev EvidenceRecall@5 is 0.649321, AllEvidence@5 is 0.6, and MRR@10 is 0.472617.
@@ -228,3 +243,39 @@ the whole-set Answer F1 of 0.251667 is not a semantic correctness guarantee.
 See `reports/dev-retrieval.md`, `reports/dev-generation.md`, `reports/dev-errors.md`, and `reports/t7-u3.md`.
 To launch the candidate explicitly, use `SCHOLAR_CONFIG="$PWD/configs/selected_config.json" bash scripts/start_app.sh`
 in a fresh process. The ordinary launcher still uses unchanged `configs/local.json` (1600/Hybrid).
+
+## T8/T9: formal result and job-search handoff
+
+QASPER v0.3 supplied 1,584 usable paper bodies. Questions and gold evidence were exported
+separately from index inputs. Retrieval Dev/Test contain 200/300 frozen questions; generation
+uses 50/100-question subsets. Assistant-assisted review is not independent human annotation.
+See `reports/t3-dataset.md`, `reports/t3-review.md`, and `configs/evaluation-v1.freeze.json`.
+
+The pipeline is: normalized paper paragraphs → position-preserving chunks → Nomic vectors
+and BM25 index → paper-scoped BM25/Dense/RRF retrieval → Top-5 context → local Qwen answer
+→ exact-quote citation check and audit. `scholarlens/` implements the project-specific data,
+retrieval and evaluation path; the Gradio application, storage and model integrations reuse
+upstream components. The selected 2400/200 Dense configuration was chosen on Dev, then
+held fixed for Test. The six-row chunk/method comparison is in `reports/dev-retrieval.md`.
+
+Under identical 2400/200 Test conditions, BM25/Dense/Hybrid EvidenceRecall@5 was
+0.4654/0.6290/0.5901, respectively, on 240 answerable questions. The local 100-question
+generation subset scored Answer F1 0.3347 and Evidence F1 0.3790; 9 calls truncated,
+22/80 answerable questions were incorrectly refused, and 17/20 unanswerable questions
+were correctly refused. These are sample-specific results, not guarantees. Exact denominators,
+limits and saved-run locations are in `reports/test.md`.
+
+For a live demonstration, filter the **ScholarLens QASPER 2400-200** collection by title,
+select only `Learning to Compose Neural Networks for Question Answering · 1601.01705`,
+ask “Which release of the VQA dataset do the authors use?”, and inspect the citation
+panel. A fresh-process check answered VQA 1.0 and linked paragraph `1601.01705:s7:p1`.
+The selected paper restriction matters: selecting all papers is not a supported cross-paper
+evaluation. Use `reports/t9-demo.md` for the demo status and steps, `reports/t9-failures.md`
+for three distinct failure modes, and `reports/t9-interview.md` for an honest 60-second
+description and resume bullet.
+
+Raw archives, full text, indexes, model files and run artifacts are intentionally ignored
+by Git. This machine has the prepared corpus and models; a new machine must acquire and
+verify the archives listed in `configs/selected_config.json` before indexing. Reproduction
+commands and the verifier are in the T2–T8 sections above. This README does not claim a
+one-command cross-platform installation or a fresh full re-evaluation.
