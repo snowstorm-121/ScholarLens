@@ -225,7 +225,7 @@
     "prompt_version": "scholar-qa-v1",
     "prompt_sha256": "2fb79247a825aa38a7c2296d0f7d2e2e3d914e792b36d4561d75f2e9710481f3",
     "ready_for_test": false,
-    "status": "dev_complete_pending_user_U3",
+    "status": "frozen_pending_T8_authorization",
     "index_descriptor": {
       "fingerprint": "7cdc7972495576359456cbdb0c93afbdc7b04f5fbaed33dce7f44dfabe388c8e",
       "schema": "scholarlens-index-v1",

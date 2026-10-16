@@ -105,6 +105,31 @@ def test_test_split_is_locked_before_any_data_or_model_access():
         runner.select_questions("nonexistent", "test", "generation")
 
 
+def test_test_contract_rejects_unregistered_or_changed_inputs(tmp_path, monkeypatch):
+    monkeypatch.setattr(runner, "ROOT", tmp_path)
+    config = tmp_path / "config.json"
+    frozen = tmp_path / "test.jsonl"
+    contract_path = tmp_path / "contract.json"
+    config.write_text("{}")
+    frozen.write_text("frozen")
+    contract_path.write_text(json.dumps({
+        "config_sha256": runner.sha256(config),
+        "files_sha256": {"test.jsonl": runner.sha256(frozen)},
+        "batches": {"t8-test": {"stage": "retrieval", "method": "dense"}},
+    }))
+    assert runner.validate_test_contract(config, contract_path, "retrieval", "dense",
+                                         "t8-test", None) == runner.sha256(contract_path)
+    with pytest.raises(ValueError, match="pre-registered"):
+        runner.validate_test_contract(config, None, "retrieval", "dense", "t8-test", None)
+    with pytest.raises(ValueError, match="pre-registered stage/method"):
+        runner.validate_test_contract(config, contract_path, "generation", "dense", "t8-test", None)
+    with pytest.raises(ValueError, match="no limit"):
+        runner.validate_test_contract(config, contract_path, "retrieval", "dense", "t8-test", 1)
+    frozen.write_text("changed")
+    with pytest.raises(ValueError, match="file hash changed"):
+        runner.validate_test_contract(config, contract_path, "retrieval", "dense", "t8-test", None)
+
+
 def test_replay_checks_paper_scope():
     replay = runner.RetrievedOnce([{"metadata": {"paper_id": "other"}}], {}, "fp")
     with pytest.raises(ValueError, match="Foreign"):

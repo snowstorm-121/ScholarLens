@@ -51,10 +51,11 @@ def publish_new(path, text):
             temporary.unlink(missing_ok=True)
 
 
-def select_questions(config_path, split, stage, limit=None):
-    # Test execution is intentionally locked until a T8 final-run contract exists.
-    if split not in {"train", "dev"}:
+def select_questions(config_path, split, stage, limit=None, *, test_authorized=False):
+    if split == "test" and not test_authorized:
         raise ValueError("Test scoring is locked until T8 final configuration approval")
+    if split not in {"train", "dev", "test"}:
+        raise ValueError("Unknown evaluation split")
     if stage not in {"retrieval", "generation"}:
         raise ValueError("Unknown evaluation stage")
     if limit is not None and (type(limit) is not int or limit < 1):
@@ -79,9 +80,9 @@ def select_questions(config_path, split, stage, limit=None):
             raise ValueError("Train smoke requires three answerable and two unanswerable questions")
     else:
         folder = corpus / "evaluation" / config["evaluation"]["version"]
-        rows = load_jsonl(folder / "questions.dev.jsonl")
+        rows = load_jsonl(folder / f"questions.{split}.jsonl")
         if stage == "generation":
-            ids = set(json.loads((folder / "generation.dev.ids.json").read_text()))
+            ids = set(json.loads((folder / f"generation.{split}.ids.json").read_text()))
             rows = [q for q in rows if q["question_id"] in ids]
     rows = rows[:limit] if limit is not None else rows
     if len({q["question_id"] for q in rows}) != len(rows):
@@ -143,12 +144,31 @@ def markdown(summary, experiment_id):
     return "\n".join(lines) + "\n"
 
 
+def validate_test_contract(config_path, contract_path, stage, method, experiment_id, limit):
+    if not contract_path or not experiment_id or limit is not None:
+        raise ValueError("Test requires a pre-registered contract, experiment_id, and no limit")
+    contract = json.loads(Path(contract_path).read_text())
+    batch = contract.get("batches", {}).get(experiment_id)
+    if batch != {"stage": stage, "method": method}:
+        raise ValueError("Test batch does not match pre-registered stage/method")
+    if sha256(config_path) != contract["config_sha256"]:
+        raise ValueError("Frozen Test config hash changed")
+    for relative, expected in contract["files_sha256"].items():
+        if sha256(ROOT / relative) != expected:
+            raise ValueError(f"Frozen Test file hash changed: {relative}")
+    return sha256(contract_path)
+
+
 def evaluate(config_path, *, split="train", stage="retrieval", method="hybrid", limit=None,
-             experiment_id=None, resume=False, retriever_factory=None, answer_fn=None, runtime=None):
+             experiment_id=None, resume=False, retriever_factory=None, answer_fn=None, runtime=None,
+             test_contract=None):
     if method not in {"bm25", "dense", "hybrid"}:
         raise ValueError("Unknown retrieval method")
-    root, config, corpus, papers, paragraphs, validation, questions = select_questions(
-        config_path, split, stage, limit)
+    contract_sha = validate_test_contract(config_path, test_contract, stage, method,
+                                          experiment_id, limit) if split == "test" else None
+    selected = (select_questions(config_path, split, stage, limit, test_authorized=True)
+                if split == "test" else select_questions(config_path, split, stage, limit))
+    root, config, corpus, papers, paragraphs, validation, questions = selected
     evaluator_path = Path(__file__).parent / "vendor/qasper_evaluator.py"
     if sha256(evaluator_path) != EVALUATOR["sha256"]:
         raise ValueError("Official evaluator changed")
@@ -166,6 +186,7 @@ def evaluate(config_path, *, split="train", stage="retrieval", method="hybrid", 
                 "corpus_manifest_sha256": sha256(corpus / "corpus_manifest.json"),
                 "freeze_sha256": validation["freeze_sha256"], "index": descriptor,
                 "runtime": runtime if runtime is not None else runtime_snapshot(),
+                **({"test_run_contract_sha256": contract_sha} if contract_sha else {}),
                 "code_sha256": {str(p.relative_to(ROOT)): sha256(p)
                                 for p in sorted((ROOT / "scholarlens").rglob("*.py"))}}
         manifest_path = directory / "manifest.json"

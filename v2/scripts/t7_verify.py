@@ -11,7 +11,7 @@ sys.path.insert(0, str(ROOT))
 
 from scholarlens.data import sha256
 from scholarlens.dataset import load_jsonl, official_gold
-from scholarlens.evaluate import recompute, save_new
+from scholarlens.evaluate import digest, recompute, save_new
 from scholarlens.vendor.qasper_evaluator import evaluate, get_answers_and_evidence
 
 
@@ -65,7 +65,13 @@ def main():
     selected = json.loads((ROOT / "configs/selected_config.json").read_text())
     selection = selected["selection"]
     assert selection["ready_for_test"] is False
-    assert selection["status"] == "dev_complete_pending_user_U3"
+    assert selection["status"] == "frozen_pending_T8_authorization"
+    from scholarlens.qa import PROMPT_VERSION, SYSTEM_PROMPT
+    assert selection["method"] == selected["index"]["retrieval"]["method"]
+    assert selection["chunk_size"] == selected["index"]["chunk_size"]
+    assert selection["system_prompt"] == SYSTEM_PROMPT
+    assert selection["prompt_version"] == PROMPT_VERSION
+    assert selection["prompt_sha256"] == digest(SYSTEM_PROMPT)
     corpus = ROOT / selected["output_dir"]
     papers = {p["paper_id"]: p for p in load_jsonl(corpus / "papers.jsonl")}
     verified = {}
@@ -143,9 +149,9 @@ def main():
     result = {"verified_runs": verified, "storage": storage, "span_texts_verified": True,
               "official_batch_scores_match": True, "actual_generation_requests_verified": True,
               "selected_ui_default_and_cli_train_probe_match": True,
-              "candidate_sha256": sha256(ROOT / "configs/selected_config.json"),
-              "user_U3": "pending", "test_scoring": False}
-    target = ROOT / "artifacts/t7/final-verification.json"
+              "frozen_config_sha256": sha256(ROOT / "configs/selected_config.json"),
+              "user_U3": "assistant_completed_at_user_request", "test_scoring": False}
+    target = ROOT / "artifacts/t7/frozen-verification.json"
     if target.exists():
         assert json.loads(target.read_text()) == result
     else:

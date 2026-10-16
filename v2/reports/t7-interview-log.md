@@ -1,6 +1,6 @@
 # T7 Dev 对照：实施与面试复盘
 
-日期：2026-10-15 开始，2026-10-16 完成工程跑批、机器核验和受用户委托的 U3。最终 Test 冻结仍待完成，不冒称全部 T7 完成。
+日期：2026-10-15 开始，2026-10-16 完成工程跑批、机器核验、受用户委托的 U3 和最终配置冻结。正式 Test 仍待授权与执行。
 
 范围：1600/200 三路检索、一次 2400/200 Hybrid 切分对照、胜出切分三路比较、
 固定 50 题生成 Dev 的 Dense 基线/所选方案。复用 T6 的同一 pipeline 和指标，保留全部首次结果。
@@ -9,8 +9,8 @@
 ## 执行分工与学习边界
 
 代码和跑批由助手完成。最初计划将 U3 留给用户；用户后来明确委托助手完成两个真实案例判断和一条审计回归测试。
-因此 U3 记为“助手按用户委托完成”，不记作用户独立分析或亲手改码。selected_config 仍是候选，
-ready_for_test=false；其中 pending_user_U3 是生成候选时的历史状态，须在单独最终冻结时刷新，不能称为已冻结 T8 方案。
+因此 U3 记为“助手按用户委托完成”，不记作用户独立分析或亲手改码。原候选的 pending_user_U3 是生成时的历史状态；
+后续已刷新为 frozen_pending_T8_authorization，ready_for_test=false，冻结依据见 [T7 冻结记录](t7-freeze.md)。
 
 ## 问题一：写 --config 不等于注册工厂真的切换了索引
 
@@ -138,6 +138,15 @@ Hybrid 在 1600/200 的 EvidenceRecall@5 为 0.587133，在 2400/200 为 0.60052
 - 发布复核：候选配置原先把七个实验目录写成这台机器的绝对路径；同步前改为项目相对的 `artifacts/evaluation/...` 路径，未更改检索/生成参数与实验记录。GitHub 不包含这些被忽略的运行产物，故克隆仓库后仍需先按数据准备流程建立本地 corpus/index 和评测 artifacts，才能执行完整离线验收。
 - 发布前核验：用相对目录读取并复算七组既有结果均通过；随后完整 `scripts/t7_verify.py` 在 UI/CLI 检索探针调用本机 embedding 服务时失败，当前 Ollama 未连接。启动时 NLTK 还尝试联网补 `punkt_tab`，网络访问被环境拒绝。没有安装/下载或伪报整体验收通过；U3 定向测试和 V2 全量测试均已通过，最终候选冻结时仍需在 Ollama 可用环境重新完成整体验收。
 
+## 问题九：本地服务已监听，沙箱连接失败与重复下载检查需要分开定位
+
+- 冻结前普通 `curl` 报无法连接；`lsof` 显示 Ollama 正在 `127.0.0.1:11434` 监听。允许本地只读连接后，API 返回 Qwen 和 Nomic 两个模型，digest 与配置一致。因此普通 `curl` 的失败不能证明桌面服务未启动。
+- NLTK 默认路径查询报告没有 `punkt_tab`，但 LlamaIndex 的包内缓存实际已有 `punkt_tab/english` 和 stopwords。追踪到其导入代码检查旧的 `tokenizers/punkt` 路径，缺失后又调用 `nltk.download("punkt_tab")`；这是重复下载尝试，不是当前实际 tokenizer 数据缺失。
+- 只在本次验收进程里跳过这一次下载调用，保留包内已有真实 tokenizer 数据；另外用实际 `word_tokenize("The model works.")` 得到 `['The', 'model', 'works', '.']`，并读到 179 个英文 stopwords，确认资源可用。未修改依赖、未下载文件。第一次完整复核通过全部实质校验后，在最后的历史快照相等断言失败：旧快照的候选哈希为 `c1dc7593…`，相对路径改动后的哈希为 `d55863d3…`。保留旧快照，冻结配置另写 `artifacts/t7/frozen-verification.json`。
+- 新验收完整通过：七个 Dev 批次、原文/context/prompt、官方批量计分、两套全量原生存储与 UI/CLI train 检索均核对成功。冻结配置 SHA-256 为 `e20e8a29e2e22274f6bd04d955427fdb4f01588e67c02fa7f5343703cc15a6cd`；Test 仍锁定。
+- 冻结后重跑历史 `t7_analyze.py --phase report`，其 `save_same` 如设计拒绝覆盖已变更状态的 `selected_config.json`。把当前复核入口改为 `t7_verify.py`；后者复算七组原始记录，也核对真实索引和 train 探针。
+- 面试要点：遇到连接失败先分辨服务监听与进程访问权限；遇到下载提示先检查实际资源是否已经存在；历史验收产物应保留，配置变更生成新快照。
+
 ## 最终机器验收与真实质量边界
 
 - 六组检索逐题复算一致；候选 2400/200 Dense，索引指纹 `7cdc7972495576359456cbdb0c93afbdc7b04f5fbaed33dce7f44dfabe388c8e`。
@@ -145,8 +154,8 @@ Hybrid 在 1600/200 的 EvidenceRecall@5 为 0.587133，在 2400/200 为 0.60052
 - 14 次 ok、7 次 invalid_output、20 次规范拒答、9 次 output_truncated。可回答题拒答 13/40；无答案题为正确拒答 7、回答 2、系统错误 1。
 - 引用解析合规 19/21，可追溯 24/30；两者分母不同，均不是“50 题中答案正确的比例”。
 - 生成子集 Context EvidenceRecall=0.729167，与该子集检索覆盖一致，未观察到预算裁剪损失；不能与 160 道可回答检索 Dev 的 0.649321 直接相减宣称生成提高了召回。
-- 先前完整 `scripts/t7_verify.py` 核验通过：所有结果原文 span、实际 context/prompt/wire 请求、官方批量计分一致；两套全量索引的文档/向量/Chroma/Lance 数均匹配，原 T1 2 篇/28 块保留。候选 UI 默认与 CLI 的 train 检索一致，不渲染联网 Help 页面。发布前将候选路径改成相对路径后再运行，七个既有批次和离线复算通过，但 Ollama 离线导致 UI/CLI train 探针未能完成；不可把此前旧路径快照的通过结果说成此次重跑也完整通过。
-- 最终回归：V2 185 项通过（16.37 秒）、原 V0 11 项通过；U3 定向测试 6 项通过。未安装依赖、未下载新模型，Test 实验 manifest 数为 0。用户授权后将 25 个 V2 文件提交并推送到 GitHub `main`，提交 `8ca8813b85d7262006f22eb51c2689c77c8d0449`；远端 `main` SHA 已核对一致。原有 T6 提交也一并快进发布。
-- selected_config.json 是带来源契约的候选，SHA-256 为 `d55863d3d7253889337383b76eddc3c51027b57792a2c1c2aa04a2469babf6fc`，ready_for_test=false；其状态字段仍反映 U3 完成前的快照。U3 已由助手按用户委托完成，最终冻结仍待单独执行；Test 未运行。
+- 当前 `scripts/t7_verify.py` 已再次完整核验：所有结果原文 span、实际 context/prompt/wire 请求、官方批量计分一致；两套全量索引的文档/向量/Chroma/Lance 数均匹配，原 T1 2 篇/28 块保留。冻结配置下的 UI 默认与 CLI train 检索一致，不渲染联网 Help 页面。包内已有 tokenizer 数据，本轮未下载资源。
+- 上次发布回归：V2 185 项通过（16.37 秒）、原 V0 11 项通过；U3 定向测试 6 项通过。上次将 25 个 V2 文件提交并推送 GitHub `main`，最终提交 `a6b6c6a63312220bbf1e35db84333d4275db8ef3`。本次冻结后 V2 回归重新运行，185 passed（16.49 秒）；直接调用 Test 选择函数仍抛出锁定错误，本次改动尚未推送。
+- `selected_config.json` 已冻结，SHA-256 为 `e20e8a29e2e22274f6bd04d955427fdb4f01588e67c02fa7f5343703cc15a6cd`，状态 `frozen_pending_T8_authorization`，ready_for_test=false；U3 由助手按用户委托完成，Test 未运行。
 
 可用于面试的短述：在固定公开论文语料和 Dev 上比较三路检索、两种切分，按事前规则选 Dense；不仅报告检索指标，还保留生成截断、错误拒答与无效引用，逐层复核证据链。当前完成的是可复核实验，不是生产级问答质量认证。

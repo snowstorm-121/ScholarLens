@@ -38,6 +38,7 @@ def main():
     command.add_argument("--limit", type=int)
     command.add_argument("--experiment-id")
     command.add_argument("--resume", action="store_true")
+    command.add_argument("--test-contract")
     args = parser.parse_args()
     if args.command == "prepare":
         result = prepare(args.config, args.sample_train)
@@ -55,7 +56,8 @@ def main():
     elif args.command == "evaluate":
         from .evaluate import evaluate
         result = evaluate(args.config, split=args.split, stage=args.stage, method=args.method,
-                          limit=args.limit, experiment_id=args.experiment_id, resume=args.resume)
+                          limit=args.limit, experiment_id=args.experiment_id, resume=args.resume,
+                          test_contract=args.test_contract)
     else:
         result = validate_dataset(args.config)
     print(json.dumps(result, ensure_ascii=False, indent=2))
