@@ -1,6 +1,6 @@
-# ScholarLens V2：实现与复核
+# ScholarLens：实现与复核
 
-项目入口、场景和正式成绩见[仓库首页](../README.md)。这里记录 V2 的实际数据流、运行入口和可核对边界。它是**选定论文范围内**的本地 RAG，不是跨论文综述系统。
+项目入口、场景和正式成绩见[仓库首页](README.md)。这里记录实际数据流、运行入口和可核对边界。它是**选定论文范围内**的本地 RAG，不是跨论文综述系统。
 
 ## 系统如何工作
 
@@ -14,9 +14,9 @@
 
 ## 本机运行
 
-已验证环境为 Apple M5/16GB、Python 3.10.22、Ollama 0.15.6，模型 `nomic-embed-text` 与 `qwen3:4b-instruct-2507-q4_K_M`。本机已有完整语料和索引；新机器需要网络、磁盘空间，并重新获取校验数据、安装锁定依赖、建库。详细约束、依赖警告与历史排障见 [本地运行指南](README.scholar.md)，以下不是跨平台一键安装保证。
+已验证环境为 Apple M5/16GB、Python 3.10.22、Ollama 0.15.6，模型 `nomic-embed-text` 与 `qwen3:4b-instruct-2507-q4_K_M`。本机已有完整语料和索引；新机器需要网络、磁盘空间，并重新获取校验数据、安装锁定依赖、建库。详细约束、依赖警告与历史排障见 [本地运行指南](LOCAL_SETUP.md)，以下不是跨平台一键安装保证。
 
-在已经准备好 `.venv`、模型和索引的 `v2/` 目录：
+在已经准备好 `.venv`、模型和索引的仓库根目录：
 
 ```sh
 # 先打开 Ollama 桌面应用，然后在新终端进程使用正式选定配置
@@ -50,6 +50,6 @@ SCHOLAR_CONFIG="$PWD/configs/selected_config.json" .venv/bin/python -m scholarle
 .venv/bin/python scripts/t8_verify.py  # 需要本机保留的正式运行产物
 ```
 
-当前本机 V2 为 **187 passed**，T8 离线复算通过；旧 V0 另有 11 项 unittest 通过，但 V0 不属于本仓库发布内容。运行与问题处理记录见 [T1–T4](reports/t1-t4-interview-log.md)、[T5](reports/t5-interview-log.md)、[T6](reports/t6-interview-log.md)、[T7](reports/t7-interview-log.md)、[T8](reports/t8-interview-log.md) 和 [T9](reports/t9-interview-log.md)。[演示记录](reports/t9-demo.md)明确标明视频未完成，不能以文字记录代替视频。
+当前本机项目回归测试为 **187 passed**，T8 离线复算通过。运行与问题处理记录见 [T1–T4](reports/t1-t4-interview-log.md)、[T5](reports/t5-interview-log.md)、[T6](reports/t6-interview-log.md)、[T7](reports/t7-interview-log.md)、[T8](reports/t8-interview-log.md) 和 [T9](reports/t9-interview-log.md)。[演示记录](reports/t9-demo.md)明确标明视频未完成，不能以文字记录代替视频。
 
 数据来自 [QASPER](https://huggingface.co/datasets/allenai/qasper)；标注许可、论文权利、Kotaemon 上游版本和保留的版权信息见 [来源清单](UPSTREAM.md)。
