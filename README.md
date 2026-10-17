@@ -67,8 +67,6 @@ ScholarLens/
 ├── assets/                       # README 的真实界面截图
 ├── docs/
 │   └── project/                 # 项目技术说明与本地运行指南
-├── legacy/
-│   └── upstream/                # 不再支持的上游部署与示例入口
 ├── pyproject.toml, uv.lock       # Python 项目定义与锁定依赖
 ├── UPSTREAM.md                   # 上游来源与复用边界
 └── LICENSE.txt                   # 保留的上游许可证
