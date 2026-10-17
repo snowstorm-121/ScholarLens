@@ -2,13 +2,21 @@
 
 **让论文问答回到原文。** ScholarLens 是面向 AI 论文阅读的本地 RAG 助手：选定一篇论文，询问方法、数据集或实验设置，查看回答引用的原文段落，并追踪检索、上下文和生成过程。
 
-`本地运行` · `论文范围检索` · `可定位引用` · `冻结评测`
+<p align="center">
+  <img alt="Local-first" src="https://img.shields.io/badge/Local--first-Ollama-2F855A?style=for-the-badge" />
+  <img alt="Paper-scoped" src="https://img.shields.io/badge/Search-Paper--scoped-2563EB?style=for-the-badge" />
+  <img alt="Evidence-linked" src="https://img.shields.io/badge/Answers-Evidence--linked-7C3AED?style=for-the-badge" />
+</p>
 
-[快速开始](#快速开始) · [系统如何工作](#系统如何工作) · [评测结果](#评测结果) · [复现与边界](#复现与边界)
+[快速开始](#快速开始) · [系统如何工作](#系统如何工作) · [项目结构](#项目结构) · [评测结果](#评测结果) · [复现与边界](#复现与边界)
 
 ![ScholarLens 真实本地界面：问题、答案和右侧原文证据](assets/scholarlens-demo.png)
 
 <sub>真实本地截图：公开 QASPER 论文 *Learning to Compose Neural Networks for Question Answering* 的演示问答。截图中的成功示例不计入正式评测成绩。</sub>
+
+| 📚 知识库 | 🧪 冻结 Test | 🔎 查询范围 |
+|:---:|:---:|:---:|
+| 1,584 篇可用论文 | 300 道检索题 | 用户选定的单篇论文 |
 
 ## 为什么做这个项目
 
@@ -39,6 +47,41 @@ flowchart LR
 ```
 
 正文与 QASPER 原有的问题、答案、证据标注**分开导出**，标注不进入检索索引。Gold evidence 绑定原文位置，不绑定某次切分产生的 chunk ID。两种实验索引为 `1600/200`、`2400/200` 字符切分；最终配置 `2400/200 + Dense` 由 Dev 选择。代码数据流见 [技术说明](TECHNICAL.md)。
+
+## 项目结构
+
+以下只列主要入口；原始论文、模型、索引和逐题运行产物在本机保存，不提交 Git。
+
+```text
+ScholarLens/
+├── app.py                       # 网页应用入口
+├── flowsettings.py              # 本地模型与存储资源配置
+├── scholarlens/                  # 本项目的数据、检索、问答与评测逻辑
+├── libs/                         # 复用的 Kotaemon / Ktem 框架组件
+├── configs/                      # 冻结数据版本、实验与最终运行配置
+├── scripts/                      # 启动、数据检查和结果复核入口
+├── tests_scholarlens/            # 项目回归测试
+├── reports/                      # Dev/Test 成绩、错误案例与排障记录
+├── assets/                       # README 的真实界面截图
+├── pyproject.toml, uv.lock       # Python 项目定义与锁定依赖
+├── TECHNICAL.md                  # 数据流、命令与评测口径
+├── LOCAL_SETUP.md                # 新机器准备与本地运行说明
+├── UPSTREAM.md                   # 上游来源与复用边界
+└── LICENSE.txt                   # 保留的上游许可证
+```
+
+<details>
+<summary>按问题找代码：展开关键模块导航</summary>
+
+| 想了解什么 | 从哪里看 |
+|---|---|
+| QASPER 如何变成可定位的论文正文与评测题 | [`data.py`](scholarlens/data.py)、[`dataset.py`](scholarlens/dataset.py) |
+| Chunk、向量和论文范围内的三路检索 | [`indexing.py`](scholarlens/indexing.py)、[`embedding.py`](scholarlens/embedding.py)、[`retrieval.py`](scholarlens/retrieval.py) |
+| Top-k 如何进入回答、引用如何校验 | [`context.py`](scholarlens/context.py)、[`qa.py`](scholarlens/qa.py)、[`generation.py`](scholarlens/generation.py) |
+| 指标如何计算、逐题结果如何保存 | [`metrics.py`](scholarlens/metrics.py)、[`evaluate.py`](scholarlens/evaluate.py) |
+| 网页和命令行入口 | [`app.py`](app.py)、[`ui.py`](scholarlens/ui.py)、[`cli.py`](scholarlens/cli.py) |
+
+</details>
 
 ## 评测结果
 
