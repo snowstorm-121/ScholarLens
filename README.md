@@ -46,29 +46,35 @@ flowchart LR
     J --> K[引用校验 + 审计记录]
 ```
 
-正文与 QASPER 原有的问题、答案、证据标注**分开导出**，标注不进入检索索引。Gold evidence 绑定原文位置，不绑定某次切分产生的 chunk ID。两种实验索引为 `1600/200`、`2400/200` 字符切分；最终配置 `2400/200 + Dense` 由 Dev 选择。代码数据流见 [技术说明](TECHNICAL.md)。
+正文与 QASPER 原有的问题、答案、证据标注**分开导出**，标注不进入检索索引。Gold evidence 绑定原文位置，不绑定某次切分产生的 chunk ID。两种实验索引为 `1600/200`、`2400/200` 字符切分；最终配置 `2400/200 + Dense` 由 Dev 选择。代码数据流见 [技术说明](docs/project/TECHNICAL.md)。
 
 ## 项目结构
 
-以下只列主要入口；原始论文、模型、索引和逐题运行产物在本机保存，不提交 Git。
+以下只列主要入口。`data/`、`artifacts/`、`ktem_app_data/` 和 `.venv/` 是本机运行目录，不提交 Git；它们仍在根目录，因为当前配置和冻结评测记录引用这些路径。
 
 ```text
 ScholarLens/
 ├── app.py                       # 网页应用入口
 ├── flowsettings.py              # 本地模型与存储资源配置
-├── scholarlens/                  # 本项目的数据、检索、问答与评测逻辑
+├── t1_components.py             # 旧版框架检索设置；模块路径需兼容已存配置
+├── t1_ollama.py                 # 本地模型适配；模块路径需兼容已存配置
+├── scholarlens/                  # 数据、检索、问答与评测逻辑
 ├── libs/                         # 复用的 Kotaemon / Ktem 框架组件
 ├── configs/                      # 冻结数据版本、实验与最终运行配置
 ├── scripts/                      # 启动、数据检查和结果复核入口
 ├── tests_scholarlens/            # 项目回归测试
 ├── reports/                      # Dev/Test 成绩、错误案例与排障记录
 ├── assets/                       # README 的真实界面截图
+├── docs/
+│   └── project/                 # 项目技术说明与本地运行指南
+├── legacy/
+│   └── upstream/                # 不再支持的上游部署与示例入口
 ├── pyproject.toml, uv.lock       # Python 项目定义与锁定依赖
-├── TECHNICAL.md                  # 数据流、命令与评测口径
-├── LOCAL_SETUP.md                # 新机器准备与本地运行说明
 ├── UPSTREAM.md                   # 上游来源与复用边界
 └── LICENSE.txt                   # 保留的上游许可证
 ```
+
+`templates/`、`settings.yaml.example` 和两个 `t1_*.py` 仍留在根目录：复用组件或本机已保存的配置按这些旧路径读取，移动它们会破坏兼容性。
 
 <details>
 <summary>按问题找代码：展开关键模块导航</summary>
@@ -80,6 +86,7 @@ ScholarLens/
 | Top-k 如何进入回答、引用如何校验 | [`context.py`](scholarlens/context.py)、[`qa.py`](scholarlens/qa.py)、[`generation.py`](scholarlens/generation.py) |
 | 指标如何计算、逐题结果如何保存 | [`metrics.py`](scholarlens/metrics.py)、[`evaluate.py`](scholarlens/evaluate.py) |
 | 网页和命令行入口 | [`app.py`](app.py)、[`ui.py`](scholarlens/ui.py)、[`cli.py`](scholarlens/cli.py) |
+| 本地模型适配与旧版框架检索设置 | [`t1_ollama.py`](t1_ollama.py)、[`t1_components.py`](t1_components.py)；保留根目录模块名以兼容已有模型配置 |
 
 </details>
 
@@ -99,7 +106,7 @@ ScholarLens/
 
 ## 快速开始
 
-已验证环境：MacBook M5 / 16 GB、Python 3.10.22、Ollama 0.15.6。需要先准备本地 QASPER 数据、索引、锁定依赖以及 `nomic-embed-text`、`qwen3:4b-instruct-2507-q4_K_M` 模型；这些大文件**不包含在仓库中**。新机器请先按 [环境、数据与建库说明](LOCAL_SETUP.md)准备，以下是**已准备好环境**的启动命令。
+已验证环境：MacBook M5 / 16 GB、Python 3.10.22、Ollama 0.15.6。需要先准备本地 QASPER 数据、索引、锁定依赖以及 `nomic-embed-text`、`qwen3:4b-instruct-2507-q4_K_M` 模型；这些大文件**不包含在仓库中**。新机器请先按 [环境、数据与建库说明](docs/project/LOCAL_SETUP.md)准备，以下是**已准备好环境**的启动命令。
 
 1. 打开 Ollama 桌面应用。
 2. 在仓库根目录运行：
@@ -110,7 +117,7 @@ SCHOLAR_CONFIG="$PWD/configs/selected_config.json" bash scripts/start_app.sh
 
 3. 打开 `http://127.0.0.1:7860/`，在 **ScholarLens QASPER 2400-200** 集合中只选一篇论文。可搜索 `Compose Neural Networks`，选择 `1601.01705`，提问 `Which release of the VQA dataset do the authors use?`，再点击引用查看原文。这是演示，不是正式成绩。
 
-命令行检索、问答、数据准备、建库和评测入口见 [技术说明](TECHNICAL.md)。
+命令行检索、问答、数据准备、建库和评测入口见 [技术说明](docs/project/TECHNICAL.md)。
 
 ## 复现与边界
 

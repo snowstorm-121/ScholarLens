@@ -5,11 +5,13 @@ Select one paper, ask a question, then inspect the answer's source paragraph and
 It is a paper-scoped research prototype, not a cross-paper review agent or production service.
 
 This source snapshot reuses [Kotaemon](https://github.com/Cinnamon/kotaemon).
-See `UPSTREAM.md` and the retained `LICENSE.txt`. The T1 application uses upstream indexing,
+See [UPSTREAM.md](../../UPSTREAM.md) and the retained [LICENSE.txt](../../LICENSE.txt). The T1 application uses upstream indexing,
 vector retrieval, Gradio and citation QA. The project adds QASPER data/evaluation preparation
 and a paper-scoped BM25/Dense/RRF indexing and retrieval adapter, with a reproducible evaluation runner.
 
 ## Start on this Mac
+
+Run the shell commands in this guide from the repository root unless noted otherwise.
 
 Open **Ollama** from Applications first. The desktop app manages the model server;
 do not also run `ollama serve`. Alternatively, this launcher opens the same app:
@@ -18,7 +20,7 @@ do not also run `ollama serve`. Alternatively, this launcher opens the same app:
 bash scripts/start_ollama.sh
 ```
 
-Then start the selected, formally evaluated RAG configuration in a terminal from this directory:
+Then start the selected, formally evaluated RAG configuration in a terminal from the repository root:
 
 ```sh
 SCHOLAR_CONFIG="$PWD/configs/selected_config.json" bash scripts/start_app.sh
