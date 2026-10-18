@@ -1,18 +1,14 @@
-# Upstream source and ScholarLens adaptations
+# 上游来源与项目改动
 
-- Project: https://github.com/Cinnamon/kotaemon
-- Commit: `9ad3e4e49aa35b8acddd235918a5d9753c1cfdf9`
-- Imported: 2026-10-14, source archive without a nested `.git`.
-- License: preserved in `LICENSE.txt`; upstream attribution remains.
-- Unused upstream Docker/Fly, SSO and docs-build scaffolding is not included in this ScholarLens source tree; it remains available at the upstream commit above. The supported local launch path is `app.py` via `scripts/start_app.sh`.
-- Reused: Gradio application, file collections, indexing/retrieval, model adapters and QA/citation components.
-- T1 changes: local-only configuration, default retrieval settings, concise inline-citation prompt and legacy SDK parameter bridge; project-local tools and independent Python environment.
-- Tested model: official `qwen3:4b-instruct-2507-q4_K_M`; original `qwen3:4b` did not complete the constrained QA output reliably in these diagnostics.
-- T2 changes: `scholarlens/data.py`, `scholarlens/cli.py`, `configs/local.json` and `tests_scholarlens/` add QASPER corpus/annotation separation, stable paragraph spans, archive/hash validation and deterministic conversion. See `reports/t2-data.md`.
-- T3 changes: `scholarlens/dataset.py` adds deterministic filtering/sampling, official-format gold exports, immutable freeze snapshots and structural validation. User-delegated assistant semantic review covers 30 Dev questions, not independent human verification; reference risks are documented. See `reports/t3-dataset.md` and `reports/t3-review.md`.
-- T4 additions: `scholarlens/indexing.py`, `embedding.py`, `framework.py`, `build_index.py` and `retrieval.py` implement a QASPER reader and shared FileIndex adapters, paragraph-preserving chunks, role-prefixed Nomic embeddings, stable identity/resumption, paper-scoped BM25/Dense and deterministic RRF. LanceDB/Chroma and SQL file identity tables remain upstream components. See `reports/t4-indexing.md` for verification status.
-- T5 additions: shared ScholarQA/CLI answer pipeline, Qwen tokenizer-based whole-block budgets, native Ollama request/response audits, strict context/exact-quote citation checks, error/refusal separation and thin title/evidence UI extensions. Existing application, model and citation components remain reused. Three Dev demos and retained failures are documented in `reports/t5-qa.md`; user oral review remains pending.
-- T6 additions: full-span evidence coverage metrics, shared-pipeline train/Dev runner, atomic immutable records, runtime-bound resume and offline recomputation. Official QASPER evaluator is vendored unchanged from allenai/qasper-led-baseline commit `e996b6c7b1b5f95d9308a74e3586416c6e780df1`, with Apache license/source/hash in `scholarlens/vendor/`. Batch factory initializes the registered selector without rendering unrelated Help pages. Only five train smoke questions were run; user manual understanding remains pending.
-- T7 additions: process-pinned active configuration, independent full-corpus 2400/200 collection, exact paper-scoped Dense scoring over Chroma's native metadata-filtered stored vectors (replacing unreliable filtered HNSW full enumeration), bounded Dev matrix/selection and first-output generation review. Six retrieval runs and one 50-question generation run completed; all invalidated v1 batches remain recorded. U3 case analysis and audit regression were completed by the assistant at the user's request. The 2400/Dense selection is recorded in `reports/t7-freeze.md`.
-- T8 additions: separate one-time Test contract, immutable 300-question three-method retrieval and 100-question Dense generation runs, offline verification and fixed-sample answer/citation review. This changed the project CLI and evaluator, not upstream retrieval/generation rules; see `reports/test.md` and `reports/t8-interview-log.md`.
-- T9 correction: `libs/ktem/ktem/pages/settings.py` now merges an older saved settings row into current defaults, preserving newly added index-option keys. One regression test in `tests_scholarlens/test_active_config.py` covers the actual stale-row failure. T9 reports/README document results and limits; see `reports/t9-interview-log.md`.
+ScholarLens 复用 [Kotaemon](https://github.com/Cinnamon/kotaemon) 的应用框架，固定上游提交为 `9ad3e4e49aa35b8acddd235918a5d9753c1cfdf9`（2026-10-14 导入源码快照）。上游许可证保留在 [LICENSE.txt](LICENSE.txt)。未使用的 Docker/Fly、SSO 和文档构建文件没有纳入本仓库；本地启动入口为 `app.py` 和 `scripts/start_app.sh`。
+
+## 复用与改动边界
+
+- **复用：** Gradio 应用、文件集合、SQL 文件身份表、LanceDB/Chroma 存储，以及部分模型和问答引用组件。
+- **论文数据：** `scholarlens/data.py`、`scholarlens/dataset.py` 处理 QASPER 正文与标注分离、段落位置、哈希校验和评测集冻结。
+- **检索与问答：** `scholarlens/indexing.py`、`scholarlens/retrieval.py`、`scholarlens/qa.py` 等实现可定位的切分、论文范围内 BM25/Dense/RRF 排名、上下文预算、Ollama 调用和引用审计。部分本地配置和适配仍依赖上游组件。
+- **评测：** `scholarlens/metrics.py`、`scholarlens/evaluate.py` 记录逐题指标、运行配置和离线复算。官方 QASPER evaluator 来自 [allenai/qasper-led-baseline](https://github.com/allenai/qasper-led-baseline) 提交 `e996b6c7b1b5f95d9308a74e3586416c6e780df1`，其来源、许可证和哈希保留在 `scholarlens/vendor/`。
+
+## 验证边界
+
+30 道 Dev 题的语义检查由助手按委托完成，不是独立人工 gold 审查；标注风险见 [T3 审查记录](reports/t3-review.md)。冻结 Test 的配置、分母和结果见 [Test 报告](reports/test.md)。各阶段的实现、排障和验收记录保留在 [reports/](reports/)。
