@@ -173,7 +173,7 @@ are not converted to refusals or Mock output. Generation is serialized across lo
 121 tests pass. Three Dev demos are not a benchmark: one multi-evidence case misses part of gold;
 a synthetic injection case answers the fact but fails the strict output protocol. No Test scoring.
 This sentence describes T5 only; formal T8 Test results are reported below.
-See `reports/t5-qa.md` and `reports/t5-interview-log.md` for retained failures and limitations.
+See `reports/t5-qa.md` for retained failures and limitations.
 
 ## T6: reproducible metric/runner acceptance
 
@@ -194,13 +194,13 @@ Reports include immutable per-question predictions, actual context and independe
 Evidence F1 adaptation. Missing/failed answers keep their denominator and zero official F1; a later model
 failure does not erase successfully observed retrieval/context coverage. Empty citation rates are N/A.
 150 tests pass; actual five-question results have failures and are not quality benchmarks.
-Read `reports/t6-evaluation.md`, `reports/t6-interview-log.md`, and `scholarlens/vendor/README.md`.
+Read `reports/t6-evaluation.md` and `scholarlens/vendor/README.md`.
 
 ## T7: bounded Dev comparisons
 
 Status: six Dev retrieval runs and one 50-question generation run completed and recomputed;
 the 2400/200 Dense configuration was frozen pending T8 authorization at that time.
-T8 was subsequently authorized and run once; U3 was completed by the assistant at the user's request.
+T8 was subsequently run once; the U3 case analysis is recorded separately.
 This is not a quality-certified final release; see `reports/t7-freeze.md`.
 Independent snapshots are `configs/dev-1600.json` and `configs/dev-2400.json`.
 Set `SCHOLAR_CONFIG` before starting a **new process**, using the same path as `--config`:
@@ -236,7 +236,7 @@ SCHOLAR_CONFIG="$PWD/configs/selected_config.json" .venv/bin/python -c 'import n
 This recomputes all saved Dev rows and official batch scores, audits source spans and actual model
 context/requests, checks native stores, and compares the selected UI default with CLI on one train
 retrieval probe (local embedding only, no generated answer or Test scoring). See
-`reports/t7-freeze.md` and `reports/t7-interview-log.md` for the freeze and troubleshooting record.
+`reports/t7-freeze.md` for the freeze and troubleshooting record.
 
 All 1,584 papers are present in each collection: 82,491 chunks at 1600/200 and 81,670 at 2400/200.
 The selected Dev EvidenceRecall@5 is 0.649321, AllEvidence@5 is 0.6, and MRR@10 is 0.472617.
@@ -272,9 +272,8 @@ select only `Learning to Compose Neural Networks for Question Answering · 1601.
 ask “Which release of the VQA dataset do the authors use?”, and inspect the citation
 panel. A fresh-process check answered VQA 1.0 and linked paragraph `1601.01705:s7:p1`.
 The selected paper restriction matters: selecting all papers is not a supported cross-paper
-evaluation. Use `reports/t9-demo.md` for the demo status and steps, `reports/t9-failures.md`
-for three distinct failure modes, and `reports/t9-interview.md` for an honest 60-second
-description and resume bullet.
+evaluation. See `reports/t9-failures.md` for three distinct failure modes. No public demo video
+is available; the text walkthrough above is not a video demonstration.
 
 Raw archives, full text, indexes, model files and run artifacts are intentionally ignored
 by Git. This machine has the prepared corpus and models; a new machine must acquire and

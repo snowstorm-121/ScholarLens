@@ -484,3 +484,14 @@ gradio_tmp/
 /artifacts/
 .env.*
 !.env.example
+
+# Local project notes and interview preparation
+/docs/2026-10-14-scholar-assistant-plan.md
+/reports/t1-t4-interview-log.md
+/reports/t5-interview-log.md
+/reports/t6-interview-log.md
+/reports/t7-interview-log.md
+/reports/t8-interview-log.md
+/reports/t9-interview-log.md
+/reports/t9-interview.md
+/reports/t9-demo.md

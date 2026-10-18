@@ -16,5 +16,5 @@
 先比较两种 Hybrid 切分，再在胜出切分上比较三路；未进行额外参数搜索。
 全部原始批次保留，不证明该方法对所有语料有效；不是正式 Test 结果。
 
-候选配置：configs/selected_config.json；U3 已按用户委托由助手完成，候选仍因最终配置冻结未完成而保持 `ready_for_test=false`。
+候选配置：`configs/selected_config.json`。文件中的 `ready_for_test=false` 是当时的冻结状态；后续正式评测记录见 [Test 报告](test.md)。
 完整问题与原文保留在忽略目录，公开报告不代替逐题审计。

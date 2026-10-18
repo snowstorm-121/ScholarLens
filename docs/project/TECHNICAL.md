@@ -50,6 +50,6 @@ SCHOLAR_CONFIG="$PWD/configs/selected_config.json" .venv/bin/python -m scholarle
 .venv/bin/python scripts/t8_verify.py  # 需要本机保留的正式运行产物
 ```
 
-当前本机项目回归测试为 **187 passed**，T8 离线复算通过。运行与问题处理记录见 [T1–T4](../../reports/t1-t4-interview-log.md)、[T5](../../reports/t5-interview-log.md)、[T6](../../reports/t6-interview-log.md)、[T7](../../reports/t7-interview-log.md)、[T8](../../reports/t8-interview-log.md) 和 [T9](../../reports/t9-interview-log.md)。[演示记录](../../reports/t9-demo.md)明确标明视频未完成，不能以文字记录代替视频。
+当前本机项目回归测试为 **187 passed**，T8 离线复算通过。数据、索引、问答与评测的验收记录分别见 [T2](../../reports/t2-data.md)、[T4](../../reports/t4-indexing.md)、[T5](../../reports/t5-qa.md)、[T6](../../reports/t6-evaluation.md)、[T7](../../reports/t7-freeze.md) 和 [正式 Test](../../reports/test.md)。目前没有公开演示视频；文字操作说明不能代替视频。
 
 数据来自 [QASPER](https://huggingface.co/datasets/allenai/qasper)；标注许可、论文权利、Kotaemon 上游版本和保留的版权信息见 [来源清单](../../UPSTREAM.md)。

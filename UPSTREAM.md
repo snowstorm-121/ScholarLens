@@ -11,4 +11,4 @@ ScholarLens 复用 [Kotaemon](https://github.com/Cinnamon/kotaemon) 的应用框
 
 ## 验证边界
 
-30 道 Dev 题的语义检查由助手按委托完成，不是独立人工 gold 审查；标注风险见 [T3 审查记录](reports/t3-review.md)。冻结 Test 的配置、分母和结果见 [Test 报告](reports/test.md)。各阶段的实现、排障和验收记录保留在 [reports/](reports/)。
+部分工程实现和报告由助手协作完成，不代表所有模块均由项目作者独立手写。30 道 Dev 题的语义检查由助手按委托完成，不是独立人工 gold 审查；标注风险见 [T3 审查记录](reports/t3-review.md)。冻结 Test 的配置、分母和结果见 [Test 报告](reports/test.md)。技术结果与排障记录保留在 [reports/](reports/)。
