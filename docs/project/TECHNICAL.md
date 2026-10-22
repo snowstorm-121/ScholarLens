@@ -1,55 +1,65 @@
-# ScholarLens：实现与复核
+# 实现与设计取舍
 
-项目入口、场景和正式成绩见[仓库首页](../../README.md)。这里记录实际数据流、运行入口和可核对边界。它是**选定论文范围内**的本地 RAG，不是跨论文综述系统。
+ScholarLens 的核心是把一次回答拆成可检查的步骤：限定论文、检索证据、构建上下文、调用模型、校验引用。[首页](../../README.md)提供演示与结果，本页按数据流说明关键实现。
 
-## 系统如何工作
+## 正文和标注分开
 
-1. `scholarlens/data.py` 从固定 SHA-256 的 QASPER v0.3 发布包转换 1,584 篇可用论文。正文与问题/答案/证据标注分开；段落记录 `paper_id`、稳定 `paragraph_id` 和规范化字符半开区间。
-2. `scholarlens/indexing.py` 在段落内切分，保持 chunk 到原段落的位置映射；`embedding.py` 用 `nomic-embed-text` 的文档/查询前缀生成 768 维向量。FileIndex 的身份表、LanceDB 原文和 Chroma 向量存储沿用上游框架。
-3. `retrieval.py` 在用户选定论文内计算 BM25、Dense 或 `1/(60+rank)` RRF。Dense 从 Chroma 按论文/文件过滤读取已存向量后精确打分，**不是**全库 ANN 搜索。UI 与 CLI 使用同一注册适配层。
-4. `context.py` 以真实 Qwen tokenizer 限制最多 5 个完整 chunk、4500 context tokens；`qa.py`、`generation.py` 请求本地 Ollama，保留实际 prompt/响应，检查引用是否来自该 context 并能定位原文。模型错误、拒答和无效引用分开记录。
-5. `dataset.py`、`metrics.py`、`evaluate.py` 分别处理冻结题集、完整 gold span 覆盖及官方 QASPER F1 适配、不可覆盖的逐题评测记录。gold 不绑定某次切分生成的 chunk ID。
+`data.py` 转换 QASPER 正文，记录 `paper_id`、稳定 `paragraph_id` 和规范化字符半开区间。问题、答案及 evidence 标注单独导出，不进入检索索引。`dataset.py` 在这些位置上构建题集，避免切分参数变化后 gold 跟着 chunk ID 变化。
 
-相关代码主要在仓库根目录的 `scholarlens/`；网页入口为 `app.py`/`scholarlens/ui.py`。上游复用与个人改动边界见 [UPSTREAM.md](../../UPSTREAM.md)，许可证见 [LICENSE.txt](../../LICENSE.txt)。
+一个 gold 段落可以由多个相邻或重叠块覆盖；指标按字符区间并集判断是否完整覆盖，不因重叠重复加分。位置核对证明文本可定位，不自动证明标注的语义正确。
 
-## 本机运行
+代码：[data.py](../../scholarlens/data.py)、[dataset.py](../../scholarlens/dataset.py)、[metrics.py](../../scholarlens/metrics.py)。
 
-已验证环境为 Apple M5/16GB、Python 3.10.22、Ollama 0.15.6，模型 `nomic-embed-text` 与 `qwen3:4b-instruct-2507-q4_K_M`。本机已有完整语料和索引；新机器需要网络、磁盘空间，并重新获取校验数据、安装锁定依赖、建库。详细约束、依赖警告与历史排障见 [本地运行指南](LOCAL_SETUP.md)，以下不是跨平台一键安装保证。
+## 为什么限定单篇论文
 
-在已经准备好 `.venv`、模型和索引的仓库根目录：
+论文中的相似术语、方法名和实验设置容易互相干扰。检索先按用户选定的 `paper_id` 和文件身份过滤，再计算 BM25、Dense 或 RRF 排名。
 
-```sh
-# 先打开 Ollama 桌面应用，然后在新终端进程使用正式选定配置
-SCHOLAR_CONFIG="$PWD/configs/selected_config.json" bash scripts/start_app.sh
-```
+Dense 从 Chroma 读取这篇论文的已存向量后精确打分。相比全库近似搜索，它让论文内候选范围与排序更容易核对，但不代表已经解决大规模跨论文检索。网页与 CLI 使用同一注册适配层，避免演示和实验走两套排序代码。
 
-打开 `http://127.0.0.1:7860/`，选择 **ScholarLens QASPER 2400-200** 集合，并且只选一篇论文。普通 `bash scripts/start_app.sh` 沿用历史 `configs/local.json` 的 1600/Hybrid 配置，**不会**自动切到正式选定配置。不要同时开启两个占用 7860 端口的实例。
+代码：[indexing.py](../../scholarlens/indexing.py)、[embedding.py](../../scholarlens/embedding.py)、[retrieval.py](../../scholarlens/retrieval.py)。
 
-数据与索引重建入口（需要先安装依赖并允许获取官方发布包与模型）：
+## 从候选到模型上下文
 
-```sh
-.venv/bin/python -m scholarlens.cli prepare --config configs/local.json
-.venv/bin/python -m scholarlens.cli freeze --config configs/local.json
-SCHOLAR_CONFIG="$PWD/configs/selected_config.json" .venv/bin/python -m scholarlens.cli index --config configs/selected_config.json
-```
+上下文使用真实 Qwen tokenizer 计数，最多放入 5 个完整 chunk、4,500 context tokens。块的原始位置保留到生成阶段，引用只能指向实际送入模型的内容。
 
-`prepare` 校验下载文件哈希；发现内容变化会停止，不会默默接受新版本。原始包和处理后的全文、评测题、模型、数据库、索引与逐题运行产物均被 Git 忽略。不要把 Test 题/答案导入检索索引。
+检索 Top-10 用于 MRR@10；生成只读取 Top-5。排第 6 的正确证据可能计入排名指标，却没有进入模型上下文。这也是为什么检索指标与生成质量必须分开检查。
 
-## 实验设计与结果
+模型通过本地 Ollama 调用。输出被分为正常回答、证据不足、引用不合法及调用错误；实际 prompt、响应和引用位置随逐题审计记录保存。
 
-- 检索 Dev/Test：200/300 题，其中可回答题 160/240；生成子集：50/100 题，其中可回答题 40/80。按预定规则仅用 Dev 选择 `2400/200 + Dense`，随后使用独立预注册 Test 契约进行一次正式评测。T7 冻结文件内历史 `ready_for_test=false` 保留，不把它改写成新状态。
-- 两种切分（1600/200、2400/200）×三路方法的 Dev 对照见 [Dev 检索](../../reports/dev-retrieval.md)；Test 在同一 2400/200 索引上比较，BM25/Dense/Hybrid EvidenceRecall@5 分别为 0.4654/0.6290/0.5901。完整指标、生成 Answer F1 0.3347、9 次输出截断和分母见 [正式 Test](../../reports/test.md)。
-- [三类失败案例](../../reports/t9-failures.md)分别展示检索未召回、正确证据排第 6 被 Top-5 context 排除，以及 Top-1 已有证据但生成拒答。不能把三者都归咎于模型，也不能看过 Test 后修改本版参数再沿用首次结果。
+代码：[context.py](../../scholarlens/context.py)、[qa.py](../../scholarlens/qa.py)、[generation.py](../../scholarlens/generation.py)。
 
-原始逐题 JSON 在本机忽略目录 `artifacts/evaluation/`；公开报告给出批次、哈希和汇总。`scripts/t8_verify.py` 在本机原始产物存在时离线复算四批 Test，不重新调用模型。30 道 Dev 问题的语义检查由助手按委托完成，**不是独立人类审核全部 gold**。结果只代表该小规模、单机、单论文范围条件，不代表线上服务质量。
+## 实验如何比较
 
-## 验证与文档
+Dev 检索共 200 题，Test 检索共 300 题；生成子集分别为 50 题和 100 题。Dev 比较 `1600/200`、`2400/200` 切分与三路检索，选择 `2400/200 + Dense` 后固定正式 Test 条件。
+
+| 指标 | 含义 |
+| --- | --- |
+| EvidenceRecall@5 | Top-5 完整覆盖的 gold 段落比例；一题取最佳替代参考组，再对可回答题平均 |
+| AllEvidence@5 | 至少完整覆盖一组参考证据的题目比例 |
+| MRR@10 | 前十个候选中首次完整覆盖任一 gold 段落的倒数排名 |
+| Answer / Evidence F1 | 官方 QASPER scorer 的词面答案与引用段落评分适配 |
+| 引用可追溯 | 解析后的引用能否定位到实际上下文；不等于陈述获证据支持 |
+
+失败预测保留在总体分母中。无答案题不进入检索 Recall/MRR；无答案正确拒答与可回答题错误拒答分别统计。
+
+正式 Test 中 Dense 的 EvidenceRecall@5 为 0.6290、MRR@10 为 0.4965。生成 Answer F1 为 0.3347，存在错误拒答和截断。完整条件、分母与局限见[正式报告](../../reports/test.md)，不从单例或少数成功回答推断总体质量。
+
+## 一个有用的失败定位顺序
+
+1. 原文是否包含问题需要的证据？
+2. gold 是否进入检索候选，排名多少？
+3. 证据是否实际进入 context，还是被 Top-k 或预算排除？
+4. 模型是否正确使用证据，引用能否回查？
+
+[三个真实案例](../../reports/t9-failures.md)分别对应检索未召回、第六名证据被 Top-5 排除，以及已有完整证据却仍拒答。它们给出下一版实验方向，但不用于回改本版 Test 结果。
+
+## 复核入口
 
 ```sh
 .venv/bin/python -m pytest -q tests_scholarlens
-.venv/bin/python scripts/t8_verify.py  # 需要本机保留的正式运行产物
+.venv/bin/python scripts/t8_verify.py
 ```
 
-当前本机项目回归测试为 **187 passed**，T8 离线复算通过。数据、索引、问答与评测的验收记录分别见 [T2](../../reports/t2-data.md)、[T4](../../reports/t4-indexing.md)、[T5](../../reports/t5-qa.md)、[T6](../../reports/t6-evaluation.md)、[T7](../../reports/t7-freeze.md) 和 [正式 Test](../../reports/test.md)。目前没有公开演示视频；文字操作说明不能代替视频。
+第二条命令需要本机保存的正式逐题产物，离线复算而不调用模型。公开仓库保留配置、汇总报告及验证代码；模型、全文、索引和完整运行产物不随 Git 分发。
 
-数据来自 [QASPER](https://huggingface.co/datasets/allenai/qasper)；标注许可、论文权利、Kotaemon 上游版本和保留的版权信息见 [来源清单](../../UPSTREAM.md)。
+上游组件、数据和辅助开发的说明见[来源清单](../../UPSTREAM.md)。
