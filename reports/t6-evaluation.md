@@ -1,13 +1,13 @@
 # T6：可信指标与共享评测运行器
 
-日期：2026-10-15。工程实现与机器验收完成；用户手算理解独立保留待核对。
+日期：2026-10-15。工程实现与机器验证完成；测试结果不代表个人掌握程度。
 范围仅是指标正确性与固定 5 题 train smoke，不是 T7 Dev 对照或 T8 正式 Test 成绩。
 
 ## 实现与输入输出
 
 - `scholarlens/metrics.py`：输入一题完整有效参考组及实际排名/context/预测，输出逐题指标及分子分母；`aggregate` 按预定全部问题汇总，失败不删除。
 - `scholarlens/evaluate.py`：校验冻结数据与官方 evaluator，按选定 paper_id 调用已注册检索 pipeline，生成阶段调用与网页相同的 `qa.answer()`，保存 manifest、逐题原始结果、summary.json、summary.md。
-- `scholarlens/cli.py evaluate`：显式选择 split/stage/method，train 固定 3 道可回答和 2 道无答案，预测前按 seed=42 问题哈希选定。Dev 接口已提供，本轮没有运行；Test 入口在 T8 最终配置授权前锁定。
+- `scholarlens/cli.py evaluate`：显式选择 split/stage/method，train 固定 3 道可回答和 2 道无答案，预测前按 seed=42 问题哈希选定。Dev 接口已提供，该阶段未运行；Test 入口在 T8 正式执行契约登记前锁定。
 - `scripts/t6_verify.py`：不调用模型，重新从保存的预测/gold 计算指标，核对真实 span 切片、实际请求、官方整批 F1 和手算样例。
 
 官方评分器直接保留未改源码，未安装其训练环境，Apache 许可证与来源在 vendor/。
@@ -30,7 +30,7 @@ Git blob 与官方 API 一致，均为 `daa0e48d32c55e6cd23d21e0d6254a35bc359ae4
 - 引用格式合规率、引用可追溯率分开；无引用分母为 0 显示 null/N/A，不记 100%。不自动认证人工证据支持率。
 - 模型异常、超时、空最终输出、截断或缺预测的官方 Answer/Evidence F1 以 0 分保留；特别防止失败无答案预测因空 evidence 获得满分。已经观察到的检索/context 仍按实际块评分，不被后续生成失败抹成零。
 
-### 手算对照（机器已验证，用户理解尚待核对）
+### 指标计算示例（机器已验证）
 
 唯一参考组为 A、B，排名为完整 A、无关 X、完整 B：
 
@@ -97,4 +97,4 @@ JSON 汇总与 Markdown 可独立恢复。recompute 从预测重新评分，不�
 实际复现了 thinking 文本误计分、半截 JSON 持久化、运行时变更续跑、额外空行、
 Help 页联网副作用以及 selector 生命周期遗漏；本阶段只验证评测链路，不将 smoke 结果作为质量结论。
 输出上限 512 导致的真实截断按 error 保留，没有为提高 smoke 成绩加大预算或挑题。
-本次不修改原有冻结 v1，不重建索引、不下载模型/依赖、不改 V0/V1、不提交或推送 Git。
+该阶段未修改冻结 v1、重建索引、下载模型或依赖，也未改动 V0/V1。
